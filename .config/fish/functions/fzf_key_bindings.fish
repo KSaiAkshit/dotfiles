@@ -1,0 +1,1 @@
+/home/akshit/tools/fzf/shell/key-bindings.fish
