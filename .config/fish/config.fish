@@ -26,3 +26,10 @@ set -gx EDITOR lvim
 
 # THE FUCK
 thefuck --alias | source
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /home/akshit/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+

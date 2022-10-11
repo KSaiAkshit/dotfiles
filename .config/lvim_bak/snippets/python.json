@@ -1,0 +1,9 @@
+{
+  "shebang": {
+    "prefix": "#!",
+    "body": [
+      "#!/usr/bin/env python"
+    ],
+    "description": "Python shebang for ROS"
+  }
+}

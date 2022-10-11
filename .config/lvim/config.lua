@@ -8,6 +8,9 @@ an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
+-- gui setup
+vim.o.guifont = "JetBrainsMono NF"
+
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
@@ -18,7 +21,7 @@ lvim.transparent_window = true
 vim.g.tokyonight_style = "night"
 vim.g.tokyonight_transparent = true
 vim.g.tokyonight_transparent_sidebar = true
-lvim.colorscheme = "catppuccin"
+lvim.colorscheme = "everforest"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -153,9 +156,11 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
+  -- TMUX
   { "christoomey/vim-tmux-navigator" },
-  { "folke/tokyonight.nvim" },
+  -- copilot
   { "github/copilot.vim" },
+  { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' },
   { "metakirby5/codi.vim" },
   { "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -165,7 +170,6 @@ lvim.plugins = {
   },
   { 'ixru/nvim-markdown' },
   { 'renerocksai/calendar-vim' },
-  { 'renerocksai/telekasten.nvim' },
   { 'iamcco/markdown-preview.nvim' },
   { 'karb94/neoscroll.nvim',
     require('neoscroll').setup({
@@ -190,6 +194,7 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
+  -- Themes
   { 'navarasu/onedark.nvim',
     style = 'darker',
   },
@@ -199,6 +204,7 @@ lvim.plugins = {
   { "catppuccin/nvim", as = "catppuccin" },
   { "rebelot/kanagawa.nvim" },
   { "sainnhe/everforest" },
+  { "folke/tokyonight.nvim" },
   { 'embark-theme/vim', as = 'embark', branch = 'main' },
   { 'Shatur/neovim-ayu',
     require('ayu').setup({
@@ -206,9 +212,26 @@ lvim.plugins = {
       overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
     })
   },
+  { "LunarVim/synthwave84.nvim" },
 }
 
-require("user/telekasten")
+
+-- Tabnine setup
+
+local tabnine = require('cmp_tabnine.config')
+
+tabnine.setup({
+  max_lines = 1000,
+  max_num_results = 20,
+  sort = true,
+  run_on_every_keystroke = true,
+  snippet_placeholder = "..",
+  ignored_file_types = {
+    -- Format
+    -- lua = true
+  },
+  show_prediction_strength = false
+})
 
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

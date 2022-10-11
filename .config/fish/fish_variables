@@ -23,9 +23,19 @@ SETUVAR _fisher_jorgebucaran_2F_replay_2E_fish_files:\x7e/\x2econfig/fish/functi
 SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eedc/bass\x1epatrickf1/fzf\x2efish\x1ejorgebucaran/autopair\x2efish\x1ejorgebucaran/replay\x2efish\x1ejorgebucaran/hydro
 SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR _hydro_git_10021:master\u2022\x20
+SETUVAR _hydro_git_10953:master\u2022\x20
+SETUVAR _hydro_git_11260:master\u2022\x20
+SETUVAR _hydro_git_14112:master\u2022\x20
 SETUVAR _hydro_git_17316:noetic\x2ddevel\u2022\x20
+SETUVAR _hydro_git_26715:master\u2022\x20
 SETUVAR _hydro_git_29509:\x1d
+SETUVAR _hydro_git_3079:master\u2022\x20
+SETUVAR _hydro_git_3764:master\u2022\x20
+SETUVAR _hydro_git_511:master\u2022\x20
+SETUVAR _hydro_git_5444:master\u2022\x20
 SETUVAR _hydro_git_8317:\x1d
+SETUVAR _hydro_git_9888:master\u2022\x20
 SETUVAR fish_color_autosuggestion:969896
 SETUVAR fish_color_cancel:\x2d\x2dreverse
 SETUVAR fish_color_command:c397d8
@@ -66,4 +76,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/usr/local/go/bin\x1e/home/akshit/tools/ripgrep_all\x1e/home/akshit/\x2eemacs\x2ed/bin\x1e/home/akshit/\x2elocal/bin\x1e/home/akshit/\x2ecargo/bin\x1e/home/akshit/tools/fzf/bin
+SETUVAR fish_user_paths:x1e/usr/local/go/bin\x1e/home/akshit/tools/ripgrep_all\x1e/home/akshit/\x2eemacs\x2ed/bin\x1e/home/akshit/\x2elocal/bin\x1e/home/akshit/\x2ecargo/bin\x1e/home/akshit/tools/fzf/bin
