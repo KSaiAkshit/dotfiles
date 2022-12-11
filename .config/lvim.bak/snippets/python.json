@@ -1,0 +1,16 @@
+{
+  "shebang": {
+    "prefix": "#!",
+    "body": [
+      "#!/usr/bin/env python3"
+    ],
+    "description": "Python shebang for ROS"
+  },
+  "__main__": {
+    "prefix": "__",
+    "body": [
+      "if __name__ == '__main__':"
+    ],
+    "description": "Standard Python main check"
+  }
+}
