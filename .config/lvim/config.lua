@@ -24,11 +24,24 @@ vim.g.tokyonight_transparent_sidebar = true
 lvim.colorscheme = "everforest"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
+-- Clipboard
+vim.g.clipboard = {
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf",
+  },
+  paste = {
+    ["+"] = "win32yank.exe -o --lf",
+    ["*"] = "win32yank.exe -o --lf",
+  },
+}
+
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.insert_mode["jj"] = "<Esc>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -69,7 +82,7 @@ lvim.builtin.which_key.mappings["t"] = {
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
+-- lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
@@ -139,6 +152,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
 -- linters.setup {
+--   { command = "pylint", filetypes = { "python" }, args = { "--extension-pkg-whitelist=cv2" } },
 --   { command = "flake8", filetypes = { "python" } },
 --   {
 --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
@@ -186,10 +200,6 @@ lvim.plugins = {
       performance_mode = false, -- Disable "Performance Mode" on all buffers.
     })
   },
-  { "lukas-reineke/indent-blankline.nvim",
-    show_current_context = true,
-    show_current_context_start = true,
-  },
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
@@ -204,7 +214,6 @@ lvim.plugins = {
   { "catppuccin/nvim", as = "catppuccin" },
   { "rebelot/kanagawa.nvim" },
   { "sainnhe/everforest" },
-  { "folke/tokyonight.nvim" },
   { 'embark-theme/vim', as = 'embark', branch = 'main' },
   { 'Shatur/neovim-ayu',
     require('ayu').setup({
@@ -217,7 +226,6 @@ lvim.plugins = {
 
 
 -- Tabnine setup
-
 local tabnine = require('cmp_tabnine.config')
 
 tabnine.setup({
@@ -232,6 +240,7 @@ tabnine.setup({
   },
   show_prediction_strength = false
 })
+
 
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
