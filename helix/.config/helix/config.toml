@@ -1,0 +1,61 @@
+theme = "rose_pine_moon_transparent"
+
+[editor]
+# line-number = "relative"
+auto-format = true
+auto-save = true
+true-color = true
+auto-completion = true
+idle-timeout = 1
+bufferline = "multiple"
+cursorcolumn = true
+cursorline = true
+color-modes = true
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+"'" = "'"
+'`' = '`'
+'<' = '>'
+'|' = '|'
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25
+
+[editor.indent-guides]
+render = true
+#character = "|"
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+
+[editor.whitespace.characters]
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]
+C-s = ":w"
+
+[keys.normal.space]
+x = ":bc"
+l = ":toggle lsp.display-inlay-hints"
+
+[keys.insert]
+j = { j = "normal_mode" } # Maps `jj` to exit insert mode
+C-s = ":w"
+C-h = "move_char_left"
+C-l = "move_char_right"
+C-j = "move_line_down"
+C-k = "move_line_up"
+
