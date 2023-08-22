@@ -28,6 +28,16 @@ M = {
       })
     end,
   },
+  {
+    "goolord/alpha-nvim",
+    enabled = false,
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      hijack_netrw = "disabled",
+    },
+  },
 }
 
 return M

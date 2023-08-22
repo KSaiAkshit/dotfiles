@@ -1,4 +1,4 @@
-function systemctl --description 'wraps privileged and user systemctl commands to use doas when necessary' -w systemctl
+function systemctl --description 'wraps privileged and user systemctl commands to use sudo when necessary' -w systemctl
     set -l user_commands \
       list-units list-unit-files list-jobs list-timers \
       list-sockets list-dependencies list-machines \
@@ -16,6 +16,6 @@ function systemctl --description 'wraps privileged and user systemctl commands t
     if contains -- --user $argv; or not contains -- $argv[1] $root_commands
         command systemctl $argv
     else
-        command doas systemctl $argv
+        command sudo systemctl $argv
     end
 end
