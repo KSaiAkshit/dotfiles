@@ -24,7 +24,6 @@ alias ln 'ln -i'
 alias mkdir 'mkdir -pv'
 alias mv 'mv -i'
 alias nps 'web-search nixpkgs'
-alias nvc nvchad
 alias rm 'rm -i'
 alias rmrf 'rm -rf'
 alias rosd 'ros-docker-run.py'
@@ -37,6 +36,9 @@ alias wget 'wget -c'
 alias y zellij-runner
 alias zj zellij
 alias zja 'zellij a -c $(basename $("pwd"))'
+
+# Abbreviations
+
 abbr -a bu --function projectdo_build
 abbr -a pr --function projectdo_tool
 abbr -a ru --function projectdo_run
@@ -47,7 +49,7 @@ abbr pwo "pomodoro work"
 abbr sfsh "source ~/.config/fish/config.fish"
 abbr reload "exec fish"
 
-function nvchad
+function nvc
     set -x NVIM_APPNAME NvChad
     nvim $argv
 end
@@ -63,6 +65,13 @@ export HAS_ALLOW_UNSAFE=y
 set -g fish_key_bindings fish_hybrid_key_bindings
 set -x THEFUCK_OVERIDDEN_ALIASES hub
 # export XDG_DATA_HOME="$HOME/.local/share"
+set -x PNPM_HOME "/home/akshit/.local/share/pnpm"
+switch "*:$PATH:"
+    case "*:$PNPM_HOME:"
+    case "*"
+        set -x PATH "$PNPM_HOME" $PATH
+end
+
 
 # fish settings
 set hydro_color_pwd "#a84055"
