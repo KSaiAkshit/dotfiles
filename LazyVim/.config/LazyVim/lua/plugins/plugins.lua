@@ -28,10 +28,10 @@ M = {
       })
     end,
   },
-  {
-    "goolord/alpha-nvim",
-    enabled = false,
-  },
+  -- {
+  --   "goolord/alpha-nvim",
+  --   enabled = false,
+  -- },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {

@@ -6,6 +6,7 @@ end
 
 alias ari aria2c
 alias bgg 'swww img'
+alias bt bartib
 alias c clear
 alias cat bat
 alias cls clear
