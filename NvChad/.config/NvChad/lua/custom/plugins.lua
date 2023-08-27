@@ -132,24 +132,25 @@ local plugins = {
       performance_mode = false,    -- Disable "Performance Mode" on all buffers.
     }
   },
-  -- {
-  -- "nvim-neorg/neorg",
-  -- build = ":Neorg sync-parsers",
-  -- opts = {
-  -- load = {
-  --   ["core.defaults"] = {}, -- Loads default behaviour
-  --   ["core.concealer"] = {}, -- Adds pretty icons to your documents
-  --   ["core.dirman"] = { -- Manages Neorg workspaces
-  --     config = {
-  --         workspaces = {
-  --             notes = "~/notes",
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
-  --     dependencies = { { "nvim-lua/plenary.nvim" } },
-  -- }
+  {
+  "nvim-neorg/neorg",
+  build = ":Neorg sync-parsers",
+  event = "VeryLazy",
+  opts = {
+  load = {
+    ["core.defaults"] = {}, -- Loads default behaviour
+    ["core.concealer"] = {}, -- Adds pretty icons to your documents
+    ["core.dirman"] = { -- Manages Neorg workspaces
+      config = {
+          workspaces = {
+              notes = "~/notes",
+          },
+        },
+      },
+    },
+  },
+      dependencies = { { "nvim-lua/plenary.nvim" } },
+  }
 }
 
 return plugins
