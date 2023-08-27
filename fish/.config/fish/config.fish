@@ -11,8 +11,7 @@ alias c clear
 alias cat bat
 alias cls clear
 alias cp 'cp -i'
-alias g hub
-alias git hub
+alias g git
 alias gog 'web-search google'
 alias gp tgpt
 alias hmm home-manager
