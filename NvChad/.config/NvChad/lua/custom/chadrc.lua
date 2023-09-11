@@ -3,6 +3,7 @@
  M.ui = {
   theme = 'rosepine',
   transparency = true,
+  telescope = {style = "borderless"},
 
   -- nvdash (dashboard)
   nvdash = {
