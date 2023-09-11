@@ -1,5 +1,6 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    fish_config theme choose "Rosé Pine"
 end
 
 # Aliases
@@ -11,15 +12,15 @@ alias c clear
 alias cat bat
 alias cls clear
 alias cp 'cp -i'
-alias g git
+alias g gh
 alias gog 'web-search google'
 alias gp tgpt
 alias hmm home-manager
 alias home 'tmux new -s Home'
 alias hx helix
 alias icat 'kitten icat'
-alias la 'exa -la --icons --group-directories-first'
-alias ll 'exa -l --icons --group-directories-first'
+alias la 'eza -la --icons --group-directories-first'
+alias ll 'eza -l --icons --group-directories-first'
 alias ln 'ln -i'
 alias mkdir 'mkdir -pv'
 alias mv 'mv -i'
@@ -63,9 +64,12 @@ end
 export EDITOR=/usr/bin/helix
 export HAS_ALLOW_UNSAFE=y
 set -g fish_key_bindings fish_hybrid_key_bindings
+set -g fish_cursor_default block
+set -g fish_cursor_insert line
+set -g fish_cursor_visual underscore
 set -x THEFUCK_OVERIDDEN_ALIASES hub
-# export XDG_DATA_HOME="$HOME/.local/share"
 set -x PNPM_HOME "/home/akshit/.local/share/pnpm"
+set -x PATH "$BUN_INSTALL/bin" $PATH
 switch "*:$PATH:"
     case "*:$PNPM_HOME:"
     case "*"
