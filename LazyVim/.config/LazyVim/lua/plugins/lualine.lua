@@ -51,15 +51,15 @@ M = {
             cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
             color = Util.fg("Debug"),
           },
-          { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = Util.fg("Special") },
-          {
-            "diff",
-            symbols = {
-              added = icons.git.added,
-              modified = icons.git.modified,
-              removed = icons.git.removed,
-            },
-          },
+          -- { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = Util.fg("Special") },
+          -- {
+          --   "diff",
+          --   symbols = {
+          --     added = icons.git.added,
+          --     modified = icons.git.modified,
+          --     removed = icons.git.removed,
+          --   },
+          -- },
         },
         lualine_y = {
           { "progress", separator = " ", padding = { left = 1, right = 0 } },

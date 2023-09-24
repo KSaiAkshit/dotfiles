@@ -3,6 +3,7 @@ M = {
     "rose-pine/neovim",
     name = "rose-pine",
     opts = {
+      variant = "moon",
       disable_background = true,
       disable_float_background = true,
     },
@@ -28,15 +29,13 @@ M = {
       })
     end,
   },
-  -- {
-  --   "goolord/alpha-nvim",
-  --   enabled = false,
-  -- },
+  {
+    "goolord/alpha-nvim",
+    enabled = false,
+  },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      hijack_netrw = "disabled",
-    },
+    enabled = false,
   },
 }
 
