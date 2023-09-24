@@ -136,7 +136,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: BlexMono Nerd Font
+    family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     # style: Regular
@@ -456,9 +456,10 @@ cursor:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
 shell:
- program: /home/akshit/.local/scripts/zellija
-#  args:
-#    - --login
+ program: /usr/bin/fish
+ # args:
+ #   - a  
+ #   - --create
 
 # Startup directory
 #

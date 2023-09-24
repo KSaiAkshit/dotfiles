@@ -25,13 +25,14 @@ alias ln 'ln -i'
 alias mkdir 'mkdir -pv'
 alias mv 'mv -i'
 alias nps 'web-search nixpkgs'
-alias rm 'rm -i'
+alias pls 'doas (builtin history -n 1 | string split " "; and echo $1)'
+alias rm 'trash -i'
 alias rmrf 'rm -rf'
 alias rosd 'ros-docker-run.py'
 alias sg 's -p google'
 alias ta 'tmux attach'
 alias trash 'trash -i'
-alias v viml
+alias v  viml
 alias vim nvim
 alias wget 'wget -c'
 alias y zellij-runner
