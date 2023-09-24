@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=una-updater
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Name=Una Updater
-Comment=Auto-updater for APT and MPR packages.
