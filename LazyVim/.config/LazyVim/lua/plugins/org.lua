@@ -1,6 +1,7 @@
 M = {
   {
     "nvim-orgmode/orgmode",
+    enabled = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },

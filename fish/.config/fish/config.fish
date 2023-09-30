@@ -15,7 +15,8 @@ alias cp 'cp -i'
 alias g gh
 alias gog 'web-search google'
 alias gp tgpt
-alias hmm home-manager
+alias p 'paru'
+alias hm home-manager
 alias home 'tmux new -s Home'
 alias hx helix
 alias icat 'kitten icat'
@@ -32,7 +33,7 @@ alias rosd 'ros-docker-run.py'
 alias sg 's -p google'
 alias ta 'tmux attach'
 alias trash 'trash -i'
-alias v  viml
+alias v viml
 alias vim nvim
 alias wget 'wget -c'
 alias y zellij-runner

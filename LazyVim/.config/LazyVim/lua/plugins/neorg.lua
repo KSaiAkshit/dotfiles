@@ -3,7 +3,7 @@ M = {
   {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
-    ft = "norg",
+    lazy = false,
     config = function()
       require("neorg").setup({
         load = {
