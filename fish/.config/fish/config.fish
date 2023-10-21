@@ -92,11 +92,11 @@ zoxide init fish | source
 starship init fish | source
 enable_transience
 
+# Luarocks
+eval "$(luarocks path --lua-version 5.1)"
+
 # cod init
 cod init $fish_pid fish | source
-
-# Nix stuff
-replay '. $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh'
 
 # asdf
 source /opt/asdf-vm/asdf.fish
