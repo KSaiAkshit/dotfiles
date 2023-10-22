@@ -51,6 +51,7 @@ abbr pbr "pomodoro break"
 abbr pwo "pomodoro work"
 abbr sfsh "source ~/.config/fish/config.fish"
 abbr reload "exec fish"
+abbr aoct "cargo gen --path $HOME/dev/template/aoc_template --vcs=none"
 
 function nvc
     set -x NVIM_APPNAME NvChad
