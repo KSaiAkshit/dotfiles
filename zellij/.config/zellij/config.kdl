@@ -161,6 +161,7 @@ keybinds {
         bind "n" { GoToNextTab; SwitchToMode "Locked"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "Locked"; }
+        bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
         // bind "Left" { MoveFocus "Left"; SwitchToMode "Locked"; }
         // bind "Right" { MoveFocus "Right"; SwitchToMode "Locked"; }
         // bind "Down" { MoveFocus "Down"; SwitchToMode "Locked"; }
