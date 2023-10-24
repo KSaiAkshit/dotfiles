@@ -152,6 +152,7 @@ keybinds {
     tmux {
         bind "[" { SwitchToMode "Scroll"; }
         bind "g" { SwitchToMode "Locked"; }
+        bind "s" { SwitchToMode "Scroll"; }
         bind "-" { NewPane "Down"; SwitchToMode "Locked"; }
         bind "\\" { NewPane "Right"; SwitchToMode "Locked"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
@@ -159,8 +160,8 @@ keybinds {
         bind "," { SwitchToMode "RenameTab"; }
         bind "p" { GoToPreviousTab; SwitchToMode "Locked"; }
         bind "n" { GoToNextTab; SwitchToMode "Locked"; }
-        bind "f" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
-        bind "w" { ToggleFloatingPanes; SwitchToMode "Locked"; }
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
+        bind "f" { ToggleFloatingPanes; SwitchToMode "Locked"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
         // bind "Left" { MoveFocus "Left"; SwitchToMode "Locked"; }
         // bind "Right" { MoveFocus "Right"; SwitchToMode "Locked"; }
@@ -174,7 +175,7 @@ keybinds {
         bind "d" { Detach; }
         bind "Space" { NextSwapLayout; }
         bind "x" { CloseFocus; SwitchToMode "Locked"; }
-        bind "s" {
+        bind "w" {
             LaunchOrFocusPlugin "zellij:session-manager" {
                 floating true
                 move_to_focused_tab true
