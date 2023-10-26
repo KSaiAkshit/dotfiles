@@ -191,11 +191,6 @@ keybinds {
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
-        bind "Ctrl v" {
-            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room" {
-                floating true
-            }
-        }
     }
     shared_except "normal" "locked" {
         bind "Enter" "Esc" { SwitchToMode "Normal"; }
