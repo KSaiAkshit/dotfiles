@@ -6,3 +6,4 @@
 --
 -- vim.wo.fillchars = "eob: "
 vim.cmd("set fcs=eob:\\ ")
+vim.loader.enable()

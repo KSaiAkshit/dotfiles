@@ -15,7 +15,6 @@ config.window_background_opacity = 0.6
 -- config.default_prog = { "/usr/bin/fish", "-l" }
 -- config.default_prog = { "/home/akshit/.local/scripts/zellija" }
 config.default_prog = { "/usr/bin/zellij", "a", "-c" }
-config.default_cursor_style = "BlinkingBar"
 config.window_close_confirmation = 'NeverPrompt'
 
 config.keys = {
