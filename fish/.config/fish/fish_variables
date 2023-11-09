@@ -18,7 +18,7 @@ SETUVAR --path GOPATH:/home/akshit/\x2elocal/share/go
 SETUVAR PARALLEL_HOME:/home/akshit/\x2econfig/parallel
 SETUVAR --export RUSTUP_HOME:/home/akshit/\x2elocal/share/rustup
 SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:true
-SETUVAR --export W3M_DIR:\x7e/\x2elocal/state/w3m
+SETUVAR --export W3M_DIR:/home/akshit/\x2elocal/state/w3m
 SETUVAR --export XDG_CACHE_HOME:/home/akshit/\x2ecache
 SETUVAR --export XDG_CONFIG_HOME:/home/akshit/\x2econfig
 SETUVAR --export XDG_DATA_HOME:/home/akshit/\x2elocal/share
