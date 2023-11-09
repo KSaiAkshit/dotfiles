@@ -15,7 +15,6 @@ alias cp 'cp -i'
 alias g gh
 alias gog 'web-search google'
 alias gp tgpt
-alias p 'paru'
 alias hm home-manager
 alias home 'tmux new -s Home'
 alias hx helix
@@ -26,6 +25,7 @@ alias ln 'ln -i'
 alias mkdir 'mkdir -pv'
 alias mv 'mv -i'
 alias nps 'web-search nixpkgs'
+alias p paru
 alias pls 'doas (builtin history -n 1 | string split " "; and echo $1)'
 alias rm 'trash -i'
 alias rmrf 'rm -rf'
@@ -46,12 +46,14 @@ abbr -a bu --function projectdo_build
 abbr -a pr --function projectdo_tool
 abbr -a ru --function projectdo_run
 abbr -a te --function projectdo_test
+abbr aoct "cargo gen --path $HOME/dev/template/aoc_template --vcs=none"
+abbr bc bard-cli
+abbr exe exercism
 abbr how how2
 abbr pbr "pomodoro break"
 abbr pwo "pomodoro work"
-abbr sfsh "source ~/.config/fish/config.fish"
 abbr reload "exec fish"
-abbr aoct "cargo gen --path $HOME/dev/template/aoc_template --vcs=none"
+abbr sfsh "source ~/.config/fish/config.fish"
 
 function nvc
     set -x NVIM_APPNAME NvChad
