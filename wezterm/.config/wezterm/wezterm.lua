@@ -8,12 +8,11 @@ config.enable_tab_bar = false
 config.font_size = 10.0
 
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+-- config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font("Monaspace Neon")
 -- config.font_size = 11.0
 
 config.window_background_opacity = 0.6
--- config.default_prog = { "/usr/bin/fish", "-l" }
--- config.default_prog = { "/home/akshit/.local/scripts/zellija" }
 config.default_prog = { "/usr/bin/zellij", "a", "-c" }
 config.window_close_confirmation = 'NeverPrompt'
 config.warn_about_missing_glyphs = false

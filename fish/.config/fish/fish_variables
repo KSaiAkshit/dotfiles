@@ -14,7 +14,7 @@ SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25\x20\x2d\x2dlayout\x3d
 SETUVAR F_DATA_DIR:/home/akshit/\x2elocal/share/f
 SETUVAR GIT_PAGER:\x1d
 SETUVAR --export GNUPGHOME:/home/akshit/\x2elocal/share/gnupg
-SETUVAR --path GOPATH:/home/akshit/\x2elocal/share/go
+SETUVAR --path GOPATH:\x1d
 SETUVAR PARALLEL_HOME:/home/akshit/\x2econfig/parallel
 SETUVAR --export RUSTUP_HOME:/home/akshit/\x2elocal/share/rustup
 SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:true
@@ -84,5 +84,5 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dE6B450
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/usr/lib/rustup/bin\x1e/home/akshit/\x2elocal/share/gem/ruby/3\x2e0\x2e0/bin\x1e/home/akshit/\x2elocal/share/asdf/shims\x1e/home/akshit/\x2elocal/scripts\x1e/opt/asdf\x2dvm/bin\x1e/home/akshit/\x2elocal/share/go/bin\x1e/home/akshit/\x2enix\x2dprofile/bin\x1e/nix/var/nix/profiles/default/bin\x1e/home/akshit/\x2elocal/share/cargo/bin\x1e/home/akshit/\x2econfig/emacs/bin\x1e/home/akshit/\x2elocal/kitty\x2eapp/bin\x1e/home/akshit/\x2elocal/bin
+SETUVAR fish_user_paths:/usr/lib/rustup/bin\x1e/home/akshit/\x2elocal/share/gem/ruby/3\x2e0\x2e0/bin\x1e/home/akshit/\x2elocal/share/asdf/shims\x1e/home/akshit/\x2elocal/scripts\x1e/opt/asdf\x2dvm/bin\x1e/home/akshit/go/bin\x1e/home/akshit/\x2enix\x2dprofile/bin\x1e/nix/var/nix/profiles/default/bin\x1e/home/akshit/\x2elocal/share/cargo/bin\x1e/home/akshit/\x2econfig/emacs/bin\x1e/home/akshit/\x2elocal/kitty\x2eapp/bin\x1e/home/akshit/\x2elocal/bin
 SETUVAR pisces_pairs:\x28\x2c\x29\x1e\x5b\x2c\x5d\x1e\x7b\x2c\x7d\x1e\x22\x2c\x22\x1e\x27\x2c\x27
