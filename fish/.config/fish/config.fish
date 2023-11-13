@@ -36,7 +36,7 @@ alias trash 'trash -i'
 alias v viml
 alias vim nvim
 alias wget 'wget -c'
-alias y zellij-runner
+alias zs zellij-smart-sessionizer
 alias zj zellij
 alias zja 'zellij a -c $(basename $("pwd"))'
 
