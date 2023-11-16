@@ -25,7 +25,6 @@ alias ln 'ln -i'
 alias mkdir 'mkdir -pv'
 alias mv 'mv -i'
 alias nps 'web-search nixpkgs'
-alias p paru
 alias pls 'doas (builtin history -n 1 | string split " "; and echo $1)'
 alias rm 'trash -i'
 alias rmrf 'rm -rf'
@@ -50,10 +49,10 @@ abbr aoct "cargo gen --path $HOME/dev/template/aoc_template --vcs=none"
 abbr bc bard-cli
 abbr exe exercism
 abbr how how2
+abbr p paru
 abbr pbr "pomodoro break"
 abbr pwo "pomodoro work"
 abbr reload "exec fish"
-abbr sfsh "source ~/.config/fish/config.fish"
 
 function nvc
     set -x NVIM_APPNAME NvChad
