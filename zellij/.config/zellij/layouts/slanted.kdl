@@ -23,7 +23,7 @@ layout {
 
             datetime          "#[fg=#6C7086,bg=#b1bbfa,bold] {format} "
             datetime_format   "%A, %d %b %Y %H:%M"
-            datetime_timezone "Europe/Berlin"
+            datetime_timezone "Asia/Kolkata"
         }
     }
 }
