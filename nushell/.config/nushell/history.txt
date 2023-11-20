@@ -388,3 +388,34 @@ ls
 ls -a
 ls -la
 ls -la | lolcat
+neofetch
+echo $SHELL
+$SHELL
+$env.SHELL
+c
+ll
+cd
+ls
+cd dev
+ll
+cd archive/
+c
+ll
+cd
+z nu
+ll
+cd
+hx config.nu
+c
+cd
+c
+cd dotfiles/
+ll
+ls
+gg s
+ll
+./ollama_install.sh
+cat ollama_install.sh
+c
+curl https://ollama.ai/install.sh | sh
+paru ollama
