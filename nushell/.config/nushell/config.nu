@@ -759,7 +759,5 @@ source ~/.config/nushell/starship.nu
 source ~/.config/nushell/init.nu
 source ~/.config/nushell/zoxide.nu
 source ~/.local/share/atuin/init.nu
-
-source /home/akshit/.config/broot/launcher/nushell/br
 use ~/.config/nushell/themes/rose-pine.nu
 $env.config = ($env.config | merge {color_config: (rose-pine)})

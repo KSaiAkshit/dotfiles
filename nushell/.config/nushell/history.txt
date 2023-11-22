@@ -419,3 +419,13 @@ cat ollama_install.sh
 c
 curl https://ollama.ai/install.sh | sh
 paru ollama
+z nu
+ll
+hx zoxide.nu
+c
+ll
+zsh
+ll
+ls
+nvim
+c
