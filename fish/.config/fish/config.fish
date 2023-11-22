@@ -59,6 +59,11 @@ function nvc
     nvim $argv
 end
 
+function mini
+    set -x NVIM_APPNAME mini
+    nvim $argv
+end
+
 function viml
     set -x NVIM_APPNAME LazyVim
     nvim $argv

@@ -160,6 +160,7 @@ keybinds {
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
         bind "f" { ToggleFloatingPanes; SwitchToMode "Locked"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
+        bind "v" { EditScrollback; SwitchToMode "Locked"; }
         bind "h" { MoveFocus "Left"; SwitchToMode "Locked"; }
         bind "l" { MoveFocus "Right"; SwitchToMode "Locked"; }
         bind "j" { MoveFocus "Down"; SwitchToMode "Locked"; }
@@ -175,18 +176,13 @@ keybinds {
             };
             SwitchToMode "Locked"
         }
-        bind "y" {
-            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room" {
-                floating true
-            }; SwitchToMode "Locked";
-        }
     }
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
     }
     shared_except "normal" "locked" {
-        bind "Enter" "Esc" { SwitchToMode "Normal"; }
+        bind "Enter" "Esc" { SwitchToMode "Locked"; }
     }
     shared_except "pane" "locked" {
         bind "Ctrl p" { SwitchToMode "Pane"; }
