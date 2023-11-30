@@ -1,0 +1,13 @@
+layout {
+    pane split_direction="vertical" {
+        pane edit="src/"
+        pane {
+            pane command="fish" {
+                args "-c" "bacon" 
+            }
+            }
+    }
+    pane size=1 borderless=true {
+        plugin location="zellij:compact-bar"
+    }
+}
