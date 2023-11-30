@@ -49,6 +49,8 @@ abbr aoct "cargo gen --path $HOME/dev/template/aoc_template --vcs=none"
 abbr bc bard-cli
 abbr exe exercism
 abbr how how2
+abbr j just
+abbr lg lazygit
 abbr p paru
 abbr pbr "pomodoro break"
 abbr pwo "pomodoro work"
