@@ -10,9 +10,9 @@ alias bgg 'swww img'
 alias bt bartib
 alias c clear
 alias cat bat
+alias chmox 'chmod +x'
 alias cls clear
 alias cp 'cp -i'
-alias g gh
 alias gog 'web-search google'
 alias gp tgpt
 alias hm home-manager
@@ -28,7 +28,6 @@ alias nps 'web-search nixpkgs'
 alias pls 'doas (builtin history -n 1 | string split " "; and echo $1)'
 alias rm 'trash -i'
 alias rmrf 'rm -rf'
-alias rosd 'ros-docker-run.py'
 alias sg 's -p google'
 alias ta 'tmux attach'
 alias trash 'trash -i'
@@ -41,19 +40,17 @@ alias zja 'zellij a -c $(basename $("pwd"))'
 
 # Abbreviations
 
-abbr -a bu --function projectdo_build
-abbr -a pr --function projectdo_tool
-abbr -a ru --function projectdo_run
-abbr -a te --function projectdo_test
 abbr aoct "cargo gen --path $HOME/dev/template/aoc_template --vcs=none"
 abbr bc bard-cli
 abbr exe exercism
 abbr how how2
 abbr j just
 abbr lg lazygit
+abbr md 'mkdir -pv'
 abbr p paru
 abbr pbr "pomodoro break"
 abbr pwo "pomodoro work"
+abbr rd 'web-search rustdoc'
 abbr reload "exec fish"
 
 function nvc
