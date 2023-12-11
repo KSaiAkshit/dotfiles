@@ -429,3 +429,19 @@ ll
 ls
 nvim
 c
+ll | rg *.flf
+ls 
+ls | sort-by type
+ll
+ls | sort-by type
+clear
+ll
+ll > text
+ls | save test
+ls | save -f test
+ll | save test
+cat test
+ll | save -f test
+cat test
+rmrf test
+c
