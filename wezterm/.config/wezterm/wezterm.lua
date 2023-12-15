@@ -1,6 +1,5 @@
 local wezterm = require("wezterm")
 local colors = require("lua/rose-pine").colors()
-local act = wezterm.action
 local config = {}
 
 config.colors = colors
