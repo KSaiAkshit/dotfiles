@@ -1,0 +1,12 @@
+[pyprland]
+plugins = ["scratchpads"]
+
+[scratchpads.term]
+command = "alacritty --class alacritty-dropterm"
+animation = "fromTop"
+unfocus = "hide"
+
+[scratchpads.explorer]
+command = "alacritty --class alacritty-explorer -e yazi"
+animation = "fromTop"
+unfocus = "hide"
