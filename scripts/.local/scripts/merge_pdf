@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Check if Ghostscript is installed
+if ! command -v gs &> /dev/null; then
+    echo "Ghostscript is not installed. Please install Ghostscript first."
+    exit 1
+fi
+
+# Check if there are any PDF files in the current directory
+shopt -s nullglob
+pdf_files=(*.pdf)
+shopt -u nullglob
+
+if [ ${#pdf_files[@]} -eq 0 ]; then
+    echo "No PDF files found in the current directory."
+    exit 1
+fi
+
+# Merge PDF files using Ghostscript
+output_file="combined.pdf"
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$output_file" "${pdf_files[@]}"
+
+echo "PDF files merged successfully. Output file: $output_file"
