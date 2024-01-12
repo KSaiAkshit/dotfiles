@@ -160,6 +160,7 @@ keybinds {
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
         bind "f" { ToggleFloatingPanes; SwitchToMode "Locked"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
+        bind "b" { BreakPane; SwitchToMode "Locked"; }
         bind "v" { EditScrollback; SwitchToMode "Locked"; }
         bind "h" { MoveFocus "Left"; SwitchToMode "Locked"; }
         bind "l" { MoveFocus "Right"; SwitchToMode "Locked"; }

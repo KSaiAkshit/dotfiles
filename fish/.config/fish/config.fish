@@ -76,17 +76,8 @@ set -g fish_cursor_default block
 set -g fish_cursor_insert line
 set -g fish_cursor_visual underscore
 set -x THEFUCK_OVERIDDEN_ALIASES hub
-set -x PNPM_HOME "/home/akshit/.local/share/pnpm"
-set -x PATH "$BUN_INSTALL/bin" $PATH
-switch "*:$PATH:"
-    case "*:$PNPM_HOME:"
-    case "*"
-        set -x PATH "$PNPM_HOME" $PATH
-end
+# set -x PATH "$BUN_INSTALL/bin" $PATH
 
-
-# fish settings
-set hydro_color_pwd "#a84055"
 
 # Hook for direnv
 direnv hook fish | source
@@ -98,14 +89,8 @@ zoxide init fish | source
 starship init fish | source
 enable_transience
 
-# Luarocks
-eval "$(luarocks path --lua-version 5.1)"
-
 # cod init
 cod init $fish_pid fish | source
-
-# asdf
-source /opt/asdf-vm/asdf.fish
 
 # atuin
 atuin init fish | source

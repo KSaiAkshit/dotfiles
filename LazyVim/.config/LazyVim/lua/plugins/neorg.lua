@@ -3,7 +3,8 @@ M = {
   {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
-    lazy = false,
+    cmd = "Neorg",
+    ft = "norg",
     config = function()
       require("neorg").setup({
         load = {
@@ -19,7 +20,7 @@ M = {
           ["core.dirman"] = {
             config = { -- Manages Neorg workspaces
               workspaces = {
-                notes = "~/.notes",
+                notes = "~/Documents/Notes",
               },
               default_workspace = "notes",
               index = "index.norg",

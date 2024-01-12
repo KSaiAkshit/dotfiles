@@ -5,10 +5,11 @@ local config = {}
 config.colors = colors
 config.enable_tab_bar = false
 config.font_size = 10.0
+config.enable_wayland = false
 
 
-config.font = wezterm.font("JetBrainsMono NF")
--- config.font = wezterm.font("Monaspace Neon")
+-- config.font = wezterm.font("JetBrainsMono NF")
+config.font = wezterm.font("Monaspace Neon")
 -- config.font_size = 11.0
 
 config.window_background_opacity = 0.6
