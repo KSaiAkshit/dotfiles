@@ -93,7 +93,6 @@ map('n', '<S-Tab>', '<cmd>bprev<CR>')
 map('n', '<Leader>e', '<cmd>lua MiniFiles.open()<CR>', {desc = "[Mini.files] Find Files"})
 map('n', '<F5>', '<cmd>lua MiniMap.toggle()<CR>')
 map('n', '<Leader>z', '<cmd>lua MiniMisc.zoom()<CR>', {desc = "[Mini.misc] Zoom"})
-map('n', '<', '<cmd>lua vim.diagnostic.open_float{focusable = false}<CR>')
 map('n', '<Leader>bd', '<cmd>bdel<CR>')
 map('n', '<Leader>ba', function() vim.ui.input({prompt = "New Buffer"}, function(input) vim.cmd({ cmd = 'badd', args = {input} }) end)end)
 map('n', '<Leader>pf', '<cmd>Pick files<CR>', {desc = "[Mini.pick] Pick Files"})
@@ -130,6 +129,36 @@ map('n', '<Leader>pp', function() vim.ui.select({
 function(choice)
 	return vim.cmd({ cmd = 'Pick', args = {choice}})
 end)end, {desc = "[Mini.pick] Pick ..."})
+
+-- Lsp keymaps
+
+vim.api.nvim_create_autocmd('LspAttach', {
+	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+	callback = function(ev)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+		-- Buffer local mappings.
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		map('n', 'gD', vim.lsp.buf.declaration, { buffer = ev.buf ,desc = "Goto Declaration"})
+		map('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf, desc = "Goto Definition" })
+		map('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
+		map('n', 'gi', vim.lsp.buf.implementation, { buffer = ev.buf, desc = "List Implementation" })
+		map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { buffer = ev.buf, desc = "Add workspace folder" })
+		map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf, desc = "Remove workspace folder" })
+		map('n', '<leader>cd', vim.diagnostic.open_float, { buffer = ev.buf, desc = "Line Diagnostics"})
+		map('n', '<leader>wl', function()
+			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, { buffer = ev.buf, desc = "List workspace folder" })
+		map('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Type definition" })
+		map('n', '<leader>cr', vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename" })
+		map({  'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {buffer = ev.buf, desc = "Code actions" })
+		map('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf, desc = "Goto references" })
+		map('n', '<leader>cf', function()
+			vim.lsp.buf.format {  async = true }
+		end, { buffer = ev.buf, desc = "Format" })
+	end,
+})
 
 -- FIXME:DOesn't work for now.. (see mini-modules/mini.base16)
 -- vim.keymap.set('n', '<Leader>c', function() vim.ui.select({

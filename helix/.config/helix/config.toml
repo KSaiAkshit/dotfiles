@@ -54,6 +54,7 @@ C-u = ["half_page_up", "align_view_center"]
 C-e ="scroll_down"
 C-y = "scroll_up"
 C-s = ":w"
+C-r = "save_selection"
 
 [keys.normal.space]
 x = ":bc"
