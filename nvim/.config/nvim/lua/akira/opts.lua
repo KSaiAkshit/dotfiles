@@ -38,7 +38,7 @@ o.shiftwidth = 3
 
 o.relativenumber = true
 o.number = true
-o.cmdheight = 0
+o.cmdheight = 1
 
 -- Editing
 o.ignorecase  = true -- Ignore case when searching (use `\C` to force not doing that)
