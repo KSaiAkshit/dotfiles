@@ -13,6 +13,7 @@ keybinds {
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
+        bind "Alt c" { NewTab; }
         unbind "Alt Left";
         unbind "Alt Down";
         unbind "Alt Up";

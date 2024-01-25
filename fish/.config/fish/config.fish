@@ -5,6 +5,7 @@ end
 
 # Aliases
 
+alias arduino 'arduino-cli'
 alias ari aria2c
 alias bgg 'swww img'
 alias bt bartib
