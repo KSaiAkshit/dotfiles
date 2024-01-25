@@ -84,3 +84,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+-- Automatically restart LSP after changin FQBN/Board
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'ArduinoFqbnReset',
+    callback = function()
+        vim.cmd('LspRestart')
+    end
+})
