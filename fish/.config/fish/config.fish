@@ -32,6 +32,7 @@ alias rmrf 'rm -rf'
 alias sg 's -p google'
 alias ta 'tmux attach'
 alias trash 'trash -i'
+alias tree 'eza --tree'
 alias v viml
 alias vim nvim
 alias wget 'wget -c'
