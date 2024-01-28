@@ -360,7 +360,7 @@ scrollback_editor "/usr/bin/helix"
 
 // The folder in which Zellij will look for layouts
 //
-layout_dir "/home/akshit/dotfiles/zellij/.config/zellij/layouts"
+layout_dir "/home/akira/dotfiles/zellij/.config/zellij/layouts"
 
 // The folder in which Zellij will look for themes
 
