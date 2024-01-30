@@ -18,5 +18,17 @@ local M = {
       desc = "Select the programmer. With no arg, will present a choice dialog",
     },
   },
+  config = function()
+    require("lspconfig").arduino_language_server.setup({
+      filetypes = { "arduino" },
+      cmd = {
+        "arduino-language-server",
+        "-cli",
+        "/usr/bin/arduino-cli",
+        "-cli-config",
+        "/home/akira/.arduino15/arduino-cli.toml",
+      },
+    })
+  end,
 }
 return M
