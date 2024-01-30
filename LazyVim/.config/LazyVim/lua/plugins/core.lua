@@ -9,6 +9,7 @@ M = {
     "rcarriga/nvim-notify", -- Make notify window transparent
     opts = {
       background_colour = "#000000",
+      timeout = 1000,
     },
   },
   {
@@ -49,6 +50,25 @@ M = {
         highlight = "gsh",
         replace = "gsr",
         update_n_lines = "gsn",
+      },
+    },
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "arduino-language-server", -- lsp for arduino
+        "clangd", -- lsp for c/c++
+        "cmakelang", -- lsp for cmake
+        "cmakelint", -- linter for cmake
+        "codelldb", -- Debugger for c/c++/rust
+        "lua-language-server", -- Lua_ls
+        "neocmakelsp", -- CMake
+        "rust-analyzer", -- Rust
+        "shfmt", -- Shell lsp
+        "stylua", -- Lua formatter
+        "taplo", -- TOML
+        "marksman", -- Markdown
       },
     },
   },
