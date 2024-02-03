@@ -19,7 +19,8 @@ local M = {
     },
   },
   config = function()
-    require("lspconfig").arduino_language_server.setup({
+    local lspconfig = require("lspconfig")
+    lspconfig.arduino_language_server.setup({
       filetypes = { "arduino" },
       cmd = {
         "arduino-language-server",

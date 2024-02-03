@@ -1,5 +1,24 @@
 return {
 	{
+		"rose-pine/neovim",
+		lazy = false,
+		name = "rose-pine",
+		config = function()
+			require('rose-pine').setup({
+			variant = "moon",
+			disable_background = true,
+			disable_float_background = true,
+			highlight_groups = {
+				MiniStatuslineModeInsert = { fg = "base", bg = "foam" },
+				MiniStatuslineModeNormal = { fg = "base", bg = "rose" },
+				MiniStatuslineModeVisual = { fg = "base", bg = "iris" },
+				MiniStatuslineModeCommand = {fg = "base", bg = "love" },
+			}
+		})
+		vim.cmd([[colorscheme rose-pine]])
+	end
+	},
+	{
 		"stevearc/dressing.nvim",
 		config = true,
 		lazy = true,

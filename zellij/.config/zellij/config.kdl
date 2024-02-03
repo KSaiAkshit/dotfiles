@@ -151,6 +151,8 @@ keybinds {
         bind "[" { SwitchToMode "Scroll"; }
         bind "g" { SwitchToMode "Locked"; }
         bind "s" { SwitchToMode "Scroll"; }
+        bind "m" { SwitchToMode "Move"; }
+        bind "r" { SwitchToMode "Resize"; }
         bind "-" { NewPane "Down"; SwitchToMode "Locked"; }
         bind "\\" { NewPane "Right"; SwitchToMode "Locked"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
