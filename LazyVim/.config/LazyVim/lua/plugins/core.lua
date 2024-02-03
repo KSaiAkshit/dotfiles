@@ -25,6 +25,20 @@ M = {
     end,
   },
   {
+    {
+      {
+        "echasnovski/mini.comment",
+        event = function(spec, old_events)
+          local new_event = { "BufReadPre" }
+          return new_event
+        end,
+      },
+      "echasnovski/mini.pairs",
+      event = function(spec, old_events)
+        local new_event = { "BufReadPre" }
+        return new_event
+      end,
+    },
     "echasnovski/mini.ai",
     event = function(spec, old_events)
       local new_event = { "BufReadPre" }

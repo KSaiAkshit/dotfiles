@@ -1,11 +1,11 @@
 -- Transparent background
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-	pattern = '*',
-	callback = function()
-		vim.api.nvim_command('highlight Normal guibg=none ctermbg=none')
-		vim.api.nvim_command('highlight NormalFloat guibg=none ctermbg=none')
-	end
-})
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+-- 	pattern = '*',
+-- 	callback = function()
+-- 		vim.api.nvim_command('highlight Normal guibg=none ctermbg=none')
+-- 		vim.api.nvim_command('highlight NormalFloat guibg=none ctermbg=none')
+-- 	end
+-- })
 
 -- MiniBasics Autocommands
 local augroup = vim.api.nvim_create_augroup('MiniBasicsAutoCommands', {})

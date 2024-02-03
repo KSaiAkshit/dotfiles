@@ -13,13 +13,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	-- {import = "mini"},
-	{import = "plugins"}
+	{ import = "plugins" }
 }
 
 local opts = {
 	ui = {
 		border = "rounded"
+	},
+	install = {
+		colorscheme = { "rose-pine" }
 	}
 }
 require("lazy").setup(plugins, opts)

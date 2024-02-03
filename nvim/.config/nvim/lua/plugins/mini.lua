@@ -66,9 +66,9 @@ return {
 			base0E = "#957FB8",
 			base0F = "#D27E99",
 		}
-		require("mini.base16").setup({
-			palette = oxocarbon
-		})
+		-- require("mini.base16").setup({
+		-- 	palette = oxocarbon
+		-- })
 		require("mini.bracketed").setup()
 		require("mini.bufremove").setup()
 		local miniclue = require('mini.clue')
