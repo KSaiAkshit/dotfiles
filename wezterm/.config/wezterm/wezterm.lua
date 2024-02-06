@@ -13,7 +13,7 @@ config.font = wezterm.font("MonaspiceNe Nerd Font")
 -- config.font_size = 11.0
 
 config.window_background_opacity = 0.6
--- config.default_prog = { "/usr/bin/zellij", "a", "-c" }
+config.default_prog = { "/usr/bin/zellij", "a", "-c" }
 config.window_close_confirmation = 'NeverPrompt'
 config.warn_about_missing_glyphs = false
 

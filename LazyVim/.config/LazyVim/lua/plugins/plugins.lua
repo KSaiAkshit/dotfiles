@@ -30,16 +30,16 @@ M = {
     end,
   },
   {
-    "goolord/alpha-nvim",
-    enabled = false,
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
-  {
-    "nvimdev/dashboard-nvim",
-    enabled = false,
+    "mbbill/undotree",
+    event = "BufReadPre",
+    cmd = "UndotreeToggle",
+    keys = {
+      {
+        "<leader>uu",
+        "<cmd>UndotreeToggle<cr>",
+        desc = "Toggle Undotree",
+      },
+    },
   },
 }
 
