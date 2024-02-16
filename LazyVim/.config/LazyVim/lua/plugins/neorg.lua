@@ -11,6 +11,9 @@ M = {
           ["core.defaults"] = {}, -- Loads default behaviour
           ["core.concealer"] = {}, -- Adds Pretty icons to docs
           ["core.export"] = {},
+          ["core.export.markdown"] = {
+            config = { extensions = "all" },
+          },
           ["core.keybinds"] = {
             config = {
               defaul_keybinds = true,
