@@ -12,23 +12,16 @@ Ensure you have the following installed on your system
 pacman -S git
 ```
 
-### Stow
+### Chezmoi
 
 ```
-pacman -S stow
+pacman -S chezmoi
 ```
 
 ## Installation
 
-First, check out the dotfiles repo in your $HOME directory using git
+Use chezmoi to install the dotfiles
 
 ```
-$ git clone https://github.com/KSaiAkshit/dotfiles.git
-$ cd dotfiles
-```
-
-then use GNU stow to create symlinks
-
-```
-$ stow .
+$ chezmoi init https://github.com/KSaiAkshit/dotfiles.git
 ```
