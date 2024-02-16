@@ -1,0 +1,10 @@
+layout {
+        pane {
+            pane command="cava"
+            pane size="10%" command="spt" 
+
+    }
+    pane size=1 borderless=true {
+        plugin location="zellij:compact-bar"
+    }
+}

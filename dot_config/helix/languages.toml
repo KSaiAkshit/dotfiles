@@ -1,0 +1,69 @@
+[[language]]
+name = "python"
+language-servers = ["pyright", "ruff"]
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]
+
+[language.formatter]
+command = "black"
+args = ["--line-length", "88", "--quiet", "-"]
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+file-types = ["rs"]
+roots = ["Cargo.toml", "Cargo.lock"]
+auto-format = true
+comment-token = "//"
+language-servers = ["rust-analyzer"]
+indent = { tab-width = 4, unit = "    " }
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+'|' = '|'
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language.debugger]
+command = "codelldb"
+name = "codelldb"
+port-arg = "--port {}"
+transport = "tcp"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+[[language.debugger.templates.completion]]
+completion = "filename"
+name = "binary"
+
+[language.debugger.templates.args]
+program = "{0}"
+runInTerminal = true
+
+[[grammar]]
+name = "rust"
+source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "0431a2c60828731f27491ee9fdefe25e250ce9c9" }
+
+[[language]]
+name = "cpp"
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'|' = '|'
