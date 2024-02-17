@@ -17,3 +17,8 @@ del("i", "<A-j>")
 del("i", "<A-k>")
 del("v", "<A-j>")
 del("v", "<A-k>")
+
+del("n", "<C-h>")
+del("n", "<C-j>")
+del("n", "<C-k>")
+del("n", "<C-l>")
