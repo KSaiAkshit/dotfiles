@@ -54,7 +54,7 @@ C-u = ["half_page_up", "align_view_center"]
 C-e ="scroll_down"
 C-y = "scroll_up"
 C-s = ":w"
-C-r = "save_selection"
+C-j = "save_selection"
 
 [keys.normal.space]
 f = "file_picker_in_current_directory"
