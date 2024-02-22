@@ -162,7 +162,7 @@ keybinds {
         bind "n" { GoToNextTab; SwitchToMode "Locked"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
         bind "f" { ToggleFloatingPanes; SwitchToMode "Locked"; }
-        bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
+        bind "t" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
         bind "b" { BreakPane; SwitchToMode "Locked"; }
         bind "e" { EditScrollback; SwitchToMode "Locked"; }
         bind "h" { MoveFocus "Left"; SwitchToMode "Locked"; }

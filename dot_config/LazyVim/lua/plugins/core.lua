@@ -110,7 +110,7 @@ M = {
   },
   {
     "goolord/alpha-nvim",
-    enabled = false,
+    enabled = false
   },
   {
     "nvim-neo-tree/neo-tree.nvim",

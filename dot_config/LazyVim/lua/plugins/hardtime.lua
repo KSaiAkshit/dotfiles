@@ -1,6 +1,6 @@
 local M = {
   "m4xshen/hardtime.nvim",
-  event = "BufEnter",
+  event = "BufReadPre",
   dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
   opts = {
     max_count = 5,
