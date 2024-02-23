@@ -71,7 +71,7 @@ function viml
 end
 
 # Variables
-# export EDITOR=/usr/bin/helix
+export EDITOR=/usr/bin/helix
 # export HAS_ALLOW_UNSAFE=y
 # set -g fish_key_bindings fish_hybrid_key_bindings
 # set -g fish_cursor_default block

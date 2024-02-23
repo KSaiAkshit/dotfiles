@@ -26,20 +26,20 @@ M = {
     end,
   },
   {
-    {
-      {
-        "echasnovski/mini.comment",
-        event = function(spec, old_events)
-          local new_event = { "BufReadPre" }
-          return new_event
-        end,
-      },
-      "echasnovski/mini.pairs",
-      event = function(spec, old_events)
-        local new_event = { "BufReadPre" }
-        return new_event
-      end,
-    },
+    "echasnovski/mini.comment",
+    event = function(spec, old_events)
+      local new_event = { "BufReadPre" }
+      return new_event
+    end,
+  },
+  {
+    "echasnovski/mini.pairs",
+    event = function(spec, old_events)
+      local new_event = { "BufReadPre" }
+      return new_event
+    end,
+  },
+  {
     "echasnovski/mini.ai",
     event = function(spec, old_events)
       local new_event = { "BufReadPre" }
@@ -110,7 +110,7 @@ M = {
   },
   {
     "goolord/alpha-nvim",
-    enabled = false
+    enabled = false,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -119,6 +119,24 @@ M = {
   {
     "nvimdev/dashboard-nvim",
     enabled = false,
+  },
+  {
+    "folke/noice.nvim",
+    opts = {
+      presets = {
+        lsp_doc_border = true,
+      },
+    },
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      local cmp = require("cmp")
+      opts.window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      }
+    end,
   },
 }
 
