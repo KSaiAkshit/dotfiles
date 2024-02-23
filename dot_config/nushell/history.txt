@@ -1,0 +1,47 @@
+ll
+cd
+c
+ll
+jj
+jj --help
+jj util
+jj util completion
+jj util completion --help
+ff
+carapace
+paru carapace
+c
+carapace --list
+carapace --list | awk '{print $1}'
+carapace _carapace
+cd .config/
+cd carapace/
+ll
+c
+cd
+cd .cache/
+ll
+md 
+mkdir carapace
+cd
+z nu
+ll
+z nu
+ll
+cat init.nu
+hx config.nu
+z nu
+hx config.nu
+c
+ll
+z nu
+ll
+carapace _carapace nushell | save --force ./carapace.nu
+hx config.nu
+c
+cd
+c
+z rust
+ll
+jj
+z rust

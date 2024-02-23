@@ -133,9 +133,9 @@ let light_theme = {
 }
 
 # External completer example
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell $spans | from json
-# }
+ # let carapace_completer = {|spans|
+ #     carapace $spans.0 nushell $spans | from json
+ # }
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
@@ -758,6 +758,7 @@ $env.config = {
 source ~/.config/nushell/starship.nu
 source ~/.config/nushell/init.nu
 source ~/.config/nushell/zoxide.nu
+source ~/.config/nushell/carapace.nu
 source ~/.local/share/atuin/init.nu
 use ~/.config/nushell/themes/rose-pine.nu
 $env.config = ($env.config | merge {color_config: (rose-pine)})
