@@ -71,13 +71,13 @@ function viml
 end
 
 # Variables
-export EDITOR=/usr/bin/helix
-export HAS_ALLOW_UNSAFE=y
-set -g fish_key_bindings fish_hybrid_key_bindings
-set -g fish_cursor_default block
-set -g fish_cursor_insert line
-set -g fish_cursor_visual underscore
-set -x THEFUCK_OVERIDDEN_ALIASES hub
+# export EDITOR=/usr/bin/helix
+# export HAS_ALLOW_UNSAFE=y
+# set -g fish_key_bindings fish_hybrid_key_bindings
+# set -g fish_cursor_default block
+# set -g fish_cursor_insert line
+# set -g fish_cursor_visual underscore
+# set -x THEFUCK_OVERIDDEN_ALIASES hub
 # set -x PATH "$BUN_INSTALL/bin" $PATH
 
 
@@ -91,8 +91,9 @@ zoxide init fish | source
 starship init fish | source
 enable_transience
 
-# cod init
-cod init $fish_pid fish | source
+# completion/suggestion init
+# cod init $fish_pid fish | source
+carapace _carapace | source
 
 # atuin
 atuin init fish | source
