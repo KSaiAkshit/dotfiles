@@ -18,12 +18,13 @@ o.mouse       = 'a'   -- Enable mouse for all available modes
 vim.cmd('filetype plugin indent on') -- Enable all filetype plugins
 
 -- Appearance
-o.breakindent   = true    -- Indent wrapped lines to match line start
-o.cursorline    = true    -- Highlight current line
-o.linebreak     = true    -- Wrap long lines at 'breakat' (if 'wrap' is set)
-o.number        = true    -- Show line numbers
-o.splitbelow    = true    -- Horizontal splits will be below
-o.splitright    = true    -- Vertical splits will be to the right
+o.breakindent    = true    -- Indent wrapped lines to match line start
+o.cursorline     = true    -- Highlight current line
+o.linebreak      = true    -- Wrap long lines at 'breakat' (if 'wrap' is set)
+o.number         = true    -- Show line numbers
+o.relativenumber = true    -- Show line numbers
+o.splitbelow     = true    -- Horizontal splits will be below
+o.splitright     = true    -- Vertical splits will be to the right
 
 o.ruler         = false   -- Don't show cursor position in command line
 o.showmode      = false   -- Don't show mode in command line
