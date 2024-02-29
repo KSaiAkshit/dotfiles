@@ -2,8 +2,8 @@
 
 # Check if the number of arguments is correct
 if [ "$#" -ne 2 ]; then
-    echo "Usage: merge_videos <input_directory> <output_file>"
-    exit 1
+	echo "Usage: merge_videos <input_directory> <output_file>"
+	exit 1
 fi
 
 # Set the input directory and output file

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # Check if Ghostscript is installed
-if ! command -v gs &> /dev/null; then
-    echo "Ghostscript is not installed. Please install Ghostscript first."
-    exit 1
+if ! command -v gs &>/dev/null; then
+	echo "Ghostscript is not installed. Please install Ghostscript first."
+	exit 1
 fi
 
 # Check if there are any PDF files in the current directory
@@ -12,8 +12,8 @@ pdf_files=(*.pdf)
 shopt -u nullglob
 
 if [ ${#pdf_files[@]} -eq 0 ]; then
-    echo "No PDF files found in the current directory."
-    exit 1
+	echo "No PDF files found in the current directory."
+	exit 1
 fi
 
 # Merge PDF files using Ghostscript

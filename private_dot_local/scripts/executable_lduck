@@ -6,4 +6,3 @@ exec lyn "$url"
 # exec w3m "$url"
 #exec lynx "duckduckgo.com/lite?q=$*" # 🦆
 #exec lynx "duckduckgo.com/lite?q=$*"
-
