@@ -15,7 +15,11 @@ this script.
 EOF
 }
 
-case "$1" in --help|-h) help; exit 0;; esac
+case "$1" in --help | -h)
+	help
+	exit 0
+	;;
+esac
 
 export TMPDIR=/dev/shm/
 trap 'trap - EXIT HUP QUIT TERM INT ABRT; rm -f "$tmp" "$tmpcopy"' EXIT HUP QUIT TERM INT ABRT
@@ -25,13 +29,13 @@ for file; do
 
 	tmp="$(mktemp)"
 	if [ -f "$file" ] && [ ! -r "$file" ]; then
-		doas cat "$file" > "$tmp"
+		doas cat "$file" >"$tmp"
 	elif [ -r "$file" ]; then
-		cat "$file" > "$tmp"
+		cat "$file" >"$tmp"
 	fi
 
 	tmpcopy="$(mktemp)"
-	cat "$tmp" > "$tmpcopy"
+	cat "$tmp" >"$tmpcopy"
 
 	${EDITOR:-vi} "$tmp"
 
@@ -44,4 +48,3 @@ for file; do
 
 	rm "$tmp" "$tmpcopy"
 done
-

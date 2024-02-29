@@ -4,6 +4,7 @@ SETUVAR --export ASDF_DATA_DIR:/home/akira/\x2elocal/share/asdf
 SETUVAR --export BARTIB_FILE:/home/akira/\x2elocal/share/activites\x2ebartib
 SETUVAR --export BROWSER:brave
 SETUVAR --export BUN_INSTALL:/home/akira/\x2elocal/share/bun
+SETUVAR --export CARAPACE_MATCH:1
 SETUVAR --export CARGO_HOME:/home/akira/\x2elocal/share/cargo
 SETUVAR CHTSH_QUERY_OPTIONS:\x1d
 SETUVAR --path CUDA_CACHE_PATH:/home/akira/\x2ecache/nv
