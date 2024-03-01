@@ -1,6 +1,6 @@
 # Nushell Config File
 #
-# version = "0.86.1"
+# version = "0.90.1"
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
@@ -42,6 +42,7 @@ let dark_theme = {
     shape_directory: cyan
     shape_external: cyan
     shape_externalarg: green_bold
+    shape_external_resolved: light_yellow_bold
     shape_filepath: cyan
     shape_flag: blue_bold
     shape_float: purple_bold
@@ -50,6 +51,7 @@ let dark_theme = {
     shape_globpattern: cyan_bold
     shape_int: purple_bold
     shape_internalcall: cyan_bold
+    shape_keyword: cyan_bold
     shape_list: cyan_bold
     shape_literal: blue
     shape_match_pattern: green
@@ -105,6 +107,7 @@ let light_theme = {
     shape_directory: cyan
     shape_external: cyan
     shape_externalarg: green_bold
+    shape_external_resolved: light_purple_bold
     shape_filepath: cyan
     shape_flag: blue_bold
     shape_float: purple_bold
@@ -113,6 +116,7 @@ let light_theme = {
     shape_globpattern: cyan_bold
     shape_int: purple_bold
     shape_internalcall: cyan_bold
+    shape_keyword: cyan_bold
     shape_list: cyan_bold
     shape_literal: blue
     shape_match_pattern: green
@@ -229,7 +233,7 @@ $env.config = {
     use_ansi_coloring: true
     bracketed_paste: true # enable bracketed paste, currently useless on windows
     edit_mode: vi # emacs, vi
-    shell_integration: false # enables terminal shell integration. Off by default, as some terminals have issues with this.
+    shell_integration: true # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
     use_kitty_protocol: false # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this
 
@@ -260,6 +264,39 @@ $env.config = {
                 text: green
                 selected_text: green_reverse
                 description_text: yellow
+            }
+        }
+        {
+            name: ide_completion_menu
+            only_buffer_difference: false
+            marker: "| "
+            type: {
+                layout: ide
+                min_completion_width: 0,
+                max_completion_width: 50,
+                # max_completion_height: 10, # will be limited by the available lines in the terminal
+                padding: 0,
+                border: true,
+                cursor_offset: 0,
+                description_mode: "prefer_right"
+                min_description_width: 0
+                max_description_width: 50
+                max_description_height: 10
+                description_offset: 1
+                # If true, the cursor pos will be corrected, so the suggestions match up with the typed text
+                #
+                # C:\> str
+                #      str join
+                #      str trim
+                #      str split
+                correct_cursor_pos: false
+            }
+            style: {
+                text: green
+                selected_text: {attr: r}
+                description_text: yellow
+                match_text: {attr: u}
+                selected_match_text: {attr: ur}
             }
         }
         {
@@ -305,6 +342,19 @@ $env.config = {
             event: {
                 until: [
                     { send: menu name: completion_menu }
+                    { send: menunext }
+                    { edit: complete }
+                ]
+            }
+        }
+        {
+            name: ide_completion_menu
+            modifier: control
+            keycode: char_n
+            mode: [emacs vi_normal vi_insert]
+            event: {
+                until: [
+                    { send: menu name: ide_completion_menu }
                     { send: menunext }
                     { edit: complete }
                 ]
@@ -761,4 +811,4 @@ source ~/.config/nushell/zoxide.nu
 source ~/.config/nushell/carapace.nu
 source ~/.local/share/atuin/init.nu
 use ~/.config/nushell/themes/rose-pine.nu
-$env.config = ($env.config | merge {color_config: (rose-pine)})
+# $env.config = ($env.config | merge {color_config: (rose-pine)})
