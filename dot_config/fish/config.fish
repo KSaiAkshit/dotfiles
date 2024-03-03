@@ -70,6 +70,11 @@ function viml
     nvim $argv
 end
 
+function dvim
+    set -x NVIM_APPNAME DreamNvim
+    nvim $argv
+end
+
 # Variables
 export EDITOR=/usr/bin/helix
 # export HAS_ALLOW_UNSAFE=y

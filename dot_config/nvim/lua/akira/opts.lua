@@ -42,16 +42,18 @@ o.number = true
 o.cmdheight = 1
 
 -- Editing
-o.ignorecase  = true -- Ignore case when searching (use `\C` to force not doing that)
-o.incsearch   = true -- Show search results while typing
-o.infercase   = true -- Infer letter cases for a richer built-in keyword completion
-o.smartcase   = true -- Don't ignore case when searching if pattern has upper case
-o.smartindent = true -- Make indenting smart
+o.ignorecase  = true   -- Ignore case when searching (use `\C` to force not doing that)
+o.incsearch   = true   -- Show search results while typing
+o.infercase   = true   -- Infer letter cases for a richer built-in keyword completion
+o.smartcase   = true   -- Don't ignore case when searching if pattern has upper case
+o.smartindent = true   -- Make indenting smart
+o.inccommand = 'split' -- Preview substitutions live, as you type!
 
 o.completeopt   = 'menuone,noinsert,noselect' -- Customize completions
 o.virtualedit   = 'block'                     -- Allow going past the end of line in visual block mode
 o.formatoptions = 'qjl1'                      -- Don't autoformat comments
-o.updatetime = 100
+o.updatetime = 100                            -- Decrease update time
+o.timeoutlen = 300                            -- Decrease wait time for key seq
 
 
 if vim.fn.has('nvim-0.9') == 1 then
