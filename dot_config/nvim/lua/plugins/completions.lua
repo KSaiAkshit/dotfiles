@@ -10,31 +10,13 @@ return {
 				and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
 				or nil,
 		dependencies = {
-			{
-				"rafamadriz/friendly-snippets",
-				config = function()
-					require("luasnip.loaders.from_vscode").lazy_load()
-				end,
-			},
-			{
-				"nvim-cmp",
-				dependencies = {
-					"saadparwaiz1/cmp_luasnip",
-				},
-				opts = function(_, opts)
-					opts.snippet = {
-						expand = function(args)
-							require("luasnip").lsp_expand(args.body)
-						end,
-					}
-				end,
-			},
+			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
 		},
 		opts = {
 			history = true,
 			delete_check_events = "TextChanged",
 		},
-		-- stylua: ignore
 		keys = {
 			{
 				"<tab>",
@@ -51,7 +33,7 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		version = false, -- last release is way too old
+		version = false,
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -62,6 +44,7 @@ return {
 			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 			local cmp = require("cmp")
 			local defaults = require("cmp.config.default")()
+			require("luasnip.loaders.from_vscode").lazy_load()
 			return {
 				completion = {
 					completeopt = "menu,menuone,noinsert",
@@ -89,10 +72,10 @@ return {
 				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "path" },
+					{ name = "luasnip" },
 				}, {
 					{ name = "buffer" },
-					{ name = "luasnip" },
+					{ name = "path" },
 				}),
 				experimental = {
 					ghost_text = {
@@ -100,6 +83,11 @@ return {
 					},
 				},
 				sorting = defaults.sorting,
+				snippet = {
+					expand = function(args)
+						require("luasnip").lsp_expand(args.body)
+					end
+				}
 			}
 		end,
 		config = function(_, opts)
@@ -108,5 +96,5 @@ return {
 			end
 			require("cmp").setup(opts)
 		end,
-	}
+	},
 }
