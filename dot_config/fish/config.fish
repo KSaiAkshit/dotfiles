@@ -54,6 +54,7 @@ abbr pbr "pomodoro break"
 abbr pwo "pomodoro work"
 abbr rd 'web-search rustdoc'
 abbr reload "exec fish"
+abbr sudo 'doas'
 
 function nvc
     set -x NVIM_APPNAME NvChad
