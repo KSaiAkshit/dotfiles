@@ -6,6 +6,11 @@ return {
 	{
 		"williamboman/mason.nvim",
 		cmd = { 'Mason', 'MasonInstall', 'MasonUninstall', 'MasonLog', 'MasonUpdate' },
+		opts = {
+			ui = {
+				border = "rounded",
+			}
+		}
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",

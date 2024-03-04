@@ -85,6 +85,9 @@ M = {
         "taplo", -- TOML
         "marksman", -- Markdown
       },
+      ui = {
+        border = "rounded",
+      },
     },
   },
   {
