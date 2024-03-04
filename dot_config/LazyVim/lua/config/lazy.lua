@@ -29,6 +29,9 @@ require("lazy").setup({
       border = "rounded",
     },
   },
+  ui = {
+    border = "rounded",
+  },
   install = { colorscheme = {} },
   checker = {
     enabled = true, -- automatically check for plugin updates
