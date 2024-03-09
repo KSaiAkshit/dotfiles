@@ -55,6 +55,9 @@ C-e ="scroll_down"
 C-y = "scroll_up"
 C-s = ":w"
 C-j = "save_selection"
+i = ["insert_mode", "collapse_selection"]
+a = ["append_mode", "collapse_selection"]
+
 
 [keys.normal.space]
 f = "file_picker_in_current_directory"

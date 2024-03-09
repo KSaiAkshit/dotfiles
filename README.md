@@ -23,5 +23,5 @@ pacman -S chezmoi
 Use chezmoi to install the dotfiles
 
 ```
-$ chezmoi init https://github.com/KSaiAkshit/dotfiles.git
+$ chezmoi init git@github.com:KSaiAkshit/dotfiles.git
 ```
