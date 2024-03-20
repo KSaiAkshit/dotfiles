@@ -1,4 +1,4 @@
 function fef --wraps='feh -F' --description 'alias fef=feh -F'
-  feh -F $argv
+  feh -. -g1280x720 $argv
         
 end

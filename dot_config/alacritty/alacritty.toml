@@ -39,6 +39,7 @@ size = 10.0
 
 [font.normal]
 family = "JetBrainsMono NF"
+# family = "Iosevka Nerd Font"
 
 [[hints.enabled]]
 command = "xdg-open"
