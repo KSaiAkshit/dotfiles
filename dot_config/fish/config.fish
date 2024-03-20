@@ -33,8 +33,8 @@ alias sg 's -p google'
 alias ta 'tmux attach'
 alias trash 'trash -i'
 alias tree 'eza --tree'
-alias v viml
-alias vim nvim
+alias vim viml
+alias v nvim
 alias wget 'wget -c'
 alias zs zellij-smart-sessionizer
 alias zj zellij

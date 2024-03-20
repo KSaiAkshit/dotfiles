@@ -17,7 +17,11 @@ SETUVAR GIT_PAGER:\x1d
 SETUVAR --export GNUPGHOME:/home/akira/\x2elocal/share/gnupg
 SETUVAR --path GOPATH:\x1d
 SETUVAR --export HAS_ALLOW_UNSAFE:y
+SETUVAR --export PAGER:bat\x20\x2dp
 SETUVAR PARALLEL_HOME:/home/akira/\x2econfig/parallel
+SETUVAR --export --path PICO_EXAMPLES_PATH:/home/akira/dev/pico/pico\x2dexamples
+SETUVAR --export --path PICO_EXTRAS_PATH:/home/akira/dev/pico/pico\x2dextras
+SETUVAR --export --path PICO_PLAYGROUND_PATH:/home/akira/dev/pico/pico\x2dplayground
 SETUVAR --export RUSTUP_HOME:/home/akira/\x2elocal/share/rustup
 SETUVAR --export THEFUCK_OVERIDDEN_ALIASES:hub
 SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:true

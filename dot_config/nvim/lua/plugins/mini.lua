@@ -194,7 +194,8 @@ return {
 				right = '<C-l>',
 			}
 		}
-		require("mini.operators").setup()
+		-- require("mini.operators").setup()
+		require('mini.operators').setup({ replace = { prefix = 'cr' } })
 		require("mini.pairs").setup()
 		require("mini.pick").setup()
 		require("mini.sessions").setup {
