@@ -33,5 +33,16 @@ return {
 		dependencies = { 'tpope/vim-rhubarb' },
 		lazy = true,
 		cmd = "Git",
+	},
+	{
+		"NeogitOrg/neogit",
+		cmd = "Neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim",
+
+			"nvim-telescope/telescope.nvim", -- optional
+		},
+		config = true
 	}
 }
