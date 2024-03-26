@@ -40,7 +40,7 @@ end -- Append 'toggle_prefix' to specified bindings
 
 -- Toggle inlay hints
 function Toggle_inlay_hints()
-	local current_buffer = vim.fn.bufnr("%") -- get current buffer number
+	local current_buffer = vim.fn.bufnr("%")                       -- get current buffer number
 	local is_enabled = vim.lsp.inlay_hint.is_enabled(current_buffer) -- query the current state
 	vim.lsp.inlay_hint.enable(current_buffer, not is_enabled)
 
@@ -63,7 +63,7 @@ map_toggle("n", "<Cmd>setlocal number!<CR>", "Toggle number")
 map_toggle("r", "<Cmd>setlocal relativenumber!<CR>", "Toggle relativenumber")
 map_toggle("s", "<Cmd>setlocal spell!<CR>", "Toggle spell")
 map_toggle("w", "<Cmd>setlocal wrap!<CR>", "Toggle wrap")
-map_toggle("h", "<Cmd>lua Toggle_inlay_hints()<CR>", "Toggle wrap")
+map_toggle("h", "<Cmd>lua Toggle_inlay_hints()<CR>", "Toggle inlay hints")
 
 -- Window Mappings
 map("n", "<C-H>", "<C-w>h", { desc = "Focus on left window" })
@@ -92,7 +92,6 @@ map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Clear search, diff update and redraw
--- taken from runtime/lua/_editor.lua
 map(
 	"n",
 	"<leader>ur",
@@ -106,12 +105,12 @@ map("n", "<S-Tab>", "<cmd>bprev<CR>")
 map("n", "<Leader>e", "<cmd>lua MiniFiles.open()<CR>", { desc = "[Mini.files] Find Files" })
 map("n", "<F5>", "<cmd>lua MiniMap.toggle()<CR>")
 map("n", "<Leader>z", "<cmd>lua MiniMisc.zoom()<CR>", { desc = "[Mini.misc] Zoom" })
-map("n", "<Leader>bd", "<cmd>bdel<CR>")
+map("n", "<Leader>bd", "<cmd>bdel<CR>", { desc = "[D]elete Current Buffer"})
 map("n", "<Leader>ba", function()
 	vim.ui.input({ prompt = "New Buffer" }, function(input)
 		vim.cmd({ cmd = "badd", args = { input } })
 	end)
-end)
+end, { desc = "[A]dd New Buffer"})
 map("n", "<Leader>pf", "<cmd>Pick files<CR>", { desc = "[Mini.pick] Pick Files" })
 map("n", "<Leader>pk", "<cmd>Pick keymaps<CR>", { desc = "[Mini.pick] Pick Keymaps" })
 map("n", "<Leader>pp", function()
@@ -149,7 +148,6 @@ map("n", "<Leader>pp", function()
 end, { desc = "[Mini.pick] Pick ..." })
 
 -- Lsp keymaps
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
@@ -183,11 +181,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- FIXME:DOesn't work for now.. (see mini-modules/mini.base16)
--- vim.keymap.set('n', '<Leader>c', function() vim.ui.select({
--- 	'oxocarbon',
--- 	'kanagawa'
--- }, { prompt = "Change base16 Colorscheme" },
--- function(choice)
--- 	return colorscheme == choice
--- end)end)

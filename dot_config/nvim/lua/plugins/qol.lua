@@ -1,5 +1,17 @@
 local M = {
 	{
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
+		dependecies = {
+			{
+				"junegunn/fzf",
+				run = function()
+					vim.fn['fzf#install']()
+				end
+			}
+		}
+	},
+	{
 		"folke/twilight.nvim",
 		lazy = true,
 		cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
