@@ -26,7 +26,8 @@ SETUVAR --export RUSTUP_HOME:/home/akira/\x2elocal/share/rustup
 SETUVAR --export THEFUCK_OVERIDDEN_ALIASES:hub
 SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:true
 SETUVAR W3M_DIR:/home/akira/\x2elocal/state/w3m
-SETUVAR --export WEB_SEARCH_rustdoc:https\x3a//docs\x2ers/releases/search\x3fquery\x3d
+SETUVAR --export WEB_SEARCH_docs:https\x3a//docs\x2ers/
+SETUVAR --export WEB_SEARCH_rustdoc:https\x3a//doc\x2erust\x2dlang\x2eorg/std/\x3fsearch\x3d
 SETUVAR --export XDG_CACHE_HOME:/home/akira/\x2ecache
 SETUVAR --export XDG_CONFIG_HOME:/home/akira/\x2econfig
 SETUVAR --export XDG_DATA_HOME:/home/akira/\x2elocal/share

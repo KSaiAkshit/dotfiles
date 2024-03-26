@@ -14,6 +14,7 @@ alias cat bat
 alias chmox 'chmod +x'
 alias cls clear
 alias cp 'cp -i'
+alias docs 'web-search docs'
 alias gog 'web-search google'
 alias gp tgpt
 alias hm home-manager
@@ -27,6 +28,7 @@ alias mkdir 'mkdir -pv'
 alias mv 'mv -i'
 alias nps 'web-search nixpkgs'
 alias pls 'doas (builtin history -n 1 | string split " "; and echo $1)'
+alias rdoc 'web-search rustdoc'
 alias rm 'trash -i'
 alias rmrf 'rm -rf'
 alias sg 's -p google'
