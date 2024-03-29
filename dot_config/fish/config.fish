@@ -17,7 +17,6 @@ alias cp 'cp -i'
 alias docs 'web-search docs'
 alias gog 'web-search google'
 alias gp tgpt
-alias hm home-manager
 alias home 'tmux new -s Home'
 alias hx helix
 alias icat 'kitten icat'
@@ -47,6 +46,7 @@ alias zja 'zellij a -c $(basename $("pwd"))'
 abbr aoct "cargo gen --path $HOME/dev/template/aoc_template --vcs=none"
 abbr bc bard-cli
 abbr exe exercism
+abbr hm home-manager
 abbr how how2
 abbr j just
 abbr lg lazygit
@@ -78,6 +78,10 @@ function dvim
     nvim $argv
 end
 
+function nyoom
+    set -x NVIM_APPNAME nyoom
+    nvim $argv
+end
 # Variables
 export EDITOR=/usr/bin/helix
 # export HAS_ALLOW_UNSAFE=y
@@ -90,6 +94,7 @@ export EDITOR=/usr/bin/helix
 
 
 # Hook for direnv
+set -gx DIRENV_LOG_FORMAT ""
 direnv hook fish | source
 
 # Zoxide settings
@@ -105,3 +110,6 @@ carapace _carapace | source
 
 # atuin
 atuin init fish | source
+
+# home-manager
+replay 'source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh'

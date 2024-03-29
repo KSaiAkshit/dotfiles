@@ -1,10 +1,18 @@
 -- Neorg doesn't support vimtex injection for math blocks, soooo bye-bye for now.
 M = {
   {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
+  {
     "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
     cmd = "Neorg",
     ft = "norg",
+    version = "*",
+    dependencies = {
+      "luarocks.nvim",
+    },
     config = function()
       require("neorg").setup({
         load = {

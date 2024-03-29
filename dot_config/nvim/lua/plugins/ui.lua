@@ -1,13 +1,26 @@
 return {
 	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		cmd = "Catppuccin",
+		config = function()
+			require("catppuccin").setup({
+				flavour = "mocha",
+				transparent_background = true,
+			})
+		end
+	},
+	{
 		"rose-pine/neovim",
 		lazy = false,
 		name = "rose-pine",
 		config = function()
+
 			require("rose-pine").setup({
 				variant = "moon",
-				disable_background = true,
-				disable_float_background = true,
+				styles = {
+					transparency = true
+				},
 				highlight_groups = {
 					MiniStatuslineModeInsert = { fg = "base", bg = "foam" },
 					MiniStatuslineModeNormal = { fg = "base", bg = "rose" },
@@ -37,6 +50,7 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		event = "BufReadPre",
 		main = "ibl",
 		opts = {
 			indent = {
