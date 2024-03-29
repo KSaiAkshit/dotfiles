@@ -1,5 +1,5 @@
 -- Transparent background
--- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+-- vim.api.nvim_create_autocmd({ "" }, {
 -- 	pattern = '*',
 -- 	callback = function()
 -- 		vim.api.nvim_command('highlight Normal guibg=none ctermbg=none')
