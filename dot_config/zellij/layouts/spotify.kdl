@@ -1,7 +1,7 @@
 layout {
         pane {
             pane command="cava"
-            pane size="10%" command="spt" 
+            pane size="15%" command="spotify_player" 
 
     }
     pane size=1 borderless=true {

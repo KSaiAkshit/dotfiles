@@ -21,12 +21,6 @@ return {
 				styles = {
 					transparency = true
 				},
-				highlight_groups = {
-					MiniStatuslineModeInsert = { fg = "base", bg = "foam" },
-					MiniStatuslineModeNormal = { fg = "base", bg = "rose" },
-					MiniStatuslineModeVisual = { fg = "base", bg = "iris" },
-					MiniStatuslineModeCommand = { fg = "base", bg = "love" },
-				},
 			})
 			vim.cmd([[colorscheme rose-pine]])
 		end,

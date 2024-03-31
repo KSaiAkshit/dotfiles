@@ -1,4 +1,4 @@
-source default_config.nu
+source ~/.config/nushell/default_config.nu
 
 let carapace_completer = {|spans| 
   carapace $spans.0 nushell $spans | from json
@@ -72,4 +72,4 @@ source ~/.config/nushell/alias.nu
 source ~/.config/nushell/zoxide.nu
 source ~/.config/nushell/carapace.nu
 source ~/.local/share/atuin/init.nu
-# use ~/.config/nushell/themes/rose-pine.nu
+use ~/.config/nushell/themes/rose-pine.nu

@@ -36,10 +36,11 @@ o.fillchars      = 'eob: ' -- Don't show `~` outside of buffer
 o.scrolloff      = 999
 o.tabstop        = 3
 o.shiftwidth     = 3
+o.conceallevel   = 3
 
 o.relativenumber = true
 o.number         = true
-o.cmdheight      = 0
+o.cmdheight      = 1
 
 -- Editing
 o.ignorecase     = true                        -- Ignore case when searching (use `\C` to force not doing that)
