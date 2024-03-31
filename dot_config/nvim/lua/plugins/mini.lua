@@ -142,6 +142,7 @@ return {
 				{ mode = 'n', keys = '<Leader>g', desc = "+git" },
 				{ mode = 'n', keys = '<Leader>u', desc = "+ui" },
 				{ mode = 'n', keys = '<Leader>w', desc = "+workspace" },
+				{ mode = 'n', keys = '<Leader>n', desc = "+Neorg" },
 			},
 			window = {
 				-- Show window immediately

@@ -1,6 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     fish_config theme choose "Rosé Pine"
+    # fish_config theme choose "Catppuccin Mocha"
 end
 
 # Aliases
@@ -73,15 +74,11 @@ function viml
     nvim $argv
 end
 
-function dvim
-    set -x NVIM_APPNAME DreamNvim
+function rocks
+    set -x NVIM_APPNAME rocks
     nvim $argv
 end
 
-function nyoom
-    set -x NVIM_APPNAME nyoom
-    nvim $argv
-end
 # Variables
 export EDITOR=/usr/bin/helix
 # export HAS_ALLOW_UNSAFE=y
