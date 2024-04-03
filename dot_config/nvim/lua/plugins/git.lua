@@ -5,6 +5,8 @@ return {
 		keys = {
 			{ "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>",              desc = "[Gitsigns] preview hunk" },
 			{ "<leader>gt", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "[Gitsigns] Toggle line blame" },
+			{ "]h",         "<cmd>Gitsigns next_hunk<CR>",                 desc = "Next Hunk" },
+			{ "[h",         "<cmd>Gitsigns prev_hunk<CR>",                 desc = "Previous Hunk" },
 		},
 		init = function()
 			-- load gitsigns only when a git file is opened

@@ -1,6 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = '0.1.4',
+	version = "*",
 	dependencies = { 'nvim-lua/plenary.nvim' },
 	cmd = "Telescope",
 	keys = {
@@ -77,6 +77,11 @@ return {
 			borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 			color_devicons = true,
 			set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+			file_sorter = require("telescope.sorters").get_fuzzy_file,
+			generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+			file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+			grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+			qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 		},
 
 		extensions_list = { "themes", "terms" },

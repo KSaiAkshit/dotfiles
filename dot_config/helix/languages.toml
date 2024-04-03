@@ -23,7 +23,6 @@ scope = "source.rust"
 file-types = ["rs"]
 roots = ["Cargo.toml", "Cargo.lock"]
 auto-format = true
-comment-token = "//"
 language-servers = ["rust-analyzer"]
 indent = { tab-width = 4, unit = "    " }
 
