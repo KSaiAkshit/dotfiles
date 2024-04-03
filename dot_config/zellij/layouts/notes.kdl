@@ -1,0 +1,11 @@
+layout {
+    pane {
+        pane command="fish" {
+            args "-c" "nvim -c 'Neorg index'"
+        }
+
+    }
+    pane size=1 borderless=true {
+        plugin location="zellij:compact-bar"
+    }
+}

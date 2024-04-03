@@ -143,6 +143,7 @@ return {
 				{ mode = 'n', keys = '<Leader>u', desc = "+ui" },
 				{ mode = 'n', keys = '<Leader>w', desc = "+workspace" },
 				{ mode = 'n', keys = '<Leader>n', desc = "+Neorg" },
+				{ mode = 'n', keys = '<Leader>x', desc = "+Trouble" },
 			},
 			window = {
 				-- Show window immediately
@@ -196,7 +197,7 @@ return {
 			}
 		}
 		-- require("mini.operators").setup()
-		require('mini.operators').setup({ replace = { prefix = 'cr' } })
+		require('mini.operators').setup({ replace = { prefix = 'gR' } })
 		require("mini.pairs").setup()
 		require("mini.pick").setup()
 		require("mini.sessions").setup {

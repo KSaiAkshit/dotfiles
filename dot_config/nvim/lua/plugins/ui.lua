@@ -1,21 +1,9 @@
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		cmd = "Catppuccin",
-		config = function()
-			require("catppuccin").setup({
-				flavour = "mocha",
-				transparent_background = true,
-			})
-		end
-	},
-	{
 		"rose-pine/neovim",
 		lazy = false,
 		name = "rose-pine",
 		config = function()
-
 			require("rose-pine").setup({
 				variant = "moon",
 				styles = {

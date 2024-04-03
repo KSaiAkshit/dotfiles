@@ -9,6 +9,7 @@ local M = {
 		"nvim-neorg/neorg",
 		cmd = "Neorg",
 		ft = "norg",
+		-- version = "*",
 		version = "v7.0.0", -- Pin Neorg to the latest stable release
 		-- dependencies = { "luarocks.nvim" },
 		opts = {
@@ -28,7 +29,7 @@ local M = {
 				["core.dirman"] = {
 					config = { -- Manages Neorg workspaces
 						workspaces = {
-							notes = "~/Documents/Notes",
+							notes = "~/Documents/Notes/norg",
 						},
 						default_workspace = "notes",
 						index = "index.norg",
