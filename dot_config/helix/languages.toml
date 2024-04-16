@@ -55,10 +55,6 @@ name = "binary"
 program = "{0}"
 runInTerminal = true
 
-[[grammar]]
-name = "rust"
-source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "2d7bac5164c344c95530c16dd5c8fa1319e34308" }
-
 [[language]]
 name = "cpp"
 [language.auto-pairs]

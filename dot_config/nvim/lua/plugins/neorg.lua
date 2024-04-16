@@ -1,14 +1,14 @@
 local M = {
 	-- {
 	-- 	"vhyrro/luarocks.nvim",
-	-- 	priority = 1000,
+	-- 	lazy = true,
 	-- 	config = true,
 	-- },
-	-- TODO: Upgrade to v8 using luarocks
 	{
 		"nvim-neorg/neorg",
 		cmd = "Neorg",
 		ft = "norg",
+		-- NOTE: Version is pinned
 		-- version = "*",
 		version = "v7.0.0", -- Pin Neorg to the latest stable release
 		-- dependencies = { "luarocks.nvim" },
@@ -35,6 +35,29 @@ local M = {
 						index = "index.norg",
 					},
 				},
+				["core.summary"] = {},
+				["core.journal"] = {
+					config = { strategy = "flat", }
+				},
+				["core.esupports.metagen"] = {
+					config = {
+						template = {
+							{ "title",       function() return vim.fn.expand("%:p:t:r") end },
+							{ "description", "" },
+							{ "authors",     function() return os.getenv("USER") end },
+							{ "categories",  "" },
+							-- The tags are for the sake of obsidian
+							{ "tags",        "" },
+							{ "created",     function() return os.date '%d %b %Y %H:%M' end },
+							{ "updated",     function() return os.date '%d %b %Y %H:%M' end },
+							{ "version", function()
+								local config = require("neorg.core.config")
+								return config.norg_version
+							end },
+						}
+
+					}
+				}
 			},
 		},
 	}

@@ -1,9 +1,6 @@
 layout {
-    pane {
-        pane command="fish" {
-            args "-c" "nvim -c 'Neorg index'"
-        }
-
+    pane command="fish" {
+        args "-C" "/home/akira/Documents/Notes" "-c nvim -c 'Neorg index'"
     }
     pane size=1 borderless=true {
         plugin location="zellij:compact-bar"

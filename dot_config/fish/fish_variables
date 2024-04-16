@@ -15,7 +15,7 @@ SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25\x20\x2d\x2dlayout\x3d
 SETUVAR F_DATA_DIR:/home/akira/\x2elocal/share/f
 SETUVAR GIT_PAGER:\x1d
 SETUVAR --export GNUPGHOME:/home/akira/\x2elocal/share/gnupg
-SETUVAR --path GOPATH:\x1d
+SETUVAR --export --path GOPATH:/home/akira/\x2elocal/share/go
 SETUVAR --export HAS_ALLOW_UNSAFE:y
 SETUVAR --export PAGER:bat\x20\x2dp
 SETUVAR PARALLEL_HOME:/home/akira/\x2econfig/parallel
@@ -93,5 +93,5 @@ SETUVAR fish_pager_color_selected_background:\x1d
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/akira/\x2elocal/share/bun/bin\x1e/usr/lib/rustup/bin\x1e/home/akira/\x2elocal/scripts\x1e/home/akira/go/bin\x1e/home/akira/\x2enix\x2dprofile/bin\x1e/nix/var/nix/profiles/default/bin\x1e/home/akira/\x2elocal/share/cargo/bin\x1e/home/akira/\x2elocal/bin
+SETUVAR fish_user_paths:/home/akira/\x2elocal/share/go/bin\x1e/home/akira/\x2elocal/share/bun/bin\x1e/usr/lib/rustup/bin\x1e/home/akira/\x2elocal/scripts\x1e/home/akira/go/bin\x1e/home/akira/\x2enix\x2dprofile/bin\x1e/nix/var/nix/profiles/default/bin\x1e/home/akira/\x2elocal/share/cargo/bin\x1e/home/akira/\x2elocal/bin
 SETUVAR pisces_pairs:\x28\x2c\x29\x1e\x5b\x2c\x5d\x1e\x7b\x2c\x7d\x1e\x22\x2c\x22\x1e\x27\x2c\x27
