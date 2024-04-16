@@ -65,7 +65,8 @@ hide_when_typing = true
 
 [shell]
 program = "/usr/bin/zellij"
-args = ["a", "-c"]
+args = ["-l", "welcome"]
+# args = ["a", "-c"]
 
 [window]
 dynamic_padding = false

@@ -6,7 +6,7 @@ end
 
 # Aliases
 
-alias arduino 'arduino-cli'
+alias arduino arduino-cli
 alias ari aria2c
 alias bgg 'swww img'
 alias bt bartib
@@ -26,7 +26,9 @@ alias ll 'eza -l --icons --group-directories-first'
 alias ln 'ln -i'
 alias mkdir 'mkdir -pv'
 alias mv 'mv -i'
+alias notes 'nvim -c "Neorg index"'
 alias nps 'web-search nixpkgs'
+alias nvimrc 'nvim ~/.config/nvim'
 alias pls 'doas (builtin history -n 1 | string split " "; and echo $1)'
 alias rdoc 'web-search rustdoc'
 alias rm 'trash -i'
@@ -57,7 +59,7 @@ abbr pbr "pomodoro break"
 abbr pwo "pomodoro work"
 abbr rd 'web-search rustdoc'
 abbr reload "exec fish"
-abbr sudo 'doas'
+abbr sudo doas
 
 function nvc
     set -x NVIM_APPNAME NvChad

@@ -1,10 +1,11 @@
 layout {
+    tab name="Spotify"{
         pane {
             pane command="cava"
             pane size="15%" command="spotify_player" 
-
-    }
-    pane size=1 borderless=true {
-        plugin location="zellij:compact-bar"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
     }
 }
