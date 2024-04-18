@@ -36,7 +36,8 @@ o.fillchars      = 'eob: ' -- Don't show `~` outside of buffer
 o.scrolloff      = 999
 o.tabstop        = 3
 o.shiftwidth     = 3
-o.conceallevel   = 3
+-- o.conceallevel   = 3
+-- vim.wo.conceallevel = 3
 
 o.relativenumber = true
 o.number         = true
