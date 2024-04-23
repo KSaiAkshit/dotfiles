@@ -47,6 +47,7 @@ local M = {
 	{
 		"folke/todo-comments.nvim",
 		cmd = { "TodoTrouble", "TodoTelescope" },
+		event = "BufReadPre",
 		config = true,
 		keys = {
 			{ "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },

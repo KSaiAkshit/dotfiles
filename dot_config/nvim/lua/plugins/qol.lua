@@ -21,7 +21,8 @@ local M = {
 				alacritty = {
 					enabled = true,
 					font = "12"
-				}
+				},
+				twilight = { enabled = false }
 			}
 		}
 	}
