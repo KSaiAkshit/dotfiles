@@ -64,3 +64,7 @@ name = "cpp"
 '"' = '"'
 '`' = '`'
 '|' = '|'
+
+[[language]]
+name = "nix"
+formatter = { command = "nixpkgs-fmt" }

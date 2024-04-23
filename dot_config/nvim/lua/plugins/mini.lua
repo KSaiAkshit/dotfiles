@@ -184,7 +184,11 @@ return {
 			symbol = "│" -- Character is called BOX DRAWING LEFT VERTICAL
 		})
 		require("mini.jump").setup()
-		require("mini.jump2d").setup()
+		require("mini.jump2d").setup({
+			mappings = {
+				start_jumping = 'gw'
+			}
+		})
 		require("mini.map").setup()
 		require("mini.misc").setup()
 		require("mini.move").setup {
