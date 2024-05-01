@@ -13,7 +13,11 @@ local M = {
 		opts = {
 			load = {
 				["core.defaults"] = {}, -- Loads default behaviour
-				["core.concealer"] = {}, -- Adds Pretty icons to docs
+				["core.concealer"] = {
+					config = {
+						icon_preset = "varied"
+					}
+				}, -- Adds Pretty icons to docs
 				["core.export"] = {},
 				["core.export.markdown"] = {
 					config = { extensions = "all" },

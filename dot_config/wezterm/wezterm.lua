@@ -5,7 +5,7 @@ local config = {}
 config.colors = colors
 config.enable_tab_bar = false
 config.font_size = 10.0
-config.enable_wayland = false
+-- config.enable_wayland = false
 
 
 -- config.font = wezterm.font("JetBrainsMono NF")

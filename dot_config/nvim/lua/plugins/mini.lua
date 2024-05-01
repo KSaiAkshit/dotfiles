@@ -142,14 +142,19 @@ return {
 				{ mode = 'n', keys = '<Leader>g', desc = "+git" },
 				{ mode = 'n', keys = '<Leader>u', desc = "+ui" },
 				{ mode = 'n', keys = '<Leader>w', desc = "+workspace" },
-				{ mode = 'n', keys = '<Leader>n', desc = "+Neorg" },
-				{ mode = 'n', keys = '<Leader>x', desc = "+Trouble" },
+				{ mode = 'n', keys = '<Leader>n', desc = "+neorg" },
+				{ mode = 'n', keys = '<Leader>ni', desc = "+insert" },
+				{ mode = 'n', keys = '<Leader>nl', desc = "+list" },
+				{ mode = 'n', keys = '<Leader>nm', desc = "+mode" },
+				{ mode = 'n', keys = '<Leader>nn', desc = "+new" },
+				{ mode = 'n', keys = '<Leader>nt', desc = "+todo" },
+				{ mode = 'n', keys = '<Leader>x', desc = "+trouble" },
 			},
 			window = {
 				-- Show window immediately
 				delay = 50,
 				config = {
-					width = 'auto',
+					width = '50',
 				}
 			}
 		})
@@ -200,8 +205,6 @@ return {
 				right = '<C-l>',
 			}
 		}
-		-- require("mini.operators").setup()
-		require('mini.operators').setup({ replace = { prefix = 'gR' } })
 		require("mini.pairs").setup()
 		require("mini.pick").setup()
 		require("mini.sessions").setup {
