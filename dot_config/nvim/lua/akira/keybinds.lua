@@ -7,8 +7,8 @@ map({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
 -- Add empty lines before and after cursor line supporting dot-repeat
-map("n", "gO", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
-map("n", "go", "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>")
+map("n", "] ", "<Cmd>call append(line('.'),   repeat([''], v:count1))<CR>", { desc = "New line above" })
+map("n", "[ ", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "New line below" })
 
 -- Copy/paste with system clipboard
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
@@ -18,10 +18,10 @@ map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
 map("x", "gp", '"+P', { desc = "Paste from system clipboard" })
 -- Reselect latest changed, put, or yanked text
 map(
-	"n",
-	"gV",
-	'"`[" . strpart(getregtype(), 0, 1) . "`]"',
-	{ expr = true, replace_keycodes = false, desc = "Visually select changed text" }
+  "n",
+  "gV",
+  '"`[" . strpart(getregtype(), 0, 1) . "`]"',
+  { expr = true, replace_keycodes = false, desc = "Visually select changed text" }
 )
 
 -- Search inside visually highlighted text. Use `silent = false` for it to
@@ -35,20 +35,20 @@ map({ "i", "x", "n", "s" }, "<C-S>", "<Cmd>silent! update | redraw<CR><Esc>", { 
 -- Toggle prefix
 local toggle_prefix = "<Leader>u"
 local map_toggle = function(lhs, rhs, desc)
-	map("n", toggle_prefix .. lhs, rhs, { desc = desc })
+  map("n", toggle_prefix .. lhs, rhs, { desc = desc })
 end -- Append 'toggle_prefix' to specified bindings
 
 -- Toggle inlay hints
 function Toggle_inlay_hints()
-	local current_buffer = vim.fn.bufnr("%")                       -- get current buffer number
-	local is_enabled = vim.lsp.inlay_hint.is_enabled(current_buffer) -- query the current state
-	vim.lsp.inlay_hint.enable(current_buffer, not is_enabled)
+  local current_buffer = vim.fn.bufnr("%")                         -- get current buffer number
+  local is_enabled = vim.lsp.inlay_hint.is_enabled(current_buffer) -- query the current state
+  vim.lsp.inlay_hint.enable(not is_enabled)
 
-	local status_message = is_enabled and "Inlay hints disabled" or "Inlay hints enabled"
-	local id = MiniNotify.add(status_message, "WARN", "NotifyINFOTitle")
-	vim.defer_fn(function()
-		MiniNotify.remove(id)
-	end, 1000)
+  local status_message = is_enabled and "Inlay hints disabled" or "Inlay hints enabled"
+  local id = MiniNotify.add(status_message, "WARN", "NotifyINFOTitle")
+  vim.defer_fn(function()
+    MiniNotify.remove(id)
+  end, 1000)
 end
 
 -- Silent toggles
@@ -92,10 +92,10 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 
 -- Clear search, diff update and redraw
 map(
-	"n",
-	"<leader>ur",
-	"<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-	{ desc = "Redraw / clear hlsearch / diff update" }
+  "n",
+  "<leader>ur",
+  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+  { desc = "Redraw / clear hlsearch / diff update" }
 )
 
 -- Advanced Maps
@@ -104,79 +104,78 @@ map("n", "<S-Tab>", "<cmd>bprev<CR>")
 map("n", "<Leader>e", "<cmd>lua MiniFiles.open()<CR>", { desc = "[Mini.files] Find Files" })
 map("n", "<F5>", "<cmd>lua MiniMap.toggle()<CR>")
 map("n", "<Leader>z", "<cmd>lua MiniMisc.zoom()<CR>", { desc = "[Mini.misc] Zoom" })
-map("n", "<Leader>bd", "<cmd>bdel<CR>", { desc = "[D]elete Current Buffer"})
+map("n", "<Leader>bd", "<cmd>bdel<CR>", { desc = "[D]elete Current Buffer" })
 map("n", "<Leader>ba", function()
-	vim.ui.input({ prompt = "New Buffer" }, function(input)
-		vim.cmd({ cmd = "badd", args = { input } })
-	end)
-end, { desc = "[A]dd New Buffer"})
+  vim.ui.input({ prompt = "New Buffer" }, function(input)
+    vim.cmd({ cmd = "badd", args = { input } })
+  end)
+end, { desc = "[A]dd New Buffer" })
 map("n", "<Leader>pf", "<cmd>Pick files<CR>", { desc = "[Mini.pick] Pick Files" })
 map("n", "<Leader>pk", "<cmd>Pick keymaps<CR>", { desc = "[Mini.pick] Pick Keymaps" })
 map("n", "<Leader>pp", function()
-	vim.ui.select({
-		"buf_lines",
-		"buffers",
-		"cli",
-		"commands",
-		"diagnostic",
-		"explorer",
-		"files",
-		"git_branches",
-		"git_commits",
-		"git_files",
-		"git_hunks",
-		"grep",
-		"grep_live",
-		"help",
-		"hipatterns",
-		"history",
-		"hl_groups",
-		"keymaps",
-		"list",
-		"lsp",
-		"makrs",
-		"oldfiles",
-		"options",
-		"registers",
-		"resume",
-		"spellsuggest",
-		"treesitter",
-	}, { prompt = "Pick " }, function(choice)
-		return vim.cmd({ cmd = "Pick", args = { choice } })
-	end)
+  vim.ui.select({
+    "buf_lines",
+    "buffers",
+    "cli",
+    "commands",
+    "diagnostic",
+    "explorer",
+    "files",
+    "git_branches",
+    "git_commits",
+    "git_files",
+    "git_hunks",
+    "grep",
+    "grep_live",
+    "help",
+    "hipatterns",
+    "history",
+    "hl_groups",
+    "keymaps",
+    "list",
+    "lsp",
+    "makrs",
+    "oldfiles",
+    "options",
+    "registers",
+    "resume",
+    "spellsuggest",
+    "treesitter",
+  }, { prompt = "Pick " }, function(choice)
+    return vim.cmd({ cmd = "Pick", args = { choice } })
+  end)
 end, { desc = "[Mini.pick] Pick ..." })
 
 -- Lsp keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-	callback = function(ev)
-		-- Enable completion triggered by <c-x><c-o>
-		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-		-- Buffer local mappings.
-		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		map("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, desc = "Goto Declaration" })
-		map("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "Goto Definition" })
-		map("n", "K", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
-		map("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "List Implementation" })
-		map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { buffer = ev.buf, desc = "Add workspace folder" })
-		map(
-			"n",
-			"<leader>wr",
-			vim.lsp.buf.remove_workspace_folder,
-			{ buffer = ev.buf, desc = "Remove workspace folder" }
-		)
-		map("n", "<leader>cd", vim.diagnostic.open_float, { buffer = ev.buf, desc = "Line Diagnostics" })
-		map("n", "<leader>wl", function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, { buffer = ev.buf, desc = "List workspace folder" })
-		map("n", "<leader>cD", vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Type definition" })
-		map("n", "<leader>cr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename" })
-		map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code actions" })
-		map("n", "gr", vim.lsp.buf.references, { buffer = ev.buf, desc = "Goto references" })
-		map("n", "<leader>cf", function()
-			vim.lsp.buf.format({ async = true })
-		end, { buffer = ev.buf, desc = "Format" })
-	end,
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    map("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, desc = "Goto Declaration" })
+    map("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "Goto Definition" })
+    map("n", "K", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
+    map("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "List Implementation" })
+    map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { buffer = ev.buf, desc = "Add workspace folder" })
+    map(
+      "n",
+      "<leader>wr",
+      vim.lsp.buf.remove_workspace_folder,
+      { buffer = ev.buf, desc = "Remove workspace folder" }
+    )
+    map("n", "<leader>cd", vim.diagnostic.open_float, { buffer = ev.buf, desc = "Line Diagnostics" })
+    map("n", "<leader>wl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, { buffer = ev.buf, desc = "List workspace folder" })
+    map("n", "<leader>cD", vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Type definition" })
+    map("n", "<leader>cr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename" })
+    map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code actions" })
+    map("n", "gr", vim.lsp.buf.references, { buffer = ev.buf, desc = "Goto references" })
+    map("n", "<leader>cf", function()
+      vim.lsp.buf.format({ async = true })
+    end, { buffer = ev.buf, desc = "Format" })
+  end,
 })
-

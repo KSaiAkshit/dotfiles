@@ -11,6 +11,7 @@ SETUVAR CHTSH_QUERY_OPTIONS:\x1d
 SETUVAR --path CUDA_CACHE_PATH:/home/akira/\x2ecache/nv
 SETUVAR --export EDITOR:/usr/bin/helix
 SETUVAR ELINKS_CONFDIR:/home/akira/\x2econfig/elinks
+SETUVAR --export FLAKE:/home/akira/\x2econfig/home\x2dmanager
 SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25\x20\x2d\x2dlayout\x3dreverse\x20\x2d\x2dborder
 SETUVAR F_DATA_DIR:/home/akira/\x2elocal/share/f
 SETUVAR GIT_PAGER:\x1d

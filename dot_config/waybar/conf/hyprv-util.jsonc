@@ -10,7 +10,7 @@
   },
   "custom/light_dark": {
     "format": "󰐾",
-    "on-click": "~/.config/HyprV/waybar/scripts/image_rand",
+    "on-click": "sleep 0.5s; hyprlock  & disown",
     // "on-click": "sh -c 'sww img $(ls ~/Pictures/starred_bg/ | shuf -n 1)' ",
     "tooltip": false
   }

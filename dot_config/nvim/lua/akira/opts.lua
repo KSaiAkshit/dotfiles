@@ -34,9 +34,10 @@ o.signcolumn     = 'yes'   -- Always show sign column (otherwise it will shift t
 o.fillchars      = 'eob: ' -- Don't show `~` outside of buffer
 
 o.scrolloff      = 999
-o.tabstop        = 3
-o.shiftwidth     = 3
+o.tabstop        = 2
+o.shiftwidth     = 2
 o.conceallevel   = 3
+o.expandtab      = true
 
 o.relativenumber = true
 o.number         = true
