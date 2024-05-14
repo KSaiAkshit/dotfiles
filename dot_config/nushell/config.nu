@@ -67,9 +67,10 @@ $env.config = {
         }
     ]
 }
-source ~/.config/nushell/starship.nu
-source ~/.config/nushell/alias.nu
-source ~/.config/nushell/zoxide.nu
-source ~/.config/nushell/carapace.nu
+source ~/.config/nushell/conf/starship.nu
+source ~/.config/nushell/conf/alias.nu
+source ~/.config/nushell/conf/zoxide.nu
+source ~/.config/nushell/conf/carapace.nu
 source ~/.local/share/atuin/init.nu
 use ~/.config/nushell/themes/rose-pine.nu
+$env.config = ($env.config | merge {color_config: (rose-pine)})
