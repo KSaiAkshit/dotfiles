@@ -27,7 +27,7 @@ $env.config = {
 
     color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
     edit_mode: vi # emacs, vi
-    shell_integration: true # enables terminal shell integration. Off by default, as some terminals have issues with this.
+    # shell_integration: true # enables terminal shell integration. Off by default, as some terminals have issues with this.
     highlight_resolved_externals: true
     
     menus: [

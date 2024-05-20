@@ -41,7 +41,7 @@ end -- Append 'toggle_prefix' to specified bindings
 -- Toggle inlay hints
 function Toggle_inlay_hints()
   local current_buffer = vim.fn.bufnr("%")                         -- get current buffer number
-  local is_enabled = vim.lsp.inlay_hint.is_enabled(current_buffer) -- query the current state
+  local is_enabled = vim.lsp.inlay_hint.is_enabled({current_buffer}) -- query the current state
   vim.lsp.inlay_hint.enable(not is_enabled)
 
   local status_message = is_enabled and "Inlay hints disabled" or "Inlay hints enabled"
@@ -99,11 +99,9 @@ map(
 )
 
 -- Advanced Maps
-map("n", "<Tab>", "<cmd>bnext<CR>")
-map("n", "<S-Tab>", "<cmd>bprev<CR>")
 map("n", "<Leader>e", "<cmd>lua MiniFiles.open()<CR>", { desc = "[Mini.files] Find Files" })
 map("n", "<F5>", "<cmd>lua MiniMap.toggle()<CR>")
-map("n", "<Leader>z", "<cmd>lua MiniMisc.zoom()<CR>", { desc = "[Mini.misc] Zoom" })
+map("n", "<Leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle [Z]enMode" })
 map("n", "<Leader>bd", "<cmd>bdel<CR>", { desc = "[D]elete Current Buffer" })
 map("n", "<Leader>ba", function()
   vim.ui.input({ prompt = "New Buffer" }, function(input)
@@ -134,7 +132,7 @@ map("n", "<Leader>pp", function()
     "keymaps",
     "list",
     "lsp",
-    "makrs",
+    "marks",
     "oldfiles",
     "options",
     "registers",

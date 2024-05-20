@@ -33,7 +33,7 @@ o.wrap           = false   -- Display long lines as just one line
 o.signcolumn     = 'yes'   -- Always show sign column (otherwise it will shift text)
 o.fillchars      = 'eob: ' -- Don't show `~` outside of buffer
 
-o.scrolloff      = 999
+o.scrolloff      = 15
 o.tabstop        = 2
 o.shiftwidth     = 2
 o.conceallevel   = 3
