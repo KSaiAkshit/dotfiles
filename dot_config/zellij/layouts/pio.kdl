@@ -1,0 +1,19 @@
+layout {
+    cwd "/home/akira/dev/exobot/intctrl/IntegratedControls"
+    pane split_direction="vertical" {
+        pane command="helix" size="50%" {
+            start_suspended false
+        }
+        pane size="50%" {
+            pane command="fish" size="50%" {
+            }
+            pane command="just" size="50%" {
+                args "monitor"
+                start_suspended true
+            }
+        }
+    }
+    pane size=1 borderless=true {
+        plugin location="zellij:compact-bar"
+    }
+}

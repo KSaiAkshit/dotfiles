@@ -71,7 +71,7 @@ args = ["-l", "welcome"]
 [window]
 dynamic_padding = false
 dynamic_title = true
-opacity = 0.6
+opacity = 0.8
 
 [window.class]
 general = "Alacritty"

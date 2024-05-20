@@ -23,13 +23,15 @@ true-color = true
 '<' = '>'
 '|' = '|'
 
+[editor.statusline]
+left = ["mode", "spacer", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+
 [editor.soft-wrap]
 enable = true
 max-wrap = 25
 
 [editor.indent-guides]
 render = true
-#character = "|"
 
 [editor.cursor-shape]
 insert = "bar"

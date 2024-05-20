@@ -31,8 +31,7 @@ alias nps 'web-search nixpkgs'
 alias nvimrc 'nvim ~/.config/nvim'
 alias pls 'doas (builtin history -n 1 | string split " "; and echo $1)'
 alias rdoc 'web-search rustdoc'
-alias rm 'trash -i'
-alias rmrf 'rm -rf'
+alias rt 'trash -i'
 alias sg 's -p google'
 alias ta 'tmux attach'
 alias trash 'trash -i'
@@ -111,4 +110,4 @@ carapace _carapace | source
 atuin init fish | source
 
 # home-manager
-replay 'source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh'
+replay 'source $XDG_STATE_HOME/nix/profile/etc/profile.d/hm-session-vars.sh'

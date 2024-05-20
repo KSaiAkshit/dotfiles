@@ -67,14 +67,14 @@
         } */
     },
 
-    "cpu": {
-        "interval": 10,
-        "format": "",
-        "max-length": 10,
-        "format-alt-click": "click-right",
-        "format-alt": " {usage}%",
-        "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
-    },
+    // "cpu": {
+    //     "interval": 10,
+    //     "format": "",
+    //     "max-length": 10,
+    //     "format-alt-click": "click-right",
+    //     "format-alt": " {usage}%",
+    //     "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
+    // },
 
     "battery": {
         "states": {
