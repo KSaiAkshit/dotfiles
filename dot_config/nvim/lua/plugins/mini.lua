@@ -185,6 +185,7 @@ return {
       },
     })
     require("mini.git").setup()
+    require("mini.icons").setup()
     require('mini.indentscope').setup({
       delay = 10,
       symbol = "│" -- Character is called BOX DRAWING LEFT VERTICAL
