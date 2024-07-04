@@ -1,27 +1,38 @@
-alias ll = exa -l --icons --group-directories-first
-alias la = exa -la --icons --group-directories-first
-alias g = git
+alias ari = aria2c
+alias bgg = swww img
+alias c = clear -a
 alias cat = bat
-alias hx = helix
-alias c = clear
 alias cls = clear
-alias vim = nvim
-alias ta = tmux attach
+alias cp = cp -i
+alias g = git
 alias home = tmux new -s Home
-alias gog = web-search google
-alias nps = web-search nixpkgs
-alias sg = s -p google
+alias hx = helix
 alias icat = kitten icat
-alias zj = zellij
-# alias zja = "zellij a -c $(basename $(pwd))"
+alias j = just
+alias la = exa -la --icons --group-directories-first
+alias ll = exa -l --icons --group-directories-first
+alias ln = ln -i
+alias md = mkdir
 alias mkdir = mkdir -v
 alias mv = mv -i
-alias cp = cp =i
+alias reload = exec nu
 alias rm = rm -i
 alias rmrf = rm -rf
-alias ln = ln -i
+alias rt = trash -i
+alias sg = s -p google
+alias ta = tmux attach
 alias trash = trash -i
-alias bgg = swww img
-alias nvc = nvchad
-alias ari = aria2c
+alias v = nvim
 alias wget = wget -c
+alias zj = zellij
+# alias zja = "zellij a -c $(basename $(pwd))"
+
+def viml () {
+  $env.NVIM_APPNAME = 'LazyVim'
+  nvim
+}
+
+def nvc () {
+  $env.NVIM_APPNAME = 'NvChad'
+  nvim
+}

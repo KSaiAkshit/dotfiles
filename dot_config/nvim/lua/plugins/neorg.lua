@@ -12,7 +12,6 @@ local M = {
     version = "*",
     dependencies = {
       "luarocks.nvim",
-      "3rd/image.nvim"
     },
     opts = {
       load = {

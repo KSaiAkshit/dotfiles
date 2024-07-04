@@ -65,20 +65,11 @@ function nvc
     nvim $argv
 end
 
-function mini
-    set -x NVIM_APPNAME mini
-    nvim $argv
-end
-
 function viml
     set -x NVIM_APPNAME LazyVim
     nvim $argv
 end
 
-function rocks
-    set -x NVIM_APPNAME rocks
-    nvim $argv
-end
 
 # Variables
 export EDITOR=/usr/bin/helix
@@ -110,4 +101,4 @@ carapace _carapace | source
 atuin init fish | source
 
 # home-manager
-replay 'source $XDG_STATE_HOME/nix/profile/etc/profile.d/hm-session-vars.sh'
+# replay 'source $XDG_STATE_HOME/nix/profile/etc/profile.d/hm-session-vars.sh'

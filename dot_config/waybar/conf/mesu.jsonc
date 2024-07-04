@@ -9,7 +9,7 @@
         "tooltip" : true,
         "format" : "{}",
         "interval" : 30,
-        "exec" : "~/.config/HyprV/waybar/scripts/waybar-wttr-c.py",
+        "exec" : "~/.config/waybar/scripts/waybar-wttr-c.py",
         "return-type" : "json"
     },
 

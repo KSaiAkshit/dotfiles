@@ -208,7 +208,22 @@ return {
     }
     require("mini.notify").setup()
     require("mini.pairs").setup()
-    require("mini.pick").setup()
+    require("mini.pick").setup({
+      window = {
+        config = function()
+          local height = math.floor(0.618 * vim.o.lines)
+          local width = math.floor(0.618 * vim.o.columns)
+          return {
+            anchor = "NW",
+            height = height,
+            width = width,
+            border = "rounded",
+            row = math.floor(0.5 * (vim.o.lines - height)),
+            col = math.floor(0.5 * (vim.o.columns - width)),
+          }
+        end
+      }
+    })
     require("mini.sessions").setup {
       autoread = false,
       autowrite = true,

@@ -10,6 +10,7 @@ $env.config = {
 
     history: {
         file_format: "sqlite" # "sqlite" or "plaintext"
+        isolation: true
     }
 
     completions: {
@@ -56,7 +57,7 @@ $env.config = {
             name: move_right_or_take_history_hint
             modifier: control
             keycode: char_f
-            mode: [emacs, vi_insert]
+            mode: [emacs vi_insert vi_normal]
             event: {
                 until: [
                     {send: historyhintcomplete}
@@ -66,11 +67,22 @@ $env.config = {
             }
         }
     ]
+    hooks: {
+        pre_prompt: [{ ||
+            if (which direnv | is-empty) {
+                return
+            } 
+            direnv export json | from json | default {} | load-env
+        }]
+    }
+    
 }
-source ~/.config/nushell/conf/starship.nu
+
+source ~/.config/nushell/conf/yy.nu
 source ~/.config/nushell/conf/alias.nu
-source ~/.config/nushell/conf/zoxide.nu
+source ~/.config/nushell/conf/atuin.nu
 source ~/.config/nushell/conf/carapace.nu
-source ~/.local/share/atuin/init.nu
+source ~/.config/nushell/conf/starship.nu
+source ~/.config/nushell/conf/zoxide.nu
 use ~/.config/nushell/themes/rose-pine.nu
 $env.config = ($env.config | merge {color_config: (rose-pine)})

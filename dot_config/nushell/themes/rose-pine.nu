@@ -32,7 +32,8 @@ export def main [] { return {
     }
     range: "#e0def4"
     float: "#e0def4"
-    string: "#e0def4"
+    # string: "#e0def4"
+    string: "#e2e1e7"
     nothing: "#e0def4"
     binary: "#e0def4"
     cellpath: "#e0def4"
@@ -46,19 +47,20 @@ export def main [] { return {
     shape_and: { fg: "#c4a7e7" attr: "b" }
     shape_binary: { fg: "#c4a7e7" attr: "b" }
     shape_block: { fg: "#9ccfd8" attr: "b" }
-    shape_bool: "#31748f"
+    shape_bool: { fg: "#31748f" attr: "u" }
     shape_custom: "#ebbcba"
     shape_datetime: { fg: "#31748f" attr: "b" }
-    shape_directory: "#31748f"
-    shape_external: "#31748f"
-    shape_externalarg: { fg: "#ebbcba" attr: "b" }
-    shape_filepath: "#31748f"
+    shape_directory: "#ebbcba"
+    shape_external: "#c4a7e7"
+    shape_external_resolved: { fg: "#c4a7e7" attr: "b" }
+    shape_externalarg: { fg: "#ebbcba" }
+    shape_filepath: { fg: "#31748f" attr: "u" }
     shape_flag: { fg: "#9ccfd8" attr: "b" }
     shape_float: { fg: "#c4a7e7" attr: "b" }
     shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: "b" }
     shape_globpattern: { fg: "#31748f" attr: "b" }
     shape_int: { fg: "#c4a7e7" attr: "b" }
-    shape_internalcall: { fg: "#31748f" attr: "b" }
+    shape_internalcall: { fg: "#c4a7e7" attr: "b" }
     shape_list: { fg: "#31748f" attr: "b" }
     shape_literal: "#9ccfd8"
     shape_match_pattern: "#ebbcba"

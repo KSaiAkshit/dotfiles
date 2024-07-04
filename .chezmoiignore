@@ -1,4 +1,4 @@
 **/lazy-lock.json
 README.md
-**/history.(sqlite3|txt)
+**/history.{sqlite3,txt}*
 **/grammar/

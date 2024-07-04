@@ -108,7 +108,7 @@ map("n", "<Leader>ba", function()
     vim.cmd({ cmd = "badd", args = { input } })
   end)
 end, { desc = "[A]dd New Buffer" })
-map("n", "<Leader>pf", "<cmd>Pick files<CR>", { desc = "[Mini.pick] Pick Files" })
+map("n", "<Leader><Leader>", "<cmd>Pick files<CR>", { desc = "[Mini.pick] Pick Files" })
 map("n", "<Leader>pk", "<cmd>Pick keymaps<CR>", { desc = "[Mini.pick] Pick Keymaps" })
 map("n", "<Leader>pp", function()
   vim.ui.select({
