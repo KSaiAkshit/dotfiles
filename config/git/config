@@ -1,0 +1,39 @@
+[user]
+	name = Akira
+	email = ksaiashit@gmail.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[init]
+	defaultBranch = master
+[core]
+    pager = delta --side-by-side
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true    # use n and N to move between diff sections
+	dark = true
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
+[protocal "file"]
+	allow = always
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[push]
+	autoSetupRemote = true
+[alias]
+	st = status
+	co = checkout
+	br = branch
+
+[ghq]
+root = ~/dev
