@@ -1,6 +1,6 @@
 alias ari = aria2c
 alias bgg = swww img
-alias c = clear -a
+alias c = clear
 alias cat = bat
 alias cls = clear
 alias cp = cp -i

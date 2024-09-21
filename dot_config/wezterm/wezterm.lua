@@ -9,7 +9,7 @@ config.enable_wayland = false
 
 
 -- config.font = wezterm.font("JetBrainsMono NF")
-config.font = wezterm.font("MonaspiceNe Nerd Font")
+-- config.font = wezterm.font("MonaspiceNe Nerd Font")
 -- config.font_size = 11.0
 
 config.window_background_opacity = 0.8
