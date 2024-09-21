@@ -1,16 +1,10 @@
-# My dotfiles
+# My Dotfiles
 
 This directory contains the dotfiles for my system
 
 ## Requirements
 
 Ensure you have the following installed on your system
-
-### Git
-
-```
-pacman -S git
-```
 
 ### Chezmoi
 
