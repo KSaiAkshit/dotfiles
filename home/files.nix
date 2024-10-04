@@ -16,12 +16,12 @@
 	# 	source = ../config/git;
 	# 	recursive = true;
 	# };
-	# ".config/zellij" = {
-	# 	source = ../config/zellij;
-	# 	recursive = true;
-	# };
-	# ".config/helix" = {
-	# 	source = ../config/helix;
-	# 	recursive = true;
-	# };
+	".config/zellij" = {
+		source = ../config/zellij;
+		recursive = true;
+	};
+	".config/helix" = {
+		source = ../config/helix;
+		recursive = true;
+	};
 }

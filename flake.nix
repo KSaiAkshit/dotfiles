@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of akira";
+  description = "Home Manager configuration of akshit";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -10,12 +10,13 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = inputs:
+  with inputs;
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      homeConfigurations."akira" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."akshit" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,

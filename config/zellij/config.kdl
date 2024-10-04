@@ -107,6 +107,7 @@ keybinds {
         bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
+        bind "Esc" { SwitchToMode "Locked"; }
     }
     search {
         bind "Ctrl s" { SwitchToMode "Normal"; }
@@ -155,6 +156,7 @@ keybinds {
         bind "r" { SwitchToMode "Resize"; }
         bind "-" { NewPane "Down"; SwitchToMode "Locked"; }
         bind "\\" { NewPane "Right"; SwitchToMode "Locked"; }
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
         bind "c" { NewTab; SwitchToMode "Locked"; }
         bind "," { SwitchToMode "RenameTab"; }
@@ -234,7 +236,7 @@ plugins {
         welcome_screen true
     }
     filepicker location="zellij:strider" {
-        cwd "/home/akira/"
+        cwd "/home/akshit/"
     }
 }
 
@@ -302,7 +304,7 @@ default_mode "locked"
 // Valid values: positive integers
 // Default value: 10000
 //
-scroll_buffer_size 10000
+scroll_buffer_size 100000
 
 // Provide a command to execute when copying text. The text will be piped to
 // the stdin of the program to perform the copy. This can be used with
@@ -331,7 +333,7 @@ copy_on_select true
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
 //
-scrollback_editor "/usr/bin/helix"
+scrollback_editor "/home/akshit/.nix-profile/bin/hx"
 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
@@ -342,11 +344,11 @@ scrollback_editor "/usr/bin/helix"
 
 // The folder in which Zellij will look for layouts
 //
-layout_dir "/home/akira/.config/zellij/layouts"
+layout_dir "/home/akshit/.config/zellij/layouts"
 
 // The folder in which Zellij will look for themes
 
-theme_dir "/home/akira/.config/zellij/themes"
+theme_dir "/home/akshit/.config/zellij/themes"
 
 // Enable or disable the rendering of styled and colored underlines (undercurl).
 // May need to be disabled for certain unsupported terminals
