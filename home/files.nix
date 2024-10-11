@@ -1,9 +1,9 @@
 {
 	# ".editorconfig".source = ./config/.editorconfig;
-	".config/kitty" = {
-		source = ../config/kitty;
-		recursive = true;
-	};
+	# ".config/kitty" = {
+	# 	source = ../config/kitty;
+	# 	recursive = true;
+	# };
 	# ".config/alacritty" = {
 	# 	source = ../config/alacritty;
 	# 	recursive = true;

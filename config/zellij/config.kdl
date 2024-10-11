@@ -10,6 +10,8 @@ keybinds {
         bind "Alt j" "Alt Down" { MoveFocus "Down"; }
         bind "Alt k" "Alt Up" { MoveFocus "Up"; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
+        bind "Alt n" { GoToNextTab; }
+        bind "Alt p" { GoToPreviousTab; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
@@ -147,6 +149,13 @@ keybinds {
             };
             SwitchToMode "Normal"
         }
+        bind "p" {
+            LaunchOrFocusPlugin "plugin-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }
     }
     tmux {
         bind "[" { SwitchToMode "Scroll"; }
@@ -154,12 +163,14 @@ keybinds {
         bind "s" { SwitchToMode "Scroll"; }
         bind "m" { SwitchToMode "Move"; }
         bind "r" { SwitchToMode "Resize"; }
+        bind "q" { SwitchToMode "Session"; }
         bind "-" { NewPane "Down"; SwitchToMode "Locked"; }
         bind "\\" { NewPane "Right"; SwitchToMode "Locked"; }
         bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
         bind "c" { NewTab; SwitchToMode "Locked"; }
         bind "," { SwitchToMode "RenameTab"; }
+        bind "." { SwitchToMode "RenamePane"; }
         bind "p" { GoToPreviousTab; SwitchToMode "Locked"; }
         bind "n" { GoToNextTab; SwitchToMode "Locked"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
@@ -171,6 +182,10 @@ keybinds {
         bind "l" { MoveFocus "Right"; SwitchToMode "Locked"; }
         bind "j" { MoveFocus "Down"; SwitchToMode "Locked"; }
         bind "k" { MoveFocus "Up"; SwitchToMode "Locked"; }
+        bind "H" { Resize "Increase Left";  }
+        bind "L" { Resize "Increase Right";  }
+        bind "J" { Resize "Increase Down";  }
+        bind "K" { Resize "Increase Up";  }
         bind "o" { FocusNextPane; }
         bind "d" { Detach; }
         bind "Space" { NextSwapLayout; }
@@ -231,6 +246,7 @@ plugins {
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     compact-bar location="zellij:compact-bar"
+    monocle location="https://github.com/imsnif/monocle/releases/latest/download/monocle.wasm"
     session-manager location="zellij:session-manager"
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
@@ -238,6 +254,18 @@ plugins {
     filepicker location="zellij:strider" {
         cwd "/home/akshit/"
     }
+    configuration location="zellij:configuration"
+    plugin-manager location="zellij:plugin-manager"
+}
+
+
+// Plugins to load in the background when a new session starts
+load_plugins {
+    // "https://github.com/dj95/zjstatus/releases/latest/download/zjframes.wasm" {
+    //     hide_frame_for_single_frame       "true"
+    //     hide_frame_except_for_search      "true"
+    //     hide_frame_except_for_fullscreen  "true"
+    // }
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
@@ -296,7 +324,7 @@ default_mode "locked"
 //   - true (default)
 //   - false
 //
-// mouse_mode false
+mouse_mode true
 
 // Configure the scroll back buffer size
 // This is the number of lines zellij stores for each pane in the scroll back
@@ -304,7 +332,7 @@ default_mode "locked"
 // Valid values: positive integers
 // Default value: 10000
 //
-scroll_buffer_size 100000
+scroll_buffer_size 20000
 
 // Provide a command to execute when copying text. The text will be piped to
 // the stdin of the program to perform the copy. This can be used with
@@ -333,7 +361,7 @@ copy_on_select true
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
 //
-scrollback_editor "/home/akshit/.nix-profile/bin/hx"
+scrollback_editor "/home/akshit/.cargo/bin/hx"
 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
@@ -361,3 +389,4 @@ styled_underlines true
 // Default: false
 //
 // disable_session_metadata true
+support_kitty_keyboard_protocol false
