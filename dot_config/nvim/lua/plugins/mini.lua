@@ -169,6 +169,11 @@ return {
     vim.api.nvim_set_keymap('i', '<Up>', [[pumvisible() ? "<C-o>k" : "\<Up>"]], { expr = true, noremap = true })
     require("mini.cursorword").setup()
     require("mini.doc").setup()
+    require("mini.diff").setup({
+      view = {
+        style = "sign"
+      }
+    })
     require("mini.extra").setup()
     require("mini.files").setup()
     require("mini.fuzzy").setup()

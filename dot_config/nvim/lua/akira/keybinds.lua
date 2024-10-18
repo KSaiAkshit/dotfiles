@@ -32,16 +32,35 @@ map("x", "g/", "<esc>/\\%V", { silent = false, desc = "Search inside visual sele
 -- NOTE: Adding `redraw` helps with `cmdheight=0` if buffer is not modified
 map({ "i", "x", "n", "s" }, "<C-S>", "<Cmd>silent! update | redraw<CR><Esc>", { desc = "Save and go to Normal mode" })
 
--- Toggle prefix
+-- -- Toggle prefix
+-- local toggle_prefix = "<Leader>u"
+-- local map_toggle = function(lhs, rhs, desc)
+--   map("n", toggle_prefix .. lhs, rhs, { desc = desc })
+-- end -- Append 'toggle_prefix' to specified bindings
+
 local toggle_prefix = "<Leader>u"
+-- Toggle prefix
 local map_toggle = function(lhs, rhs, desc)
-  map("n", toggle_prefix .. lhs, rhs, { desc = desc })
-end -- Append 'toggle_prefix' to specified bindings
+  map("n", toggle_prefix .. lhs, function()
+    -- Extract everything after the first word
+    local toggled_desc = desc:gsub("^%S+%s+", "Toggled ")
+    local id = MiniNotify.add(toggled_desc, "INFO", "NotifyINFOTitle")
+    vim.defer_fn(function()
+      MiniNotify.remove(id)
+    end, 1000)
+    -- Check if rhs is a string or function
+    if type(rhs) == "string" then
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(rhs, true, false, true), 'n', false)
+    else
+      rhs() -- Execute the original function if rhs is a function
+    end
+  end, { desc = desc })
+end
 
 -- Toggle inlay hints
 function Toggle_inlay_hints()
-  local current_buffer = vim.fn.bufnr("%")                         -- get current buffer number
-  local is_enabled = vim.lsp.inlay_hint.is_enabled({current_buffer}) -- query the current state
+  local current_buffer = vim.fn.bufnr("%")                             -- get current buffer number
+  local is_enabled = vim.lsp.inlay_hint.is_enabled({ current_buffer }) -- query the current state
   vim.lsp.inlay_hint.enable(not is_enabled)
 
   local status_message = is_enabled and "Inlay hints disabled" or "Inlay hints enabled"
@@ -49,6 +68,16 @@ function Toggle_inlay_hints()
   vim.defer_fn(function()
     MiniNotify.remove(id)
   end, 1000)
+end
+
+local diagnostics_active = true
+function Toggle_diagnostics()
+  diagnostics_active = not diagnostics_active
+  if diagnostics_active then
+    vim.diagnostic.show()
+  else
+    vim.diagnostic.hide()
+  end
 end
 
 -- Silent toggles
@@ -63,6 +92,8 @@ map_toggle("r", "<Cmd>setlocal relativenumber!<CR>", "Toggle relativenumber")
 map_toggle("s", "<Cmd>setlocal spell!<CR>", "Toggle spell")
 map_toggle("w", "<Cmd>setlocal wrap!<CR>", "Toggle wrap")
 map_toggle("h", "<Cmd>lua Toggle_inlay_hints()<CR>", "Toggle inlay hints")
+map_toggle("d", "<Cmd>lua Toggle_diagnostics()<CR>", "Toggle diagnostics")
+map("n", "<Leader>gh", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", { desc = "[Mini.diff] Toggle hunks" })
 
 -- Window Mappings
 map("n", "<C-H>", "<C-w>h", { desc = "Focus on left window" })

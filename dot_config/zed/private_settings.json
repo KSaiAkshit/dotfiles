@@ -7,6 +7,13 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-3.5-turbo"
+    },
+    "version": "2"
+  },
   "tab_bar": {
     "show": true
   },

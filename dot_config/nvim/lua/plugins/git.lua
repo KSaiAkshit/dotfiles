@@ -2,6 +2,7 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     ft = { "gitcommit", "diff" },
+    enabled = false,
     keys = {
       { "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>",              desc = "[Gitsigns] preview hunk" },
       { "<leader>gt", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "[Gitsigns] Toggle line blame" },

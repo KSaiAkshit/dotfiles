@@ -1,0 +1,18 @@
+[user]
+name = "Akira"
+email = "ksaiashit@gmail.com"
+
+[ui]
+default-command = "log"
+diff.format = "git"
+diff.tool = ["difft", "--color=always", "--display=side-by-side-show-both", "$left", "$right"]
+diff-editor = ":builtin"
+
+[template-aliases]
+'format_short_signature(signature)' = 'signature.name()'
+
+[snapshot]
+max-new-file-size = "32MiB"
+
+[aliases]
+ss = ["show", "--summary"]
