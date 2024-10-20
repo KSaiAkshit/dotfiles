@@ -38,6 +38,13 @@ return {
     { "<leader>sR", "<cmd>Telescope resume<cr>",                                   desc = "Resume" },
     { "<leader>ss", "<cmd>Telescope lsp_document_symbols<cr>",                     desc = "Goto Symbol", },
     { "<leader>sS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",            desc = "Goto Symbol (Workspace)", },
+    {
+      "<leader>sw",
+      function()
+        require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+      end,
+      desc = "Grep string",
+    },
   },
   opts         = {
     defaults = {
