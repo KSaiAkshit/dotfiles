@@ -1,4 +1,5 @@
 require("akira.opts")
+require("akira.utils")
 require("akira.keybinds")
 require("akira.autocmds")
 require("akira.lazy")

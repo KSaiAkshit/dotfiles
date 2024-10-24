@@ -1,75 +1,30 @@
+local utils = require("akira.utils")
 return {
   "echasnovski/mini.nvim",
   config = function()
-    require("mini.ai").setup()
+    require("mini.ai").setup({
+      n_lines = 500,
+      custom_textobjects = {
+        f = require("mini.ai").gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
+        c = require("mini.ai").gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),       -- class
+        t = require("mini.ai").gen_spec.treesitter({ a = "@comment.outer", i = "@comment.inner" }),   -- loop
+        o = require("mini.ai").gen_spec.treesitter({
+          a = { "@block.outer", "@loop.outer", "@conditional.outer" },
+          i = { "@block.inner", "@loop.inner", "@conditional.inner" },
+        }),
+        B = require("mini.extra").gen_ai_spec.buffer(),
+        D = require("mini.extra").gen_ai_spec.diagnostic(),
+        I = require("mini.extra").gen_ai_spec.indent(),
+        l = require("mini.extra").gen_ai_spec.line(),
+        N = require("mini.extra").gen_ai_spec.number(),
+      }
+    })
     require("mini.align").setup()
-    -- require("mini.animate").setup()
 
-    -- vim.cmd("lua MiniAnimate.config.cursor.path = MiniAnimate.gen_path.angle()")
-
-    --FIXME: Doesn't work for now...
-    local colors = {
-      base00 = "#1F1F28",
-      base01 = "#2A2A37",
-      base02 = "#223249",
-      base03 = "#727169",
-      base04 = "#C8C093",
-      base05 = "#DCD7BA",
-      base06 = "#938AA9",
-      base07 = "#363646",
-      base08 = "#C34043",
-      base09 = "#FFA066",
-      base0A = "#DCA561",
-      base0B = "#98BB6C",
-      base0C = "#7FB4CA",
-      base0D = "#7E9CD8",
-      base0E = "#957FB8",
-      base0F = "#D27E99",
-
-    }
-
-    local oxocarbon = {
-      -- Oxocarbon
-      base00 = "#161616",
-      base01 = "#262626",
-      base02 = "#393939",
-      base03 = "#525252",
-      base04 = "#dde1e6",
-      base05 = "#f2f4f8",
-      base06 = "#ffffff",
-      base07 = "#08bdba",
-      base08 = "#3ddbd9",
-      base09 = "#78a9ff",
-      base0A = "#ee5396",
-      base0B = "#33b1ff",
-      base0C = "#ff7eb6",
-      base0D = "#42be65",
-      base0E = "#be95ff",
-      base0F = "#82cfff",
-    }
-    local kanagawa = {
-      -- Kanagawa
-      base00 = "#1F1F28",
-      base01 = "#2A2A37",
-      base02 = "#223249",
-      base03 = "#727169",
-      base04 = "#C8C093",
-      base05 = "#DCD7BA",
-      base06 = "#938AA9",
-      base07 = "#363646",
-      base08 = "#C34043",
-      base09 = "#FFA066",
-      base0A = "#DCA561",
-      base0B = "#98BB6C",
-      base0C = "#7FB4CA",
-      base0D = "#7E9CD8",
-      base0E = "#957FB8",
-      base0F = "#D27E99",
-    }
-    -- require("mini.base16").setup({
-    -- 	palette = oxocarbon
-    -- })
-    require("mini.bracketed").setup()
+    require("mini.bracketed").setup({
+      comment = { suffix = '' },
+      file = { suffix = '' }
+    })
     require("mini.bufremove").setup()
     local miniclue = require('mini.clue')
 
@@ -191,6 +146,7 @@ return {
     })
     require("mini.git").setup()
     require("mini.icons").setup()
+    MiniIcons.mock_nvim_web_devicons()
     require('mini.indentscope').setup({
       delay = 10,
       symbol = "│" -- Character is called BOX DRAWING LEFT VERTICAL
@@ -211,24 +167,13 @@ return {
         right = '<C-l>',
       }
     }
-    require("mini.notify").setup()
-    require("mini.pairs").setup()
-    require("mini.pick").setup({
-      window = {
-        config = function()
-          local height = math.floor(0.618 * vim.o.lines)
-          local width = math.floor(0.618 * vim.o.columns)
-          return {
-            anchor = "NW",
-            height = height,
-            width = width,
-            border = "rounded",
-            row = math.floor(0.5 * (vim.o.lines - height)),
-            col = math.floor(0.5 * (vim.o.columns - width)),
-          }
-        end
-      }
+    require("mini.notify").setup({
+      content = { sort = utils.filterout_lua_diagnosing },
+      window = { max_width_share = 0.75, config = { border = "single" } }
     })
+    vim.notify = MiniNotify.make_notify()
+    require("mini.pairs").setup()
+    require("mini.pick").setup()
     require("mini.sessions").setup {
       autoread = false,
       autowrite = true,
@@ -236,32 +181,40 @@ return {
     require("mini.splitjoin").setup()
     require("mini.starter").setup()
     require("mini.statusline").setup({
+      use_icons = true,
       content = {
-        active = function()
-          local MiniStatusline = require("mini.statusline")
-          local mode, mode_hl  = MiniStatusline.section_mode({ trunc_width = 75 })
-          local git            = MiniStatusline.section_git({ trunc_width = 75 })
-          local diagnostics    = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-          local lsp            = MiniStatusline.section_lsp({ trunc_width = 75 })
-          local filename       = MiniStatusline.section_filename({ trunc_width = 120 })
-          local fileinfo       = MiniStatusline.section_fileinfo({ trunc_width = 120 })
-          local location       = MiniStatusline.section_location({ trunc_width = 75 })
-          local search         = MiniStatusline.section_searchcount({ trunc_width = 75 })
-
+        inactive = function()
+          local pathname = utils.section_pathname({ trunc_width = 120 })
           return MiniStatusline.combine_groups({
-            { hl = mode_hl,                 strings = { mode } },
-            { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics, lsp } },
-            "%<", -- Mark general truncate point
-            { hl = "MiniStatuslineFilename", strings = { filename } },
-            "%=", -- End left alignment
-            { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-            { hl = mode_hl,                  strings = { search, location } },
+            { hl = "MiniStatuslineInactive", strings = { pathname } }
           })
         end,
-      },
-      use_icons = true,
+        active = function()
+          local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+          local git           = MiniStatusline.section_git({ trunc_width = 40 })
+          local diff          = MiniStatusline.section_diff({ trunc_width = 60 })
+          local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 60 })
+          local lsp           = MiniStatusline.section_lsp({ trunc_width = 40 })
+          local filetype      = utils.section_filetype({ trunc_width = 70 })
+          local location      = utils.section_location({ trunc_width = 120 })
+          local search        = utils.section_searchcount({ trunc_width = 80 })
+          local pathname      = utils.section_pathname({
+            trunc_width = 100,
+            filename_hl = "MiniStatuslineFilename",
+            modified_hl = "MiniStatuslineFilenameModified"
+          })
 
-      set_vim_settings = false,
+          return MiniStatusline.combine_groups({
+            { hl = mode_hl,                 strings = { mode:upper() } },
+            { hl = 'MiniStatuslineDevinfo', strings = { git, diff } },
+            '%<', -- Mark general truncate point
+            { hl = 'MiniStatuslineDirectory', strings = { pathname } },
+            '%=', -- End left alignment
+            { hl = 'MiniStatuslineFileinfo',  strings = { filetype, diagnostics, lsp } },
+            { hl = mode_hl,                   strings = { search .. location } },
+          })
+        end
+      }
     })
     require("mini.surround").setup()
     require("mini.tabline").setup()

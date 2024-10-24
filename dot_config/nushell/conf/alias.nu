@@ -9,6 +9,7 @@ alias home = tmux new -s Home
 alias hx = helix
 alias icat = kitten icat
 alias j = just
+alias l = exa -l --icons --group-directories-first
 alias la = exa -la --icons --group-directories-first
 alias ll = exa -l --icons --group-directories-first
 alias ln = ln -i
@@ -25,7 +26,6 @@ alias trash = trash -i
 alias v = nvim
 alias wget = wget -c
 alias zj = zellij
-# alias zja = "zellij a -c $(basename $(pwd))"
 
 def viml () {
   $env.NVIM_APPNAME = 'LazyVim'
@@ -34,5 +34,10 @@ def viml () {
 
 def nvc () {
   $env.NVIM_APPNAME = 'NvChad'
+  nvim
+}
+
+def mini () {
+  $env.NVIM_APPNAME = 'mini'
   nvim
 }

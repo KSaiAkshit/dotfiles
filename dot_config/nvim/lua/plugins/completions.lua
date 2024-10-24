@@ -14,8 +14,8 @@ local M = {
       "rafamadriz/friendly-snippets",
     },
     opts = {
-    	history = true,
-    	delete_check_events = "TextChanged",
+      history = true,
+      delete_check_events = "TextChanged",
     },
     keys = {
       {
@@ -30,9 +30,9 @@ local M = {
       { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
       { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
-    config = function (_, opts)
-     require("luasnip").filetype_extend("norg", {"latex"})
-     require("luasnip").setup(opts)
+    config = function(_, opts)
+      require("luasnip").filetype_extend("norg", { "latex" })
+      require("luasnip").setup(opts)
     end
   },
   {
