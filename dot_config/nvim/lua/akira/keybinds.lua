@@ -70,9 +70,12 @@ function Toggle_inlay_hints()
   end, 1000)
 end
 
-local diagnostics_active = true
 function Toggle_diagnostics()
+  local diagnostics_active = vim.b.diagnostics_active or true
+
   diagnostics_active = not diagnostics_active
+  vim.b.diagnostics_active = diagnostics_active
+
   if diagnostics_active then
     vim.diagnostic.show()
   else

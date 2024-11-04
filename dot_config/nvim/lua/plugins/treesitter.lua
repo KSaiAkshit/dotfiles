@@ -18,6 +18,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "BufReadPre",
     config = function()
       if utils.is_loaded("nvim-treesitter") then
         local opts = utils.opts("nvim-treesitter")

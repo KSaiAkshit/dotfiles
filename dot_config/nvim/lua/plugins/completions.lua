@@ -2,7 +2,56 @@ local M = {
   {
     "hrsh7th/cmp-nvim-lsp",
     lazy = true,
-    event = "InsertEnter"
+    event = "InsertEnter",
+    -- enabled = false
+  },
+  {
+    'saghen/blink.cmp',
+    enabled = false,
+    lazy = true,
+    dependencies = 'rafamadriz/friendly-snippets',
+    version = 'v0.*',
+    event = "InsertEnter",
+    opts = {
+      highlight = {
+        use_nvim_cmp_as_default = true,
+      },
+      nerd_font_variant = 'normal',
+
+      accept = { auto_brackets = { enabled = true } },
+
+      keymap = {
+        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-e>'] = { 'hide', 'fallback' },
+        ['<CR>'] = { 'accept', 'fallback' },
+
+        ['<C-p>'] = { 'select_prev', 'fallback' },
+        ['<C-n>'] = { 'select_next', 'fallback' },
+
+        ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+
+        ['<Tab>'] = { 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+      },
+
+      trigger = { signature_help = { enabled = true } },
+      windows = {
+        autocomplete = {
+          border = "rounded",
+          selection = "manual"
+        },
+        documentation = {
+          border = "rounded",
+        },
+        signature_help = {
+          border = "rounded",
+        },
+        ghost_text = {
+          enabled = true,
+        }
+      }
+    }
   },
   {
     "L3MON4D3/LuaSnip",
@@ -38,6 +87,7 @@ local M = {
   {
     "hrsh7th/nvim-cmp",
     version = false,
+    -- enabled = false,
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
