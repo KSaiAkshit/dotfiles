@@ -107,6 +107,21 @@ M.section_searchcount = function(args)
   return ("%s%s/%s│"):format(icon, current, total)
 end
 
+M.section_buffers = function (args)
+  local buffers = vim.fn.execute("ls")
+  local count = 0
+  for line in string.gmatch(buffers, "[^\r\n]+") do
+    if string.match(line, "^%s*%d+") then
+      count = count + 1
+    end
+  end
+  if string.len(buffers) == 0 then
+    return ""
+  end
+  local icon = MiniStatusline.is_truncated(args.trunc_width) and "" or " "
+  return ("%s(%s)│"):format(icon, count)
+end
+
 M.section_pathname = function(args)
   args = vim.tbl_extend("force", {
     modified_hl = nil,

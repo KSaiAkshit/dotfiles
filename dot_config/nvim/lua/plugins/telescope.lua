@@ -22,7 +22,7 @@ return {
     -- search
     { '<leader>s"', "<cmd>Telescope registers<cr>",                                desc = "Registers" },
     { "<leader>sa", "<cmd>Telescope autocommands<cr>",                             desc = "Auto Commands" },
-    { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>",                desc = "Buffer" },
+    { "<leader>sB", "<cmd>Telescope current_buffer_fuzzy_find<cr>",                desc = "Buffer" },
     { "<leader>sc", "<cmd>Telescope command_history<cr>",                          desc = "Command History" },
     { "<leader>sC", "<cmd>Telescope commands<cr>",                                 desc = "Commands" },
     { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>",                      desc = "Document diagnostics" },
@@ -37,6 +37,16 @@ return {
     { "<leader>sR", "<cmd>Telescope resume<cr>",                                   desc = "Resume" },
     { "<leader>ss", "<cmd>Telescope lsp_document_symbols<cr>",                     desc = "Goto Symbol", },
     { "<leader>sS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",            desc = "Goto Symbol (Workspace)", },
+    { "<leader>sb", function()
+      require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
+        sort_mru = true,
+        sort_lastused = true,
+        initial_mode = "normal",
+        layout_config = {
+          preview_width = 0.6
+        }
+      }))
+    end, { desc = "Telescope Buffers" } },
     {
       "<leader>sw",
       function()
@@ -91,7 +101,11 @@ return {
       -- Developer configurations: Not meant for general override
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
       mappings = {
-        n = { ["q"] = require("telescope.actions").close },
+        n = {
+          ["q"] = require("telescope.actions").close,
+          ["d"] = require("telescope.actions").delete_buffer,
+
+        },
       },
     },
 

@@ -18,7 +18,9 @@
       "ctrl-w ctrl-c": "pane::CloseActiveItem",
       ";": "command_palette::Toggle",
       "space d": "diagnostics::Deploy",
-      "ctrl-j": "workspace::ToggleBottomDock"
+      "ctrl-j": "workspace::ToggleBottomDock",
+      "H": "pane::ActivatePrevItem",
+      "L": "pane::ActivateNextItem"
     }
   },
   {

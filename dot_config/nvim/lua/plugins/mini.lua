@@ -198,6 +198,7 @@ return {
           local filetype      = utils.section_filetype({ trunc_width = 70 })
           local location      = utils.section_location({ trunc_width = 120 })
           local search        = utils.section_searchcount({ trunc_width = 80 })
+          local buffers       = utils.section_buffers({ trunc_width = 80 })
           local pathname      = utils.section_pathname({
             trunc_width = 100,
             filename_hl = "MiniStatuslineFilename",
@@ -211,13 +212,13 @@ return {
             { hl = 'MiniStatuslineDirectory', strings = { pathname } },
             '%=', -- End left alignment
             { hl = 'MiniStatuslineFileinfo',  strings = { filetype, diagnostics, lsp } },
-            { hl = mode_hl,                   strings = { search .. location } },
+            { hl = mode_hl,                   strings = { search .. buffers .. location } },
           })
         end
       }
     })
     require("mini.surround").setup()
-    require("mini.tabline").setup()
+    -- require("mini.tabline").setup()
     require("mini.trailspace").setup()
     require("mini.visits").setup()
   end
