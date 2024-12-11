@@ -6,7 +6,7 @@ config.colors = colors
 config.enable_tab_bar = false
 config.font_size = 10.0
 config.enable_wayland = false
-
+config.max_fps = 120
 
 -- config.font = wezterm.font("JetBrainsMono NF")
 -- config.font = wezterm.font("MonaspiceNe Nerd Font")

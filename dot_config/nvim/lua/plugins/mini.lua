@@ -126,7 +126,7 @@ return {
     require("mini.doc").setup()
     require("mini.diff").setup({
       view = {
-        style = "sign"
+        style = "sign",
       }
     })
     require("mini.extra").setup()
@@ -172,7 +172,12 @@ return {
       window = { max_width_share = 0.75, config = { border = "single" } }
     })
     vim.notify = MiniNotify.make_notify()
-    require("mini.pairs").setup()
+    require("mini.pairs").setup({
+      mappings = {
+        ['<'] = { action = 'open', pair = '<>', neigh_pattern = '[^\\].', register = { cr = false }, },
+        ['>'] = { action = 'close', pair = '<>', register = { cr = false } }
+      }
+    })
     require("mini.pick").setup()
     require("mini.sessions").setup {
       autoread = false,
@@ -218,7 +223,7 @@ return {
       }
     })
     require("mini.surround").setup()
-    -- require("mini.tabline").setup()
+    require("mini.tabline").setup()
     require("mini.trailspace").setup()
     require("mini.visits").setup()
   end

@@ -57,6 +57,11 @@ o.formatoptions  = 'qjl1'                      -- Don't autoformat comments
 o.updatetime     = 100                         -- Decrease update time
 o.timeoutlen     = 300                         -- Decrease wait time for key seq
 
+-- Folds
+o.foldmethod = 'expr'
+o.foldexpr = 'nvim_treesitter#foldexpr()'
+o.foldlevelstart = 99
+
 
 if vim.fn.has('nvim-0.9') == 1 then
 	opt.shortmess:append('WcC') -- Reduce command line messages

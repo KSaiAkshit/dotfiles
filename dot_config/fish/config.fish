@@ -10,7 +10,6 @@ alias arduino arduino-cli
 alias ari aria2c
 alias bgg 'swww img'
 alias bt bartib
-alias c clear
 alias cat bat
 alias chmox 'chmod +x'
 alias cls clear
@@ -42,6 +41,12 @@ alias wget 'wget -c'
 alias zs zellij-smart-sessionizer
 alias zj zellij
 alias zja 'zellij a -c $(basename $("pwd"))'
+
+if test $ZELLIJ -eq 0
+    alias c 'zellij action clear'
+else
+    alias c clear
+end
 
 # Abbreviations
 

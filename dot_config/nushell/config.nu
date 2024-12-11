@@ -78,6 +78,7 @@ $env.config = {
     
 }
 
+$env.DIRENV_LOG_FORMAT = ""
 source ~/.config/nushell/conf/yy.nu
 source ~/.config/nushell/conf/alias.nu
 source ~/.config/nushell/conf/atuin.nu

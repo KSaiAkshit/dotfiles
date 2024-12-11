@@ -7,8 +7,8 @@ map({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
 -- Add empty lines before and after cursor line supporting dot-repeat
-map("n", "] ", "<Cmd>call append(line('.'),   repeat([''], v:count1))<CR>", { desc = "New line above" })
 map("n", "[ ", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "New line below" })
+map("n", "] ", "<Cmd>call append(line('.'),   repeat([''], v:count1))<CR>", { desc = "New line above" })
 
 -- Copy/paste with system clipboard
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })

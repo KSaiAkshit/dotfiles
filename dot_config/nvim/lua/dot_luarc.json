@@ -3,6 +3,7 @@
         "vim",
         "MiniNotify",
         "MiniStatusline",
-        "MiniIcons"
+        "MiniIcons",
+        "Snacks"
     ]
 }

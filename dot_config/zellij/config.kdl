@@ -180,7 +180,7 @@ keybinds {
             };
             SwitchToMode "Locked"
         }
-        bind "y" {
+        bind "u" {
             LaunchOrFocusPlugin "filepicker" {
                 floating true
                 move_to_focused_tab true
@@ -236,7 +236,29 @@ plugins {
     filepicker location="zellij:strider" {
         cwd "/home/akira/"
     }
+    configuration location="zellij:configuration"
+    plugin-manager location="zellij:plugin-manager"
 }
+
+load_plugins {
+    //
+}
+
+// Toggle between having Zellij lay out panes according to a predefined set of layouts whenever possible
+// Options:
+//   - true (default)
+//   - false
+//
+auto_layout true
+
+
+// Whether sessions should be serialized to the cache folder (including their tabs/panes, cwds and running commands) so that they can later be resurrected
+// (Requires restart)
+// Options:
+//   - true (default)
+//   - false
+//
+// session_serialization false
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
 // eg. when terminal window with an active zellij session is closed
@@ -290,6 +312,7 @@ default_mode "locked"
 // Toggle enabling the mouse mode.
 // On certain configurations, or terminals this could
 // potentially interfere with copying text.
+// (Requires restart)
 // Options:
 //   - true (default)
 //   - false
@@ -359,3 +382,9 @@ styled_underlines true
 // Default: false
 //
 // disable_session_metadata true
+
+// Enable or disable support for the enhanced Kitty Keyboard Protocol (the host terminal must also support it)
+// (Requires restart)
+// Default: true (if the host terminal supports it)
+//
+support_kitty_keyboard_protocol true

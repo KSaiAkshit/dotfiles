@@ -1,9 +1,8 @@
 local M = {
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^4",
-		ft = { "rust" },
-	}
+  {
+    "mrcjkb/rustaceanvim",
+    ft = { "rust" },
+  }
 }
 
 return M

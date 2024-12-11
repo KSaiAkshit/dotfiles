@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local M = {
   {
     "kevinhwang91/nvim-bqf",
@@ -18,7 +19,7 @@ local M = {
           if require("trouble").is_open() then
             require("trouble").previous({ skip_groups = true, jump = true })
           else
-            local ok, err = pcall(vim.cmd.cprev)
+            local ok, err = pcall(MiniBracketed.quickfix, "backward")
             if not ok then
               vim.notify(err, vim.log.levels.ERROR)
             end
@@ -32,7 +33,7 @@ local M = {
           if require("trouble").is_open() then
             require("trouble").next({ skip_groups = true, jump = true })
           else
-            local ok, err = pcall(vim.cmd.cnext)
+            local ok, err = pcall(MiniBracketed.quickfix, "forward")
             if not ok then
               vim.notify(err, vim.log.levels.ERROR)
             end

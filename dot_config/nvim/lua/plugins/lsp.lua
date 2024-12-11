@@ -1,4 +1,4 @@
-return {
+local M = {
   {
     "neovim/nvim-lspconfig",
     event = { 'BufReadPre', 'BufNewFile' },
@@ -30,12 +30,24 @@ return {
         ensure_installed = { "lua_ls", "pyright", "clangd" },
         automatic_installation = { exclude = "rust_analyzer" }
       })
-
+      local handlers = {
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+          silent = true,
+          border = "rounded",
+        }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+      }
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       require("mason-lspconfig").setup_handlers {
         function(server_name)
-          require("lspconfig")[server_name].setup {}
+          require("lspconfig")[server_name].setup {
+            handlers = handlers
+          }
         end,
       }
     end
   }
 }
+
+
+return M

@@ -1,5 +1,3 @@
-use-grammars = { except = [ "gemini" ] }
-
 [[language]]
 name = "python"
 language-servers = ["pyright", "ruff"]
