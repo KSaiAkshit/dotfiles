@@ -1,14 +1,56 @@
+---@diagnostic disable: undefined-doc-name
 local M = {}
 
-function M.filterout_lua_diagnosing(notif_arr)
-  local not_diagnosing = function (notif)
+
+M.on_very_lazy = function(fn)
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+      fn()
+    end,
+  })
+end
+
+M.pick = function(action, opts)
+  opts = opts or {}
+  return function()
+    local cwd = opts.cwd or (opts.root and require("lazyvim.util").get_root()) or vim.fn.getcwd()
+    require("fzf-lua")[action](vim.tbl_extend("force", opts, { cwd = cwd }))
+  end
+end
+
+
+M.get_clients = function(opts)
+  local ret = {} ---@type vim.lsp.Client[]
+  if vim.lsp.get_clients then
+    ret = vim.lsp.get_clients(opts)
+  else
+    ---@diagnostic disable-next-line: deprecated
+    ret = vim.lsp.get_active_clients(opts)
+    if opts and opts.method then
+      ---@param client vim.lsp.Client
+      ret = vim.tbl_filter(function(client)
+        return client.supports_method(opts.method, { bufnr = opts.bufnr })
+      end, ret)
+    end
+  end
+  return opts and opts.filter and vim.tbl_filter(opts.filter, ret) or ret
+end
+
+
+function M.has(plugin)
+  return M.get_plugin(plugin) ~= nil
+end
+
+M.filterout_lua_diagnosing = function(notif_arr)
+  local not_diagnosing = function(notif)
     return not vim.startswith(notif.msg, "lua_ls: Diagnosing")
   end
   notif_arr = vim.tbl_filter(not_diagnosing, notif_arr)
   return MiniNotify.default_sort(notif_arr)
 end
 
-function M.is_loaded(name)
+M.is_loaded = function(name)
   local Config = require("lazy.core.config")
   return Config.plugins[name] and Config.plugins[name]._.loaded
 end
@@ -19,7 +61,7 @@ function M.get_plugin(name)
 end
 
 ---@param name string
-function M.opts(name)
+M.opts = function(name)
   local plugin = M.get_plugin(name)
   if not plugin then
     return {}
@@ -107,7 +149,7 @@ M.section_searchcount = function(args)
   return ("%s%s/%s│"):format(icon, current, total)
 end
 
-M.section_buffers = function (args)
+M.section_buffers = function(args)
   local buffers = vim.fn.execute("ls")
   local count = 0
   for line in string.gmatch(buffers, "[^\r\n]+") do

@@ -77,7 +77,7 @@ end
 -- Extra UI options
 o.pumblend  = 10 -- Make builtin completion menus slightly transparent
 o.pumheight = 10 -- Make popup menu smaller
-o.winblend  = 10 -- Make floating windows slightly transparent
+o.winblend  = 0 -- Make floating windows slightly transparent
 
 -- NOTE: Having `tab` present is needed because `^I` will be shown if
 -- omitted (documented in `:h listchars`).

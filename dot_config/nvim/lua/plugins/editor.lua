@@ -72,7 +72,7 @@ local M = {
   },
   {
     "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
+    cmd = { "TodoTrouble" },
     event = "BufReadPre",
     config = true,
     keys = {
@@ -80,7 +80,6 @@ local M = {
       { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
       { "<leader>xt", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
       { "<leader>xx", "<cmd>TodoQuickFix<cr>",                             desc = "Todo (QuickFix)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
     },
   },
   {

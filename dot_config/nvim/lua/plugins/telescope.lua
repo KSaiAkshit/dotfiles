@@ -1,5 +1,7 @@
-return {
+if true then return {} end
+local M = {
   "nvim-telescope/telescope.nvim",
+  enabled      = false,
   cmd          = "Telescope",
   dependencies = { 'nvim-lua/plenary.nvim' },
   lazy         = true,
@@ -112,3 +114,4 @@ return {
     extensions_list = { "themes", "terms" },
   }
 }
+
