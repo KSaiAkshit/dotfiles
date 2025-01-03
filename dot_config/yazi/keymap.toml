@@ -1,0 +1,15 @@
+[[manager.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+[[manager.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch --args=zip"
+desc = "Compress with ouch"
+
+[opener]
+extract = [
+	{ run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
+	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+]

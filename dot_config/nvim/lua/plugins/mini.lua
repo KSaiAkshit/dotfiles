@@ -173,6 +173,28 @@ return {
       window = { max_width_share = 0.75, config = { border = "single" } }
     })
     vim.notify = MiniNotify.make_notify()
+    require("mini.operators").setup({
+    -- Evaluate text and replace with output
+    evaluate = {
+      prefix = '',
+    },
+    -- Exchange text regions
+    exchange = {
+      prefix = '',
+    },
+    -- Multiply (duplicate) text
+    multiply = {
+      prefix = 'gm',
+    },
+    -- Replace text with register
+    replace = {
+      prefix = '',
+    },
+    -- Sort text
+    sort = {
+      prefix = '',
+    }
+  })
     require("mini.pairs").setup({
       mappings = {
         ['<'] = { action = 'open', pair = '<>', neigh_pattern = '[^\\].', register = { cr = false }, },
