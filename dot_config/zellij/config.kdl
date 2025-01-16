@@ -292,7 +292,7 @@ pane_frames false
 //   - true (default)
 //   - false
 //
-// auto_layout true
+auto_layout true
 
 // Choose the theme that is specified in the themes section.
 // Default: default
@@ -354,7 +354,7 @@ copy_on_select true
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
 //
-scrollback_editor "/usr/bin/helix"
+scrollback_editor "/usr/bin/hx"
 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
