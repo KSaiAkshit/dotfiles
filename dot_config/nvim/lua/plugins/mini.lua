@@ -176,7 +176,7 @@ return {
     require("mini.operators").setup({
     -- Evaluate text and replace with output
     evaluate = {
-      prefix = '',
+      prefix = 'g=',
     },
     -- Exchange text regions
     exchange = {

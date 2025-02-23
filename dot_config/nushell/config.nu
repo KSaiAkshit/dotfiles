@@ -1,4 +1,4 @@
-source ~/.config/nushell/default_config.nu
+# source ~/.config/nushell/default_config.nu
 
 let carapace_completer = {|spans| 
   carapace $spans.0 nushell $spans | from json
@@ -26,7 +26,7 @@ $env.config = {
         vi_normal: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
-    color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
+    # color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
     edit_mode: vi # emacs, vi
     # shell_integration: true # enables terminal shell integration. Off by default, as some terminals have issues with this.
     highlight_resolved_externals: true

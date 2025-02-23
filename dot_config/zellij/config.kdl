@@ -148,7 +148,7 @@ keybinds {
         }
     }
     tmux {
-        bind "[" { SwitchToMode "Scroll"; }
+        bind "a" { ToggleTab; }
         bind "g" { SwitchToMode "Locked"; }
         bind "s" { SwitchToMode "Scroll"; }
         bind "m" { SwitchToMode "Move"; }
@@ -164,6 +164,8 @@ keybinds {
         bind "f" { ToggleFloatingPanes; SwitchToMode "Locked"; }
         bind "t" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
         bind "b" { BreakPane; SwitchToMode "Locked"; }
+        bind "]" { BreakPaneRight; SwitchToMode "Locked"; }
+        bind "[" { BreakPaneLeft; SwitchToMode "Locked"; }
         bind "e" { EditScrollback; SwitchToMode "Locked"; }
         bind "h" { MoveFocus "Left"; SwitchToMode "Locked"; }
         bind "l" { MoveFocus "Right"; SwitchToMode "Locked"; }

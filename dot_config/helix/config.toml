@@ -12,6 +12,10 @@ cursorline = true
 idle-timeout = 1
 popup-border = "all"
 true-color = true
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
 
 [editor.auto-pairs]
 '(' = ')'

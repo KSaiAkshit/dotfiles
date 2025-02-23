@@ -9,6 +9,10 @@
     }
   },
   {
+    "context": "vim_mode == visual",
+    "bindings": { "shift-s": ["vim::PushAddSurrounds", {}] }
+  },
+  {
     "context": "VimControl && !menu",
     "bindings": {
       "g a": "editor::ToggleCodeActions",
@@ -20,7 +24,8 @@
       "space d": "diagnostics::Deploy",
       "ctrl-j": "workspace::ToggleBottomDock",
       "H": "pane::ActivatePrevItem",
-      "L": "pane::ActivateNextItem"
+      "L": "pane::ActivateNextItem",
+      "ctrl-b": "workspace::ToggleLeftDock"
     }
   },
   {

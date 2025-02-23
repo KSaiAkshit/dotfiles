@@ -71,7 +71,7 @@ $env.XDG_CONFIG_HOME = "/home/akira/.config"
 $env.XDG_DATA_HOME = "/home/akira/.local/share"
 $env.XDG_CACHE_HOME = "/home/akira/.cache"
 $env.XDG_STATE_HOME = "/home/akira/.local/state"
-$env.EDITOR = "/usr/bin/helix"
+$env.EDITOR = "/usr/bin/hx"
 
 $env.CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo" )
 $env.RUSTUP_HOME = ($env.XDG_DATA_HOME | path join "rustup" )
