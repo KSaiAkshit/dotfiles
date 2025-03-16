@@ -12,8 +12,8 @@
   },
   "assistant": {
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "provider": "ollama",
+      "model": "deepseek-r1:latest"
     },
     "version": "2"
   },

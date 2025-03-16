@@ -16,3 +16,4 @@ max-new-file-size = "32MiB"
 
 [aliases]
 ss = ["show", "--summary"]
+l = ["log", "-r", "all()"]

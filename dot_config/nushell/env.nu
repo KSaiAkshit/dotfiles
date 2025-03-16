@@ -79,6 +79,7 @@ $env.GOPATH = ($env.XDG_DATA_HOME | path join "go" )
 $env.BUN_INSTALL = ($env.XDG_DATA_HOME | path join "bun" )
 $env.PLATFORMIO_CORE_DIR = ($env.XDG_DATA_HOME | path join "platformio" )
 $env.FZF_DEFAULT_OPTS = "--height 40% --layout=reverse --border"
+$env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
