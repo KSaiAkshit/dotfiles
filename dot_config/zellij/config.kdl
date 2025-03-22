@@ -11,6 +11,8 @@ keybinds {
         bind "Alt k" "Alt Up" { MoveFocus "Up"; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
+        bind "Alt i" { MoveTab "Left"; }
+        bind "Alt o" { MoveTab "Right"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt c" { NewTab; }
@@ -166,6 +168,7 @@ keybinds {
         bind "b" { BreakPane; SwitchToMode "Locked"; }
         bind "]" { BreakPaneRight; SwitchToMode "Locked"; }
         bind "[" { BreakPaneLeft; SwitchToMode "Locked"; }
+        bind "i" { TogglePanePinned; SwitchToMode "Locked"; }
         bind "e" { EditScrollback; SwitchToMode "Locked"; }
         bind "h" { MoveFocus "Left"; SwitchToMode "Locked"; }
         bind "l" { MoveFocus "Right"; SwitchToMode "Locked"; }
@@ -228,7 +231,7 @@ ui {
 
 plugins {
     tab-bar location="zellij:tab-bar"
-    status-bar location="zellij:status-bar"
+   status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     compact-bar location="zellij:compact-bar"
     session-manager location="zellij:session-manager"
@@ -240,6 +243,7 @@ plugins {
     }
     configuration location="zellij:configuration"
     plugin-manager location="zellij:plugin-manager"
+    about location="zellij:about"
 }
 
 load_plugins {
@@ -390,3 +394,19 @@ styled_underlines true
 // Default: true (if the host terminal supports it)
 //
 support_kitty_keyboard_protocol true
+
+
+// Whether to stack panes when resizing beyond a certain size
+// Default: true
+//
+// stacked_resize false
+
+// Whether to show release notes on first version run
+// Default: true
+//
+// show_release_notes false
+
+// Whether to show startup tips on session start
+// Default: true
+//
+show_startup_tips false
