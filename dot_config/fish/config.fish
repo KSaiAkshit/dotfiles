@@ -18,8 +18,8 @@ alias docs 'web-search docs'
 alias gog 'web-search google'
 alias gp tgpt
 alias home 'tmux new -s Home'
-alias hx helix
 alias icat 'kitten icat'
+alias l 'eza -l --icons --group-directories-first'
 alias la 'eza -la --icons --group-directories-first'
 alias ll 'eza -l --icons --group-directories-first'
 alias ln 'ln -i'

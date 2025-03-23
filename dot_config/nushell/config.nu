@@ -4,6 +4,18 @@ let carapace_completer = {|spans|
   carapace $spans.0 nushell $spans | from json
 }
 
+def paste [file] {
+    mut f = "";
+    if $file == "" {
+        $f = "/dev/stdin"
+    } else {
+        $f = $file
+    }
+    let paste_url = open $f | curl --data-binary @- https://paste.rs
+        $paste_url | wl-copy
+        $paste_url
+}
+
 $env.config = {
     show_banner: false # true or false to enable or disable the welcome banner at startup
 

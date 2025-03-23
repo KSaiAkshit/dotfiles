@@ -12,8 +12,8 @@
   },
   "assistant": {
     "default_model": {
-      "provider": "ollama",
-      "model": "deepseek-r1:latest"
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
     },
     "version": "2"
   },
@@ -27,7 +27,7 @@
   "theme": {
     "mode": "dark",
     "light": "Ayu Dark",
-    "dark": "Ayu Dark"
+    "dark": "Carbonfox"
   },
   "project_panel": {
     "dock": "right"
