@@ -1,5 +1,3 @@
-use-grammars = { except = [ "gemini" ] }
-
 [[language]]
 name = "python"
 language-servers = ["pyright", "ruff"]
@@ -35,28 +33,17 @@ indent = { tab-width = 4, unit = "    " }
 '<' = '>'
 '|' = '|'
 
-[language-server.rust-analyzer.config.check]
-command = "clippy"
-
-[language.debugger]
-command = "codelldb"
-name = "codelldb"
-port-arg = "--port {}"
-transport = "tcp"
-
-[[language.debugger.templates]]
-name = "binary"
-request = "launch"
-[[language.debugger.templates.completion]]
-completion = "filename"
-name = "binary"
-
-[language.debugger.templates.args]
-program = "{0}"
-runInTerminal = true
+[language-server.rust-analyzer.config]
+# cargo.features = "all"
+check.command = "clippy"
 
 [[language]]
 name = "cpp"
+
+[language-server.clangd]
+command = "clangd-18"
+config = { "clangd.fallbackFlags" = [ "-std=c++17" ]}
+
 [language.auto-pairs]
 '(' = ')'
 '{' = '}'
@@ -68,3 +55,12 @@ name = "cpp"
 [[language]]
 name = "nix"
 formatter = { command = "nixpkgs-fmt" }
+
+[[language]]
+name = "typst"
+auto-format = true
+formatter.command = "typstyle"
+language-servers = ["tinymist"]
+
+[language-server.tinymist]
+command = "tinymist"

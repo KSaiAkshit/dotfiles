@@ -1,0 +1,9 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "MiniNotify",
+        "MiniStatusline",
+        "Snacks",
+        "MiniBracketed"
+    ]
+}

@@ -1,0 +1,2 @@
+-- Require profiles
+require("akira")

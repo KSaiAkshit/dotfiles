@@ -48,6 +48,10 @@ tabpad = "·" # Tabs will look like "→···" (depending on tab width)
 [editor.file-picker]
 hidden = false
 
+[editor.terminal]
+command = "xterm"
+args = ["-sl","1000000","-bg" ,"black","-fg"," white","-fa","'Monospace'","-fs","12"]
+
 [keys.normal]
 H = "goto_previous_buffer"
 L = "goto_next_buffer"
@@ -61,6 +65,10 @@ C-y = "scroll_up"
 C-s = ":w"
 C-j = "save_selection"
 C-e ="scroll_down"
+X = "select_line_above"
+
+[keys.select]
+X = "select_line_above"
 
 
 [keys.normal.space]
@@ -69,6 +77,7 @@ F = "file_picker"
 x = ":bc"
 l = ":toggle lsp.display-inlay-hints"
 c = ":format"
+z = ":bc!"
 
 [keys.insert]
 j = { j = "normal_mode" } # Maps `jj` to exit insert mode
