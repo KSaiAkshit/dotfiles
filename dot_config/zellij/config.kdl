@@ -404,7 +404,7 @@ support_kitty_keyboard_protocol true
 // Whether to show release notes on first version run
 // Default: true
 //
-// show_release_notes false
+show_release_notes false
 
 // Whether to show startup tips on session start
 // Default: true

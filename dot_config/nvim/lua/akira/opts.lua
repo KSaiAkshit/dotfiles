@@ -18,19 +18,19 @@ o.mouse       = 'a'                  -- Enable mouse for all available modes
 vim.cmd('filetype plugin indent on') -- Enable all filetype plugins
 
 -- Appearance
-o.breakindent      = true  -- Indent wrapped lines to match line start
-o.cursorline       = true  -- Highlight current line
-o.linebreak        = true  -- Wrap long lines at 'breakat' (if 'wrap' is set)
-o.number           = true  -- Show line numbers
-o.relativenumber   = true  -- Show line numbers
-o.splitbelow       = true  -- Horizontal splits will be below
-o.splitright       = true  -- Vertical splits will be to the right
+o.breakindent      = true    -- Indent wrapped lines to match line start
+o.cursorline       = true    -- Highlight current line
+o.linebreak        = true    -- Wrap long lines at 'breakat' (if 'wrap' is set)
+o.number           = true    -- Show line numbers
+o.relativenumber   = true    -- Show line numbers
+o.splitbelow       = true    -- Horizontal splits will be below
+o.splitright       = true    -- Vertical splits will be to the right
 
-o.ruler            = false -- Don't show cursor position in command line
-o.showmode         = false -- Don't show mode in command line
-o.wrap             = false -- Display long lines as just one line
+o.ruler            = false   -- Don't show cursor position in command line
+o.showmode         = false   -- Don't show mode in command line
+o.wrap             = false   -- Display long lines as just one line
 
-o.signcolumn       = 'yes' -- Always show sign column (otherwise it will shift text)
+o.signcolumn       = 'yes'   -- Always show sign column (otherwise it will shift text)
 o.fillchars        = 'eob: ' -- Don't show `~` outside of buffer
 
 o.scrolloff        = 15
@@ -42,20 +42,21 @@ o.expandtab        = true
 o.relativenumber   = true
 o.number           = true
 o.cmdheight        = 1
+o.winborder        = "rounded"
 
 -- Editing
-o.ignorecase       = true                      -- Ignore case when searching (use `\C` to force not doing that)
-o.incsearch        = true                      -- Show search results while typing
-o.infercase        = true                      -- Infer letter cases for a richer built-in keyword completion
-o.smartcase        = true                      -- Don't ignore case when searching if pattern has upper case
-o.smartindent      = true                      -- Make indenting smart
-o.inccommand       = 'split'                   -- Preview substitutions live, as you type!
+o.ignorecase       = true                        -- Ignore case when searching (use `\C` to force not doing that)
+o.incsearch        = true                        -- Show search results while typing
+o.infercase        = true                        -- Infer letter cases for a richer built-in keyword completion
+o.smartcase        = true                        -- Don't ignore case when searching if pattern has upper case
+o.smartindent      = true                        -- Make indenting smart
+o.inccommand       = 'split'                     -- Preview substitutions live, as you type!
 
 o.completeopt      = 'menuone,noinsert,noselect' -- Customize completions
-o.virtualedit      = 'block'                   -- Allow going past the end of line in visual block mode
-o.formatoptions    = 'qjl1'                    -- Don't autoformat comments
-o.updatetime       = 100                       -- Decrease update time
-o.timeoutlen       = 300                       -- Decrease wait time for key seq
+o.virtualedit      = 'block'                     -- Allow going past the end of line in visual block mode
+o.formatoptions    = 'qjl1'                      -- Don't autoformat comments
+o.updatetime       = 100                         -- Decrease update time
+o.timeoutlen       = 300                         -- Decrease wait time for key seq
 
 -- Folds
 o.foldmethod       = 'expr'

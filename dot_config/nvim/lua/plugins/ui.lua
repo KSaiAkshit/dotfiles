@@ -14,6 +14,7 @@ return {
           TreesitterContextLineNumber = { bg = "NONE" }
         }
       })
+      local palette = require("rose-pine.palette")
       vim.cmd([[colorscheme rose-pine]])
     end,
   },

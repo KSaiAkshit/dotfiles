@@ -4,7 +4,8 @@
   {
     "context": "EmptyPane || SharedScreen",
     "bindings": {
-      "space f": "file_finder::Toggle",
+      "space f f": "file_finder::Toggle",
+      "space f p": "projects::OpenRecent",
       ";": "command_palette::Toggle"
     }
   },
@@ -13,19 +14,83 @@
     "bindings": { "shift-s": ["vim::PushAddSurrounds", {}] }
   },
   {
-    "context": "VimControl && !menu",
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
       "g a": "editor::ToggleCodeActions",
       "g r": "editor::FindAllReferences",
+      "g f": "editor::OpenExcerpts",
+      "g h": "git::ToggleStaged",
+      "g H": "git::Restore",
       "g shift-a": "editor::SelectAllMatches",
       "ctrl-w c": "pane::CloseActiveItem",
       "ctrl-w ctrl-c": "pane::CloseActiveItem",
       ";": "command_palette::Toggle",
-      "space d": "diagnostics::Deploy",
+      "space f f": "file_finder::Toggle",
+      "space f p": "projects::OpenRecent",
+      "space g g": "git_panel::ToggleFocus",
+      "space g d": "git::Diff",
+      "space g h": "editor::ToggleSelectedDiffHunks",
+      "space u h": "editor::ToggleInlayHints",
+      "space u w": "editor::ToggleSoftWrap",
+      "space a c": "assistant::ToggleFocus",
       "ctrl-j": "workspace::ToggleBottomDock",
-      "H": "pane::ActivatePrevItem",
-      "L": "pane::ActivateNextItem",
       "ctrl-b": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      // Window movement bindings
+
+      // +LSP
+      "space c a": "editor::ToggleCodeActions",
+      "space .": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
+      "g t": "editor::GoToTypeDefinition",
+      "g T": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      // TODO: Go to next/prev error
+      "] e": "editor::GoToDiagnostic",
+      "[ e": "editor::GoToPreviousDiagnostic",
+      // Symbol search
+      "space s s": "outline::Toggle",
+      "space s S": "project_symbols::Toggle",
+      // Diagnostic
+      "space x x": "diagnostics::Deploy",
+
+      // +Git
+      // Git prev/next hunk
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+
+      // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
+
+      // + Buffers
+      // Switch between buffers
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      // Close active panel
+      "shift-q": "pane::CloseActiveItem",
+      "ctrl-q": "pane::CloseActiveItem",
+      "space b d": "pane::CloseActiveItem",
+      // Close other items
+      "space b o": "pane::CloseInactiveItems",
+      // Save file
+      "ctrl-s": "workspace::Save",
+      // File finder
+      "space space": "file_finder::Toggle",
+      // Project search
+      "space /": "pane::DeploySearch",
+      // TODO: Open other files
+      // Show project panel with current file
+      "space e": "pane::RevealInProjectPanel"
     }
   },
   {

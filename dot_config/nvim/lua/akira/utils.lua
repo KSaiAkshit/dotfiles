@@ -1,6 +1,126 @@
 ---@diagnostic disable: undefined-doc-name
+
 local M = {}
 
+---@alias utils.Action fun():boolean?
+---@type table<string, utils.Action>
+M.actions = {
+  -- Native Snippets
+  snippet_forward = function()
+    if vim.snippet.active({ direction = 1 }) then
+      vim.schedule(function()
+        vim.snippet.jump(1)
+      end)
+      return true
+    end
+  end,
+  snippet_stop = function()
+    if vim.snippet then
+      vim.snippet.stop()
+    end
+  end,
+}
+
+---@param actions string[]
+---@param fallback? string|fun()
+function M.map(actions, fallback)
+  return function()
+    for _, name in ipairs(actions) do
+      if M.actions[name] then
+        local ret = M.actions[name]()
+        if ret then
+          return true
+        end
+      end
+    end
+    return type(fallback) == "function" and fallback() or fallback
+  end
+end
+
+
+function M.expand(snippet)
+  -- Preserve the top-level snippet session
+  local session = vim.snippet.active() and vim.snippet._session or nil
+
+  -- Try expanding the snippet
+  local ok, err = pcall(vim.snippet.expand, snippet)
+
+  -- If expansion failed, try to fix it
+  if not ok then
+    local fixed = M.snippet_fix(snippet)
+    ok = pcall(vim.snippet.expand, fixed)
+
+    -- Notify the user of the error using vim.notify
+    if not ok then
+      vim.notify(
+        "Failed to parse snippet: " .. err,
+        vim.log.levels.ERROR,
+        { title = "Snippet Expansion" }
+      )
+    else
+      vim.notify(
+        "Failed to parse snippet, but fixed automatically.",
+        vim.log.levels.WARN,
+        { title = "Snippet Expansion" }
+      )
+    end
+  end
+
+  -- Restore the top-level snippet session if needed
+  if session then
+    vim.snippet._session = session
+  end
+end
+
+---@type table<string, table<vim.lsp.Client, table<number, boolean>>>
+M._supports_method = {}
+
+---@param method string
+---@param fn fun(client:vim.lsp.Client, buffer)
+function M.on_supports_method(method, fn)
+  M._supports_method[method] = M._supports_method[method] or setmetatable({}, { __mode = "k" })
+  return vim.api.nvim_create_autocmd("User", {
+    pattern = "LspSupportsMethod",
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      local buffer = args.data.buffer ---@type number
+      if client and method == args.data.method then
+        return fn(client, buffer)
+      end
+    end,
+  })
+end
+
+M.toggle_prefix = "<Leader>u"
+
+M.toggle_keys = function(lhs, rhs, desc)
+  vim.keymap.set("n", M.toggle_prefix .. lhs, function()
+    local status_message = desc:gsub("^%S+%s+", "Toggled ")
+    vim.notify(status_message, vim.log.levels.INFO)
+    if type(rhs) == "string" then
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(rhs, true, false, true), "n", false)
+    else
+      rhs()
+    end
+  end, { desc = desc })
+end
+
+M.foldexpr = function()
+  local buf = vim.api.nvim_get_current_buf()
+  if vim.b[buf].ts_folds == nil then
+    -- as long as we don't have a filetype, don't bother
+    -- checking if treesitter is available (it won't)
+    if vim.bo[buf].filetype == "" then
+      return "0"
+    end
+    if vim.bo[buf].filetype:find("ministarter") then
+      vim.b[buf].ts_folds = false
+    else
+      vim.b[buf].ts_folds = pcall(vim.treesitter.get_parser, buf)
+    end
+  end
+  return vim.b[buf].ts_folds and vim.treesitter.foldexpr() or "0"
+end
 
 M.on_very_lazy = function(fn)
   vim.api.nvim_create_autocmd("User", {
@@ -38,8 +158,126 @@ M.get_clients = function(opts)
 end
 
 
-function M.has(plugin)
+M.has = function(plugin)
   return M.get_plugin(plugin) ~= nil
+end
+
+M.icons = {
+  misc = {
+    dots = "󰇘",
+  },
+  ft = {
+    octo = "",
+  },
+  dap = {
+    Stopped             = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
+    Breakpoint          = " ",
+    BreakpointCondition = " ",
+    BreakpointRejected  = { " ", "DiagnosticError" },
+    LogPoint            = ".>",
+  },
+  diagnostics = {
+    Error = " ",
+    Warn  = " ",
+    Hint  = " ",
+    Info  = " ",
+  },
+  git = {
+    added    = " ",
+    modified = " ",
+    removed  = " ",
+  },
+  kinds = {
+    Array         = " ",
+    Boolean       = "󰨙 ",
+    Class         = " ",
+    Codeium       = "󰘦 ",
+    Color         = " ",
+    Control       = " ",
+    Collapsed     = " ",
+    Constant      = "󰏿 ",
+    Constructor   = " ",
+    Copilot       = " ",
+    Enum          = " ",
+    EnumMember    = " ",
+    Event         = " ",
+    Field         = " ",
+    File          = " ",
+    Folder        = " ",
+    Function      = "󰊕 ",
+    Interface     = " ",
+    Key           = " ",
+    Keyword       = " ",
+    Method        = "󰊕 ",
+    Module        = " ",
+    Namespace     = "󰦮 ",
+    Null          = " ",
+    Number        = "󰎠 ",
+    Object        = " ",
+    Operator      = " ",
+    Package       = " ",
+    Property      = " ",
+    Reference     = " ",
+    Snippet       = " ",
+    String        = " ",
+    Struct        = "󰆼 ",
+    TabNine       = "󰏚 ",
+    Text          = " ",
+    TypeParameter = " ",
+    Unit          = " ",
+    Value         = " ",
+    Variable      = "󰀫 ",
+  },
+}
+
+---@generic T
+---@param list T[]
+---@return T[]
+M.dedup = function(list)
+  local ret = {}
+  local seen = {}
+  for _, v in ipairs(list) do
+    if not seen[v] then
+      table.insert(ret, v)
+      seen[v] = true
+    end
+  end
+  return ret
+end
+
+M.ai_indent = function(ai_type)
+  local spaces = (" "):rep(vim.o.tabstop)
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  local indents = {} ---@type {line: number, indent: number, text: string}[]
+
+  for l, line in ipairs(lines) do
+    if not line:find("^%s*$") then
+      indents[#indents + 1] = { line = l, indent = #line:gsub("\t", spaces):match("^%s*"), text = line }
+    end
+  end
+
+  local ret = {} ---@type (Mini.ai.region | {indent: number})[]
+
+  for i = 1, #indents do
+    if i == 1 or indents[i - 1].indent < indents[i].indent then
+      local from, to = i, i
+      for j = i + 1, #indents do
+        if indents[j].indent < indents[i].indent then
+          break
+        end
+        to = j
+      end
+      from = ai_type == "a" and from > 1 and from - 1 or from
+      to = ai_type == "a" and to < #indents and to + 1 or to
+      ret[#ret + 1] = {
+        indent = indents[i].indent,
+        from = { line = indents[from].line, col = ai_type == "a" and 1 or indents[from].indent + 1 },
+        to = { line = indents[to].line, col = #indents[to].text },
+      }
+    end
+  end
+
+  return ret
 end
 
 M.filterout_lua_diagnosing = function(notif_arr)
@@ -50,17 +288,11 @@ M.filterout_lua_diagnosing = function(notif_arr)
   return MiniNotify.default_sort(notif_arr)
 end
 
-M.is_loaded = function(name)
-  local Config = require("lazy.core.config")
-  return Config.plugins[name] and Config.plugins[name]._.loaded
-end
-
 ---@param name string
 function M.get_plugin(name)
   return require("lazy.core.config").spec.plugins[name]
 end
 
----@param name string
 M.opts = function(name)
   local plugin = M.get_plugin(name)
   if not plugin then
@@ -68,6 +300,11 @@ M.opts = function(name)
   end
   local Plugin = require("lazy.core.plugin")
   return Plugin.values(plugin, "opts", false)
+end
+
+M.is_loaded = function(name)
+  local Config = require("lazy.core.config")
+  return Config.plugins[name] and Config.plugins[name]._.loaded
 end
 
 -- Utility from mini.statusline
@@ -158,9 +395,13 @@ M.section_buffers = function(args)
     end
   end
   if string.len(buffers) == 0 then
+    -- print("No buffers found")
     return ""
   end
+
   local icon = MiniStatusline.is_truncated(args.trunc_width) and "" or " "
+  -- local buf_count = #buffers
+
   return ("%s(%s)│"):format(icon, count)
 end
 

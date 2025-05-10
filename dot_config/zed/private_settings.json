@@ -7,8 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "icon_theme": "Catppuccin Mocha",
   "features": {
     "edit_prediction_provider": "zed"
+  },
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
+  "inlay_hints": {
+    "enabled": true
   },
   "assistant": {
     "default_model": {
@@ -21,7 +31,19 @@
     "show": true
   },
   "vim_mode": true,
+  "vim": {
+    "use_multiline_find": true,
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true
+  },
+  "scrollbar": {
+    "show": "never"
+  },
   "ui_font_size": 14,
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "fixed"
+  },
   "buffer_font_size": 14,
   "autosave": "on_focus_change",
   "theme": {
@@ -30,12 +52,21 @@
     "dark": "Carbonfox"
   },
   "project_panel": {
+    "dock": "right",
+    "git_status": true
+  },
+  "outline_panel": {
     "dock": "right"
   },
   "terminal": {
     "shell": {
       "program": "fish"
     }
+  },
+
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
   },
   "soft_wrap": "editor_width",
   "file_scan_exclusions": [
