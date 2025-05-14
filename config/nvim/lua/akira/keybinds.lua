@@ -1,3 +1,5 @@
+local utils = require("akira.utils")
+
 if vim.g.mapleader == nil then
   vim.g.mapleader = ' ' -- Use space as the one and only true Leader key
 end
@@ -9,10 +11,10 @@ map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
 -- Auto center on large jumps
-map({ "n", "x"}, "<C-d>", "<C-d>zz", { desc = "Half-Page-Down", silent = true })
-map({ "n", "x"}, "<C-u>", "<C-u>zz", { desc = "Half-Page-Up", silent = true })
-map({ "n", "x"}, "<C-f>", "<C-f>zz", { desc = "Page-Down", silent = true })
-map({ "n", "x"}, "<C-b>", "<C-b>zz", { desc = "Page-Up", silent = true })
+map({ "n", "x" }, "<C-d>", "<C-d>zz", { desc = "Half-Page-Down", silent = true })
+map({ "n", "x" }, "<C-u>", "<C-u>zz", { desc = "Half-Page-Up", silent = true })
+map({ "n", "x" }, "<C-f>", "<C-f>zz", { desc = "Page-Down", silent = true })
+map({ "n", "x" }, "<C-b>", "<C-b>zz", { desc = "Page-Up", silent = true })
 
 -- Add empty lines before and after cursor line supporting dot-repeat
 map("n", "[ ", "<Cmd>call append(line('.') - 1,   repeat([''], v:count1))<CR>", { desc = "New line above" })
@@ -39,20 +41,7 @@ map("x", "g/", "<esc>/\\%V", { silent = false, desc = "Search inside visual sele
 -- NOTE: Adding `redraw` helps with `cmdheight=0` if buffer is not modified
 map({ "i", "x", "n", "s" }, "<C-S>", "<Cmd>silent! update | redraw<CR><Esc>", { desc = "Save and go to Normal mode" })
 
--- Append 'toggle_prefix' to specified bindings
-local toggle_prefix = "<Leader>u"
--- Toggle prefix
-local map_toggle = function(lhs, rhs, desc)
-  map("n", toggle_prefix .. lhs, function()
-    local status_message = desc:gsub("^%S+%s+", "Toggled ")
-    vim.notify(status_message, vim.log.levels.INFO)
-    if type(rhs) == "string" then
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(rhs, true, false, true), "n", false)
-    else
-      rhs()
-    end
-  end, { desc = desc })
-end
+local map_toggle = utils.toggle_keys
 
 -- Toggle inlay hints
 function Toggle_inlay_hints()
@@ -136,11 +125,6 @@ map(
   "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
   { desc = "Redraw / clear hlsearch / diff update" }
 )
-
-map("n", "<Leader>xp", function()
-  local root = Snacks.git.get_root()
-  vim.cmd("TodoQuickFix cwd=" .. root)
-end)
 
 -- Advanced Maps
 map("n", "<Leader>e", "<cmd>lua MiniFiles.open()<CR>", { desc = "[Mini.files] Find Files" })

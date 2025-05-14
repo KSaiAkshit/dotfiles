@@ -269,14 +269,61 @@ local M = {
       {
         "williamboman/mason.nvim",
         "neovim/nvim-lspconfig",
+        'nvim-lua/plenary.nvim'
       },
     },
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "pyright", "ruff" },
+        ensure_installed = { "lua_ls", "clangd", "pylsp" },
         automatic_installation = { exclude = "rust_analyzer" }
       })
+      local pylsp = require("mason-registry").get_package("python-lsp-server")
+      pylsp:on("install:success", function()
+        local function mason_package_path(package)
+          local path = vim.fn.resolve(vim.fn.stdpath("data") .. "/mason/packages/" .. package)
+          return path
+        end
+
+        local path = mason_package_path("python-lsp-server")
+        local command = path .. "/venv/bin/pip"
+        local args = {
+          "install",
+          "-U",
+          "pylsp-rope",
+          "python-lsp-black",
+          "python-lsp-isort",
+          "python-lsp-ruff",
+          "pylsp-mypy",
+        }
+
+        require("plenary.job")
+            :new({
+              command = command,
+              args = args,
+              cwd = path,
+              on_exit = function(j, return_val)
+                if return_val == 0 then
+                  vim.schedule(function()
+                    vim.notify(
+                      "pylsp plugins installed successfully!",
+                      vim.log.levels.INFO,
+                      { title = "Mason pylsp" }
+                    )
+                  end)
+                else
+                  vim.schedule(function()
+                    vim.notify(
+                      "Failed to install pylsp plugins:\n" .. table.concat(j:stderr_result(), "\n"),
+                      vim.log.levels.ERROR,
+                      { title = "Mason pylsp" }
+                    )
+                  end)
+                end
+              end,
+            })
+            :start()
+      end)
       local server_config = {
         clangd = {
           cmd = {
@@ -288,16 +335,25 @@ local M = {
             "--header-insertion=iwyu",
           },
         },
-        pyright = {
-          python = {
-            analysis = {
-              autoSearchPaths = true,
-              diagnosticMode = "openFilesOnly",
-              useLibraryCodeForTypes = true,
-              reportDuplicateImport = true,
-            },
-          },
-        },
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                ruff = { enabled = true },
+                rope = { enabled = true },
+                pycodestyle = { enabled = false },
+                mccabe = { enabled = false },
+                pyflakes = { enabled = false },
+                yapf = { enabled = false },
+                autopep8 = { enabled = false },
+                black = { enabled = false },
+                isort = { enabled = false },
+                mypy = { enabled = false },
+
+              }
+            }
+          }
+        }
       }
       local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
       function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -321,6 +377,7 @@ local M = {
       require("mason-lspconfig").setup_handlers {
         function(server_name)
           local config = server_config[server_name] or {}
+          -- vim.print(vim.inspect(server_name), vim.inspect(config))
           require("lspconfig")[server_name].setup(vim.tbl_deep_extend("force", {}, config, {}))
         end,
       }

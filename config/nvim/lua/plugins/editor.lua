@@ -42,6 +42,18 @@ local M = {
     end,
   },
   {
+    "chentoast/marks.nvim",
+    event = "BufReadPre",
+    keys = {
+      { 'm/', '<cmd>MarksListAll<CR>', desc = 'Marks from all opened buffers' },
+    },
+    opts = {
+      default_mappings = true,
+      builtin_marks = { "'", "<", ">", "." }
+    },
+
+  },
+  {
     "kevinhwang91/nvim-bqf",
     lazy = true,
     ft = { "qf", "Trouble" },
@@ -94,28 +106,16 @@ local M = {
   {
     "folke/trouble.nvim",
     cmd = "Trouble",
+    opts = {
+      focus = true,
+    }, -- for default options, refer to the configuration section for custom setup.
     keys = {
-      { "<leader>D", "<cmd>Trouble diagnostics toggle<cr>", desc = "[Trouble] Diagnostics" },
-      {
-        "<leader>d",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "[Trouble] Buffer Diagnostics",
-      },
-      {
-        "<leader>cl",
-        "<cmd>Trouble lsp toggle<cr>",
-        desc = "[Trouble] LSP Definitions / references / ...",
-      },
-      {
-        "<leader>xL",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
-      },
-      {
-        "<leader>xQ",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
+      { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",              desc = "Diagnostics (Trouble)" },
+      { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+      { "<leader>cs", "<cmd>Trouble symbols toggle<cr>",                  desc = "Symbols (Trouble)" },
+      { "<leader>cS", "<cmd>Trouble lsp toggle<cr>",                      desc = "LSP references/definitions/... (Trouble)" },
+      { "<leader>xL", "<cmd>Trouble loclist toggle<cr>",                  desc = "Location List (Trouble)" },
+      { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>",                   desc = "Quickfix List (Trouble)" },
       {
         "[q",
         function()
@@ -145,9 +145,6 @@ local M = {
         desc = "Next trouble/quickfix item",
       },
     },
-    opts = {
-      focus = true,
-    }, -- for default options, refer to the configuration section for custom setup.
   },
   {
     "folke/todo-comments.nvim",
@@ -155,30 +152,12 @@ local M = {
     event = "BufReadPre",
     config = true,
     keys = {
-      {
-        "]t",
-        function()
-          require("todo-comments").jump_next()
-        end,
-        desc = "Next todo comment",
-      },
-      {
-        "[t",
-        function()
-          require("todo-comments").jump_prev()
-        end,
-        desc = "Previous todo comment",
-      },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>",  desc = "Todo (Trouble)" },
-      { "<leader>xX", "<cmd>TodoQuickFix<cr>", desc = "Todo (QuickFix)" },
-      {
-        "<leader>xx",
-        function()
-          local dir = Snacks.git.get_root()
-          vim.cmd("TodoQuickFix cwd=" .. dir)
-        end,
-        desc = "Todo Project (QuickFix)"
-      },
+      { "]t",         function() require("todo-comments").jump_next() end,              desc = "Next Todo Comment" },
+      { "[t",         function() require("todo-comments").jump_prev() end,              desc = "Previous Todo Comment" },
+      { "<leader>xt", "<cmd>Trouble todo toggle<cr>",                                   desc = "Todo (Trouble)" },
+      { "<leader>xT", "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>st", "<cmd>TodoFzfLua<cr>",                                            desc = "Todo" },
+      { "<leader>sT", "<cmd>TodoFzfLua keywords=TODO,FIX,FIXME<cr>",                    desc = "Todo/Fix/Fixme" },
     },
   },
   {

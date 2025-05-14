@@ -2,6 +2,76 @@
 
 local M = {}
 
+---@alias utils.Action fun():boolean?
+---@type table<string, utils.Action>
+M.actions = {
+  -- Native Snippets
+  snippet_forward = function()
+    if vim.snippet.active({ direction = 1 }) then
+      vim.schedule(function()
+        vim.snippet.jump(1)
+      end)
+      return true
+    end
+  end,
+  snippet_stop = function()
+    if vim.snippet then
+      vim.snippet.stop()
+    end
+  end,
+}
+
+---@param actions string[]
+---@param fallback? string|fun()
+function M.map(actions, fallback)
+  return function()
+    for _, name in ipairs(actions) do
+      if M.actions[name] then
+        local ret = M.actions[name]()
+        if ret then
+          return true
+        end
+      end
+    end
+    return type(fallback) == "function" and fallback() or fallback
+  end
+end
+
+
+function M.expand(snippet)
+  -- Preserve the top-level snippet session
+  local session = vim.snippet.active() and vim.snippet._session or nil
+
+  -- Try expanding the snippet
+  local ok, err = pcall(vim.snippet.expand, snippet)
+
+  -- If expansion failed, try to fix it
+  if not ok then
+    local fixed = M.snippet_fix(snippet)
+    ok = pcall(vim.snippet.expand, fixed)
+
+    -- Notify the user of the error using vim.notify
+    if not ok then
+      vim.notify(
+        "Failed to parse snippet: " .. err,
+        vim.log.levels.ERROR,
+        { title = "Snippet Expansion" }
+      )
+    else
+      vim.notify(
+        "Failed to parse snippet, but fixed automatically.",
+        vim.log.levels.WARN,
+        { title = "Snippet Expansion" }
+      )
+    end
+  end
+
+  -- Restore the top-level snippet session if needed
+  if session then
+    vim.snippet._session = session
+  end
+end
+
 ---@type table<string, table<vim.lsp.Client, table<number, boolean>>>
 M._supports_method = {}
 
@@ -19,6 +89,20 @@ function M.on_supports_method(method, fn)
       end
     end,
   })
+end
+
+M.toggle_prefix = "<Leader>u"
+
+M.toggle_keys = function(lhs, rhs, desc)
+  vim.keymap.set("n", M.toggle_prefix .. lhs, function()
+    local status_message = desc:gsub("^%S+%s+", "Toggled ")
+    vim.notify(status_message, vim.log.levels.INFO)
+    if type(rhs) == "string" then
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(rhs, true, false, true), "n", false)
+    else
+      rhs()
+    end
+  end, { desc = desc })
 end
 
 M.foldexpr = function()
@@ -74,7 +158,7 @@ M.get_clients = function(opts)
 end
 
 
-function M.has(plugin)
+M.has = function(plugin)
   return M.get_plugin(plugin) ~= nil
 end
 
@@ -149,7 +233,7 @@ M.icons = {
 ---@generic T
 ---@param list T[]
 ---@return T[]
-function M.dedup(list)
+M.dedup = function(list)
   local ret = {}
   local seen = {}
   for _, v in ipairs(list) do
@@ -161,7 +245,7 @@ function M.dedup(list)
   return ret
 end
 
-function M.ai_indent(ai_type)
+M.ai_indent = function(ai_type)
   local spaces = (" "):rep(vim.o.tabstop)
   local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
   local indents = {} ---@type {line: number, indent: number, text: string}[]
@@ -196,26 +280,7 @@ function M.ai_indent(ai_type)
   return ret
 end
 
--- function M.foldtext()
---   local ok = pcall(vim.treesitter.get_parser, vim.api.nvim_get_current_buf())
---   local ret = ok and vim.treesitter.foldtext and vim.treesitter.foldtext()
---   if not ret or type(ret) == "string" then
---     ret = { { vim.api.nvim_buf_get_lines(0, vim.v.lnum - 1, vim.v.lnum, false)[1], {} } }
---   end
---   table.insert(ret, { " " .. icons.misc.dots })
---
---   if not vim.treesitter.foldtext then
---     return table.concat(
---       vim.tbl_map(function(line)
---         return line[1]
---       end, ret),
---       " "
---     )
---   end
---   return ret
--- end
-
-function M.filterout_lua_diagnosing(notif_arr)
+M.filterout_lua_diagnosing = function(notif_arr)
   local not_diagnosing = function(notif)
     return not vim.startswith(notif.msg, "lua_ls: Diagnosing")
   end
@@ -228,7 +293,7 @@ function M.get_plugin(name)
   return require("lazy.core.config").spec.plugins[name]
 end
 
-function M.opts(name)
+M.opts = function(name)
   local plugin = M.get_plugin(name)
   if not plugin then
     return {}
@@ -237,21 +302,21 @@ function M.opts(name)
   return Plugin.values(plugin, "opts", false)
 end
 
-function M.is_loaded(name)
+M.is_loaded = function(name)
   local Config = require("lazy.core.config")
   return Config.plugins[name] and Config.plugins[name]._.loaded
 end
 
 -- Utility from mini.statusline
-function M.isnt_normal_buffer()
+M.isnt_normal_buffer = function()
   return vim.bo.buftype ~= ""
 end
 
-function M.has_no_lsp_attached()
+M.has_no_lsp_attached = function()
   return #vim.lsp.get_clients() == 0
 end
 
-function M.get_filetype_icon()
+M.get_filetype_icon = function()
   -- Have this `require()` here to not depend on plugin initialization order
   local has_devicons, devicons = pcall(require, "nvim-web-devicons")
   if not has_devicons then
@@ -262,7 +327,7 @@ function M.get_filetype_icon()
   return devicons.get_icon(file_name, file_ext, { default = true })
 end
 
-function M.section_location(args)
+M.section_location = function(args)
   -- Use virtual column number to allow update when past last column
   if MiniStatusline.is_truncated(args.trunc_width) then
     return "%-2l│%-2v"
@@ -271,7 +336,7 @@ function M.section_location(args)
   return "󰉸 %-2l│󱥖 %-2v"
 end
 
-function M.section_filetype(args)
+M.section_filetype = function(args)
   if MiniStatusline.is_truncated(args.trunc_width) then
     return ""
   end
@@ -299,7 +364,7 @@ end
 --- data on every call which can be computationally expensive (although still
 --- usually on 0.1 ms order of magnitude). To prevent this, supply
 --- `args.options = { recompute = false }`.
-function M.section_searchcount(args)
+M.section_searchcount = function(args)
   if vim.v.hlsearch == 0 then
     return ""
   end
@@ -321,7 +386,7 @@ function M.section_searchcount(args)
   return ("%s%s/%s│"):format(icon, current, total)
 end
 
-function M.section_buffers(args)
+M.section_buffers = function(args)
   local buffers = vim.fn.execute("ls")
   local count = 0
   for line in string.gmatch(buffers, "[^\r\n]+") do
@@ -340,7 +405,7 @@ function M.section_buffers(args)
   return ("%s(%s)│"):format(icon, count)
 end
 
-function M.section_pathname(args)
+M.section_pathname = function(args)
   args = vim.tbl_extend("force", {
     modified_hl = nil,
     filename_hl = nil,

@@ -197,6 +197,7 @@ keybinds {
         bind "d" { Detach; }
         bind "Space" { NextSwapLayout; }
         bind "x" { CloseFocus; SwitchToMode "Locked"; }
+        bind "X" { CloseTab; SwitchToMode "Locked"; }
         bind "w" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
@@ -405,7 +406,7 @@ styled_underlines true
 // Default: false
 //
 // disable_session_metadata true
-support_kitty_keyboard_protocol false
+support_kitty_keyboard_protocol true
 
 // Whether to stack panes when resizing beyond a certain size
 // Default: true

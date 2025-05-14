@@ -1,10 +1,17 @@
 layout {
     tab name="Sim" focus=true {
         pane split_direction="vertical" {
-            pane {
-                name "upstart"
-                cwd "~/peppermint_ws"
-                size "50%"
+            pane size="50%" {
+                pane {
+                    name "upstart"
+                    cwd "~/peppermint_ws"
+                    size "50%"
+                }
+                pane {
+                    name "misc"
+                    cwd "~/peppermint_ws"
+                    size "50%"
+                }
             }
             pane size="50%" {
                 pane {

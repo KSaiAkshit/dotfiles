@@ -39,6 +39,7 @@ with pkgs;
   podman-tui
   ripgrep
   skim
+  taplo
   taskwarrior3
   taskwarrior-tui
   tenere

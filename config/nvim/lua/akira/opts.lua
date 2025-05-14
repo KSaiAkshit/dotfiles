@@ -81,9 +81,11 @@ o.splitkeep = "screen"      -- Reduce scroll during window split
 o.termguicolors = true      -- Enable gui colors
 
 -- Extra UI options
-o.pumblend = 10  -- Make builtin completion menus slightly transparent
-o.pumheight = 10 -- Make popup menu smaller
-o.winblend = 0   -- Make floating windows transparent
+o.pumblend = 10         -- Make builtin completion menus slightly transparent
+o.pumheight = 10        -- Make popup menu smaller
+o.winblend = 0          -- Make floating windows transparent
+o.winborder = "rounded" -- Make floating windows have rounded border
+
 
 -- NOTE: Having `tab` present is needed because `^I` will be shown if
 -- omitted (documented in `:h listchars`).

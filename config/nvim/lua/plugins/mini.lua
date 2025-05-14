@@ -18,10 +18,11 @@ return {
           { "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
           "^().*()$",
         },
-        i = utils.ai_indent,                                                       -- indent
-        g = require("mini.extra").gen_ai_spec.buffer(),                            -- buffer
-        u = require("mini.ai").gen_spec.function_call(),                           -- u for "Usage"
-        U = require("mini.ai").gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
+        k = ai.gen_spec.treesitter({ a = "@comment.outer", i = "@comment.inner" }), -- comment
+        i = utils.ai_indent,                                                        -- indent
+        g = require("mini.extra").gen_ai_spec.buffer(),                             -- buffer
+        u = require("mini.ai").gen_spec.function_call(),                            -- u for "Usage"
+        U = require("mini.ai").gen_spec.function_call({ name_pattern = "[%w_]" }),  -- without dot in function name
       }
     })
     require("mini.align").setup()
@@ -109,6 +110,7 @@ return {
         { mode = "n", keys = "<Leader>nn", desc = "+new" },
         { mode = "n", keys = "<Leader>nt", desc = "+todo" },
         { mode = "n", keys = "<Leader>x",  desc = "+trouble" },
+        { mode = "n", keys = "<Leader>r",  desc = "+refactor" },
       },
       window = {
         -- Show window immediately
