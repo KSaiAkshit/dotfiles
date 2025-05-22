@@ -43,13 +43,17 @@ with pkgs;
   taskwarrior3
   taskwarrior-tui
   tenere
+  tinymist
   trash-cli
   tree
   tgpt
+  typst
+  typstyle
   ueberzugpp
   watchexec
   wget
   xh
+  yaml-language-server
   yazi
   yq
   zig

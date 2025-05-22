@@ -92,15 +92,6 @@ local M = {
       return ret
     end,
     config = function(_, opts)
-      -- LazyVim.format.register(LazyVim.lsp.formatter())
-      --
-      -- -- setup keymaps
-      -- LazyVim.lsp.on_attach(function(client, buffer)
-      --   require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
-      -- end)
-      --
-      -- LazyVim.lsp.setup()
-      -- LazyVim.lsp.on_dynamic_capability(require("lazyvim.plugins.lsp.keymaps").on_attach)
 
       -- diagnostics signs
       if vim.fn.has("nvim-0.10.0") == 0 then
@@ -189,7 +180,7 @@ local M = {
       local have_mason, mlsp = pcall(require, "mason-lspconfig")
       local all_mslp_servers = {}
       if have_mason then
-        all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+        all_mslp_servers = require("mason-lspconfig").get_mappings().lspconfig_to_package
       end
 
       local ensure_installed = {} ---@type string[]
@@ -272,58 +263,64 @@ local M = {
         'nvim-lua/plenary.nvim'
       },
     },
+    opts = {
+
+        ensure_installed = { "lua_ls", "clangd", "basedpyright", "ruff" },
+        automatic_installation = { exclude = "rust_analyzer" }
+    },
     config = function()
       require("mason").setup()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "pylsp" },
-        automatic_installation = { exclude = "rust_analyzer" }
-      })
-      local pylsp = require("mason-registry").get_package("python-lsp-server")
-      pylsp:on("install:success", function()
-        local function mason_package_path(package)
-          local path = vim.fn.resolve(vim.fn.stdpath("data") .. "/mason/packages/" .. package)
-          return path
-        end
+      require("mason-lspconfig").setup({})
+      local pyl = "python-lsp-server"
+      local opts = utils.opts("mason-lspconfig")
+      if opts.ensure_installed and vim.tbl_contains(opts.ensure_installed, pyl) then
+        local pylsp = require("mason-registry").get_package("python-lsp-server")
+        pylsp:on("install:success", function()
+          local function mason_package_path(package)
+            local path = vim.fn.resolve(vim.fn.stdpath("data") .. "/mason/packages/" .. package)
+            return path
+          end
 
-        local path = mason_package_path("python-lsp-server")
-        local command = path .. "/venv/bin/pip"
-        local args = {
-          "install",
-          "-U",
-          "pylsp-rope",
-          "python-lsp-black",
-          "python-lsp-isort",
-          "python-lsp-ruff",
-          "pylsp-mypy",
-        }
+          local path = mason_package_path("python-lsp-server")
+          local command = path .. "/venv/bin/pip"
+          local args = {
+            "install",
+            "-U",
+            "pylsp-rope",
+            "python-lsp-black",
+            "python-lsp-isort",
+            "python-lsp-ruff",
+            "pylsp-mypy",
+          }
 
-        require("plenary.job")
-            :new({
-              command = command,
-              args = args,
-              cwd = path,
-              on_exit = function(j, return_val)
-                if return_val == 0 then
-                  vim.schedule(function()
-                    vim.notify(
-                      "pylsp plugins installed successfully!",
-                      vim.log.levels.INFO,
-                      { title = "Mason pylsp" }
-                    )
-                  end)
-                else
-                  vim.schedule(function()
-                    vim.notify(
-                      "Failed to install pylsp plugins:\n" .. table.concat(j:stderr_result(), "\n"),
-                      vim.log.levels.ERROR,
-                      { title = "Mason pylsp" }
-                    )
-                  end)
-                end
-              end,
-            })
-            :start()
-      end)
+          require("plenary.job")
+              :new({
+                command = command,
+                args = args,
+                cwd = path,
+                on_exit = function(j, return_val)
+                  if return_val == 0 then
+                    vim.schedule(function()
+                      vim.notify(
+                        "pylsp plugins installed successfully!",
+                        vim.log.levels.INFO,
+                        { title = "Mason pylsp" }
+                      )
+                    end)
+                  else
+                    vim.schedule(function()
+                      vim.notify(
+                        "Failed to install pylsp plugins:\n" .. table.concat(j:stderr_result(), "\n"),
+                        vim.log.levels.ERROR,
+                        { title = "Mason pylsp" }
+                      )
+                    end)
+                  end
+                end,
+              })
+              :start()
+        end)
+      end
       local server_config = {
         clangd = {
           cmd = {
@@ -333,6 +330,71 @@ local M = {
             "--completion-style=bundled",
             "--cross-file-rename",
             "--header-insertion=iwyu",
+          },
+        },
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                -- Enforcing basic type checking without being too strict
+                typeCheckingMode = 'standard', -- Can be "off", "basic", or "strict" (adjust based on your needs)
+
+                -- Limit diagnostics to open files only to reduce clutter
+                diagnosticMode = 'openFilesOnly', -- Only check open files for issues
+
+                -- Avoid errors about missing type stubs, but you can choose to show warnings for them if needed
+                reportMissingTypeStubs = 'none', -- "none", "warning", or "error"
+
+                -- Avoid too many warnings about unused call results, but report them as a warning
+                reportUnusedCallResult = 'warning', -- "none", "warning", "error"
+
+                -- Suppress unknown type errors but allow warnings for potentially problematic code
+                reportUnknownType = 'warning', -- "none", "warning", or "error"
+
+                -- Suggesting a good coding practice: avoid unknown members on dynamic types
+                reportUnknownMemberType = 'none', -- Ensure we're not referencing members with unknown types
+
+                -- Enforcing type annotations for functions and methods for better type safety
+                reportMissingFunctionType = 'warning', -- Warn when function types are missing
+
+                -- Enforce variable type annotations for better clarity
+                reportMissingVariableType = 'warning', -- Ensure variables are typed
+
+                -- Suppress false positives for non-essential diagnostics, but show important ones
+                reportUnusedVariable = 'warning', -- Warn about unused variables, but don't be overly strict
+
+                -- Use stub files for packages if necessary to improve type safety
+                stubPath = { './typings', './stubs' }, -- Adjust paths to stubs if necessary
+
+                -- Enforce a clear, maintainable code style by checking for type mismatches
+                reportInconsistentReturnType = 'warning', -- Ensure consistent return types across functions
+
+                -- Optionally, set max number of diagnostics to avoid overwhelming the screen
+                maxNumberOfProblems = 100, -- Limit the number of diagnostics shown (can adjust based on your preference)
+
+                inlay_hints = {
+                  generic_tfalseyped = true,
+                },
+              },
+            },
+          },
+        },
+        ruff = {
+          init_options = {
+            show_syntax_errors = false,
+            settings = {
+              -- Server settings should go here
+              line_length = 100,
+              disableRuleComment = {
+                enable = false,
+              },
+              format = {
+                preview = true,
+              },
+            },
+          },
+          handlers = {
+            ['textDocument/publishDiagnostics'] = function() end, -- Ignore diagnostics from Ruff
           },
         },
         pylsp = {
@@ -373,14 +435,10 @@ local M = {
           virtual_text = true
         }
       )
+      for server, conf in pairs(server_config) do
+        vim.lsp.config(server, conf)
+      end
 
-      require("mason-lspconfig").setup_handlers {
-        function(server_name)
-          local config = server_config[server_name] or {}
-          -- vim.print(vim.inspect(server_name), vim.inspect(config))
-          require("lspconfig")[server_name].setup(vim.tbl_deep_extend("force", {}, config, {}))
-        end,
-      }
     end
   }
 }
