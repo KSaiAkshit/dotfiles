@@ -39,6 +39,10 @@ local M = {
         end,
       })
     end,
+  },
+  {
+    "OXY2DEV/helpview.nvim",
+    lazy = false
   }
 }
 

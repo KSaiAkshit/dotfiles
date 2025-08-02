@@ -184,7 +184,7 @@ local M = {
     -- search
     { '<leader>s"',      "<cmd>FzfLua registers<cr>",                                desc = "Registers" },
     { "<leader>sa",      "<cmd>FzfLua autocmds<cr>",                                 desc = "Auto Commands" },
-    { "<leader>sb",      "<cmd>FzfLua grep_curbuf<cr>",                              desc = "Buffer" },
+    { "<leader>sB",      "<cmd>FzfLua grep_curbuf<cr>",                              desc = "Buffer" },
     { "<leader>sc",      "<cmd>FzfLua command_history<cr>",                          desc = "Command History" },
     { "<leader>sC",      "<cmd>FzfLua commands<cr>",                                 desc = "Commands" },
     { "<leader>sd",      "<cmd>FzfLua diagnostics_document<cr>",                     desc = "Document Diagnostics" },
@@ -205,6 +205,28 @@ local M = {
     { "<leader>sw",      utils.pick("grep_visual"),                                  mode = "v",                       desc = "Selection (Root Dir)" },
     { "<leader>sW",      utils.pick("grep_visual", { root = false }),                mode = "v",                       desc = "Selection (cwd)" },
     { "<leader>uC",      utils.pick("colorschemes"),                                 desc = "Colorscheme with Preview" },
+    {
+      "<leader>sb",
+      function()
+        require("fzf-lua").buffers({
+          sort_mru = true,
+          sort_lastused = true,
+          winopts =
+          {
+            split = "bo new",
+            preview = {
+              layout = "flex",
+              default = "builtin",
+              -- scrollbar = "float",
+              winopts = {
+                split = "vert new",
+              },
+            },
+          }
+        })
+      end,
+      desc = "Open Buffers"
+    },
     {
       "<leader>ss",
       function()

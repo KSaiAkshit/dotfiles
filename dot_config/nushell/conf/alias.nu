@@ -23,6 +23,7 @@ alias sg = s -p google
 alias sudo = doas
 alias ta = tmux attach
 alias trash = trash -i
+alias tree = eza -T
 alias v = nvim
 alias wget = wget -c
 alias zj = zellij
@@ -39,5 +40,10 @@ def nvc () {
 
 def mini () {
   $env.NVIM_APPNAME = 'mini'
+  nvim
+}
+
+def mvim () {
+  $env.NVIM_APPNAME = 'mvim'
   nvim
 }

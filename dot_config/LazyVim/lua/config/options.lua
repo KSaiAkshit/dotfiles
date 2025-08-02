@@ -8,3 +8,4 @@
 vim.cmd("set fcs=eob:\\ ")
 vim.loader.enable()
 vim.o.scrolloff = 10
+vim.o.winborder = "rounded"

@@ -32,7 +32,7 @@
       "space g h": "editor::ToggleSelectedDiffHunks",
       "space u h": "editor::ToggleInlayHints",
       "space u w": "editor::ToggleSoftWrap",
-      "space a c": "assistant::ToggleFocus",
+      "space a c": "agent::NewTextThread",
       "ctrl-j": "workspace::ToggleBottomDock",
       "ctrl-b": "workspace::ToggleLeftDock"
     }

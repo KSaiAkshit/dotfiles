@@ -4,8 +4,8 @@ email = "44054643+KSaiAkshit@users.noreply.github.com"
 
 [ui]
 default-command = "log"
-diff.format = "git"
-diff.tool = ["difft", "--color=always", "--display=side-by-side-show-both", "$left", "$right"]
+# diff.format = "git"
+diff-formatter = ["difft", "--color=always", "--display=side-by-side-show-both", "$left", "$right"]
 diff-editor = ":builtin"
 
 [template-aliases]

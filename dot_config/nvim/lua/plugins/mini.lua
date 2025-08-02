@@ -1,6 +1,7 @@
 local utils = require("akira.utils")
 return {
   "echasnovski/mini.nvim",
+  -- branch = "stable",
   config = function()
     require("mini.ai").setup({
       n_lines = 500,
@@ -109,8 +110,10 @@ return {
       window = {
         -- Show window immediately
         delay = 50,
-        config = {
-          width = '50',
+        window = {
+          config = {
+            width = "auto"
+          }
         }
       }
     })
@@ -170,7 +173,7 @@ return {
     }
     require("mini.notify").setup({
       content = { sort = utils.filterout_lua_diagnosing },
-      window = { max_width_share = 0.75, config = { border = "single" } }
+      window = { config = { border = "single" } }
     })
     vim.notify = MiniNotify.make_notify()
     require("mini.operators").setup({

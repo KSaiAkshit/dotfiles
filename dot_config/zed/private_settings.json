@@ -20,19 +20,19 @@
   "inlay_hints": {
     "enabled": true
   },
-  "assistant": {
+  "agent": {
+    "default_view": null,
+    "default_profile": "ask",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
-    },
-    "version": "2"
+      "provider": "copilot_chat",
+      "model": "gemini-2.5-pro"
+    }
   },
   "tab_bar": {
     "show": true
   },
   "vim_mode": true,
   "vim": {
-    "use_multiline_find": true,
     "use_smartcase_find": true,
     "toggle_relative_line_numbers": true
   },
